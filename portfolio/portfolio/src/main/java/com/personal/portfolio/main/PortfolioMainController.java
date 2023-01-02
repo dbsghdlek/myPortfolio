@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PortfolioMainController {
     @GetMapping("main")
     public String MainPage(){
-
+        return "";
     }
 }
     
