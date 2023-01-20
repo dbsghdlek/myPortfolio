@@ -1,2 +1,4 @@
-package com.personal.portfolio.repository;public class TravelRepository {
+package com.personal.portfolio.repository;
+
+public class TravelRepository {
 }

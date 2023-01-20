@@ -1,2 +1,4 @@
-package com.personal.portfolio.controller;public class PuppyController {
+package com.personal.portfolio.controller;
+
+public class PuppyController {
 }

@@ -1,2 +1,4 @@
-package com.personal.portfolio.repository;public class FoodRepository {
+package com.personal.portfolio.repository;
+
+public class FoodRepository {
 }

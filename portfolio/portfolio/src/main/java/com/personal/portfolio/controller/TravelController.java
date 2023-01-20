@@ -1,2 +1,4 @@
-package com.personal.portfolio.controller;public class TravelController {
+package com.personal.portfolio.controller;
+
+public class TravelController {
 }
