@@ -10,36 +10,38 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Portfolio Grid Items-->
-            <div :v-for="item_image in images" lass="row justify-content-center" id="items">
-                <!-- Portfolio Item 1-->
+            <div lass="row justify-content-center" id="items">
+                <!-- Portfolio Item-->
                 <div class="col-md-6 col-lg-4 mb-5">
                     <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
+                                    class="fas fa-plus fa-3x"></i>
+                            </div>
                         </div>
-                        <img class="img-fluid" src="../assets/img/portfolio/{{item_image}}.png" alt="..." />
+                        <img class="img-fluid" :src="image1" alt="image"/>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </template>
-<script> 
-new Vue({
-    el : "#items",
-    data : {
-        images : ["ani","game","puppy","food","travel","music"]
-    },
-    methods: {
-        
-    }
-})
+<script>
 
 export default {
+    props : {
+        main_item : {
+            type : String
+        }
+    },
+    data() {
+        return{
+            image1 : require(this.main_item)
+        }
+    }
 }
+
+
 </script>
 
-<style>
-
-</style>
+<style></style>

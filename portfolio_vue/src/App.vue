@@ -3,7 +3,7 @@
         <main_nav />
         <main_header></main_header>
         <!-- Portfolio Section-->
-        <main_portfolio />
+        <main_portfolio :main_item="main_item"/>
         <!-- About Section-->
         <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">
@@ -141,6 +141,11 @@ export default {
         main_portfolio,
         basic_footer,
         basic_modal
+    },
+    data() {
+        return{
+            main_item :'../assets/img/portfolio/ani.png'
+        }
     }
 }
 </script>
