@@ -1,4 +1,4 @@
-package com.personal.portfolio.repository;
+package com.personal.portfolio.domain.repository;
 
 public class YoonhoRepository {
 }
