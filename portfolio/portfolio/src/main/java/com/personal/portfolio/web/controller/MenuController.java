@@ -21,6 +21,7 @@ public class MenuController {
     @GetMapping("/getMenus")
     public List<MainMenus> getMenus(){
         List<MainMenus> list = menuRepository.getMenuList();
+        log.info("API 호출됨");
         return list;
     }
 }
