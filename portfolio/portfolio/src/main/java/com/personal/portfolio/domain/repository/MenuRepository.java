@@ -12,6 +12,10 @@ public class MenuRepository {
     public MenuRepository(){
         menuList.add(new MainMenus(1,"ani"));
         menuList.add(new MainMenus(2,"game"));
+        menuList.add(new MainMenus(3,"music"));
+        menuList.add(new MainMenus(4,"puppy"));
+        menuList.add(new MainMenus(5,"travel"));
+        menuList.add(new MainMenus(6,"food"));
     }
 
     public List<MainMenus> getMenuList(){

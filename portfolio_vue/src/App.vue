@@ -14,17 +14,17 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Portfolio Grid Items-->
-                <div lass="row justify-content-center" id="items">
+                <div class="row justify-content-center">
                     <!-- Portfolio Item-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                    <div id="item" v-for="(item, idx) in itemData" :key="item" class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" :data-bs-target="`#portfolioModal${idx+1}`">
                             <div
                                 class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i
                                         class="fas fa-plus fa-3x"></i>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="./assets/img/portfolio/ani.png" alt="image" />
+                            <img class="img-fluid" :src='`${item.src}`' alt="image" />
                         </div>
                     </div>
                 </div>
@@ -174,17 +174,29 @@ export default {
     },
     data() {
         return {
-            items: []
+            itemData: []
         }
     },
     methods: {
-        ItemBinding: function(){
+        ItemBinding(){
             axios.get('/api/getMenus', {
                 headers: {
                     Accept: 'application/json'
                 }
-            }).then(response => this.items = response.data)
+            }).then(
+                response => {
+                    this.itemData = response.data.map(item =>{
+                        return{
+                            item,
+                            src : require('./assets/img/portfolio/'+ item.menuName +'.png')
+                        }
+                    });
+                }
+            )
         }
+    },
+    created(){
+        this.ItemBinding();
     }
 }
 
