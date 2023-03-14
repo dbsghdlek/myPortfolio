@@ -16,18 +16,23 @@
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                     <!-- Portfolio Item-->
-                    <div id="item" v-for="(item, idx) in itemData" :key="item" class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" :data-bs-target="`#portfolioModal${idx+1}`">
-                            <div
+                    <div id="item" v-for="(item, idx) in itemData" :key="item.menuId" class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                            :data-bs-target="`#portfolioModal${idx + 1}`">
+                            <div @click='showBasicModal(item)'
                                 class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i>
+                                <div class="portfolio-item-caption-content text-center text-white">
+                                    <i class="fas fa-plus fa-3x"></i>
                                 </div>
                             </div>
                             <img class="img-fluid" :src='`${item.src}`' alt="image" />
                         </div>
                     </div>
                 </div>
+                <transition name="fade">
+                    <basic_modal v-if="showModal" v-on:basicModalClose="closeBasicModal"></basic_modal>
+                    <music_modal v-if="showMusicModal" v-on:musicModalClose="closeBasicModal"></music_modal>
+                </transition>
             </div>
         </section>
         <!-- About Section-->
@@ -76,13 +81,6 @@
                 <!-- Contact Section Form-->
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
                         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                             <!-- Name input-->
                             <div class="form-floating mb-3">
@@ -125,8 +123,7 @@
                                     <div class="fw-bolder">Form submission successful!</div>
                                     To activate this form, sign up at
                                     <br />
-                                    <a
-                                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                                 </div>
                             </div>
                             <!-- Submit error message-->
@@ -149,10 +146,6 @@
         <div class="copyright py-4 text-center text-white">
             <div class="container"><small>Copyright &copy; Your Website 2022</small></div>
         </div>
-        <basic_modal />
-        <div id="test">
-            
-        </div>
     </div>
 </template>
 
@@ -160,9 +153,9 @@
 import main_header from './components/main-header'
 import main_nav from './components/main_nav'
 import basic_footer from './components/basic_footer.vue'
-import basic_modal from './components/basic_modal.vue'
+import basic_modal from './components/modal/basic_modal.vue'
 import axios from 'axios'
-
+import music_modal from './components/modal/music_modal.vue'
 
 
 export default {
@@ -170,32 +163,46 @@ export default {
         main_header,
         main_nav,
         basic_footer,
-        basic_modal
+        basic_modal,
+        music_modal
     },
     data() {
         return {
-            itemData: []
+            itemData: [],
+            showModal: false,
+            showMusicModal: false,
+            showHobbyModal: false
         }
     },
     methods: {
-        ItemBinding(){
+        ItemBinding() {
             axios.get('/api/getMenus', {
                 headers: {
                     Accept: 'application/json'
                 }
             }).then(
                 response => {
-                    this.itemData = response.data.map(item =>{
-                        return{
-                            item,
-                            src : require('./assets/img/portfolio/'+ item.menuName +'.png')
+                    this.itemData = response.data.map(item => {
+                        return {
+                            ...item,
+                            src: require('./assets/img/portfolio/' + item.menuName + '.png')
                         }
                     });
                 }
             )
+        },
+        showBasicModal(item) {
+            if(item.menuName == 'music'){
+                this.showMusicModal =  true;
+            }else{
+            this.showModal = true;
+        }
+        },
+        closeBasicModal() {
+            this.showModal = false;
         }
     },
-    created(){
+    created() {
         this.ItemBinding();
     }
 }
@@ -203,4 +210,32 @@ export default {
 </script>
 <style>
 @import "./css/styles.css";
+
+/* 모달 페이드 */
+.fade-enter-from {
+  /* 시작시 효과 */
+  opacity: 0;
+}
+
+.fade-enter-active {
+  /* 전체 단계에서 적용될 부분*/
+  transition: all 1s;
+}
+
+.fade-enter-to {
+  /* 끝나는 효과 */
+  opacity: 1;
+}
+
+.fade-leave-from {
+    opacity: 1;
+}
+
+.fade-leave-active {
+    transition: all 0.4s;
+}
+
+.fade-leave-to {
+    opacity: 0;
+}
 </style>
