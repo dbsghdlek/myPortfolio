@@ -1,7 +1,7 @@
 <template>
     <div>
-        <main_nav />
-        <main_header></main_header>
+        <Main_nav />
+        <Main_header></Main_header>
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
@@ -30,8 +30,7 @@
                     </div>
                 </div>
                 <transition name="fade">
-                    <basic_modal v-if="showModal" v-on:basicModalClose="closeBasicModal"></basic_modal>
-                    <music_modal v-if="showMusicModal" v-on:musicModalClose="closeBasicModal"></music_modal>
+                    <MyModal :menuName="showMenu" v-if="showModal" v-on:basicModalClose="closeBasicModal"></MyModal>
                 </transition>
             </div>
         </section>
@@ -141,7 +140,7 @@
             </div>
         </section>
         <!-- Footer-->
-        <basic_footer />
+        <Basic_footer />
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
             <div class="container"><small>Copyright &copy; Your Website 2022</small></div>
@@ -150,28 +149,24 @@
 </template>
 
 <script>
-import main_header from './components/main-header'
-import main_nav from './components/main_nav'
-import basic_footer from './components/basic_footer.vue'
-import basic_modal from './components/modal/basic_modal.vue'
+import Main_header from './components/main-header'
+import Main_nav from './components/main_nav'
+import Basic_footer from './components/basic_footer.vue'
 import axios from 'axios'
-import music_modal from './components/modal/music_modal.vue'
-
+import MyModal from './components/modal/basic_modal.vue'
 
 export default {
     components: {
-        main_header,
-        main_nav,
-        basic_footer,
-        basic_modal,
-        music_modal
+        Main_header,
+        Main_nav,
+        Basic_footer,
+        MyModal
     },
     data() {
         return {
             itemData: [],
             showModal: false,
-            showMusicModal: false,
-            showHobbyModal: false
+            showMenu: ""
         }
     },
     methods: {
@@ -192,10 +187,12 @@ export default {
             )
         },
         showBasicModal(item) {
-            if(item.menuName == 'music'){
-                this.showMusicModal =  true;
+            if(item.menuName != ""){
+                this.showMenu = item.menuName;
+                this.showModal = true;
             }else{
-            this.showModal = true;
+            this.showMenu = "";
+            this.showModal = false;
         }
         },
         closeBasicModal() {
@@ -213,18 +210,13 @@ export default {
 
 /* 모달 페이드 */
 .fade-enter-from {
-  /* 시작시 효과 */
-  opacity: 0;
+  transform: translateY(-150px);
 }
-
 .fade-enter-active {
-  /* 전체 단계에서 적용될 부분*/
-  transition: all 1s;
+  transition: all 0.3s;
 }
-
 .fade-enter-to {
-  /* 끝나는 효과 */
-  opacity: 1;
+  transform: translateY(0px);
 }
 
 .fade-leave-from {

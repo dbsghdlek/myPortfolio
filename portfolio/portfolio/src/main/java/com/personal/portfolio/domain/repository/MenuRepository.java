@@ -10,7 +10,7 @@ public class MenuRepository {
     private static List<MainMenus> menuList = new ArrayList<>();
 
     public MenuRepository(){
-        menuList.add(new MainMenus(1,"ani"));
+        menuList.add(new MainMenus(1,"hobby"));
         menuList.add(new MainMenus(2,"game"));
         menuList.add(new MainMenus(3,"music"));
         menuList.add(new MainMenus(4,"puppy"));
