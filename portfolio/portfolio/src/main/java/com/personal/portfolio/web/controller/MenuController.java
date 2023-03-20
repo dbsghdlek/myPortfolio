@@ -1,6 +1,7 @@
-package com.personal.portfolio.web.controller;
+package com.personal.portfolio.web.controller.menu;
 
 import com.personal.portfolio.domain.entity.MainMenus;
+import com.personal.portfolio.domain.exception.BadRequestException;
 import com.personal.portfolio.domain.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,5 +24,14 @@ public class MenuController {
         List<MainMenus> list = menuRepository.getMenuList();
         log.info("API 호출됨");
         return list;
+    }
+    @GetMapping("/error")
+    public String exceptionTest(){
+        throw new BadRequestException();
+    }
+
+    @GetMapping("/illegal_error")
+    public String illegalExceptionTest(){
+        throw new IllegalArgumentException();
     }
 }
