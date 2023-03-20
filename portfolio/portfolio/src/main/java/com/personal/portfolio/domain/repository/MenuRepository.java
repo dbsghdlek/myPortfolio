@@ -1,24 +1,23 @@
 package com.personal.portfolio.domain.repository;
 
-import com.personal.portfolio.domain.entity.MainMenus;
-import org.springframework.stereotype.Component;
+import com.personal.portfolio.domain.entity.MenuEntity;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-@Component
+@Repository
 public class MenuRepository {
-    private static List<MainMenus> menuList = new ArrayList<>();
+    private static List<MenuEntity> menuList = new ArrayList<>();
 
     public MenuRepository(){
-        menuList.add(new MainMenus(1,"hobby"));
-        menuList.add(new MainMenus(2,"game"));
-        menuList.add(new MainMenus(3,"music"));
-        menuList.add(new MainMenus(4,"puppy"));
-        menuList.add(new MainMenus(5,"travel"));
-        menuList.add(new MainMenus(6,"food"));
+        menuList.add(new MenuEntity(1,"hobby"));
+        menuList.add(new MenuEntity(3,"music"));
+        menuList.add(new MenuEntity(4,"puppy"));
+        menuList.add(new MenuEntity(5,"travel"));
+        menuList.add(new MenuEntity(6,"food"));
     }
 
-    public List<MainMenus> getMenuList(){
+    public List<MenuEntity> getMenuList(){
         return menuList;
     }
 }

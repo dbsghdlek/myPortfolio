@@ -1,2 +1,4 @@
-package com.personal.portfolio.domain.entity;public class HobbyEntity {
+package com.personal.portfolio.domain.entity;
+
+public class HobbyEntity {
 }

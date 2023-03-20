@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 @Data
 @AllArgsConstructor
-public class MainMenus {
+public class MenuEntity {
     @NotEmpty
     private int menuId;
     @NotEmpty

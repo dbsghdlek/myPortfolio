@@ -1,14 +1,12 @@
-package com.personal.portfolio.web.controller.menu;
+package com.personal.portfolio.web.controller;
 
-import com.personal.portfolio.domain.entity.MainMenus;
-import com.personal.portfolio.domain.exception.BadRequestException;
+import com.personal.portfolio.domain.entity.MenuEntity;
 import com.personal.portfolio.domain.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,19 +17,16 @@ import java.util.List;
 public class MenuController {
     private final MenuRepository menuRepository;
 
-    @GetMapping("/getMenus")
-    public List<MainMenus> getMenus(){
-        List<MainMenus> list = menuRepository.getMenuList();
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ErrorResult illegalExHandle(IllegalArgumentException e){
+        log.error("[ExceptionHandle] ex", e);
+        return new ErrorResult("BAD", "message");
+    }
+    @GetMapping("/Menus")
+    public List<MenuEntity> getMenus(){
+        List<MenuEntity> list = menuRepository.getMenuList();
         log.info("API 호출됨");
         return list;
-    }
-    @GetMapping("/error")
-    public String exceptionTest(){
-        throw new BadRequestException();
-    }
-
-    @GetMapping("/illegal_error")
-    public String illegalExceptionTest(){
-        throw new IllegalArgumentException();
     }
 }
