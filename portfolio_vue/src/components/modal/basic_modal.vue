@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-import MusicBody from './modal_body/myMusic.vue'
+import MusicBody from './modal_body/music/myMusic.vue'
 import HobbyBody from './modal_body/myHobby.vue'
 
 export default {

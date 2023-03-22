@@ -171,7 +171,7 @@ export default {
     },
     methods: {
         ItemBinding() {
-            axios.get('/api/getMenus', {
+            axios.get('/menu/list', {
                 headers: {
                     Accept: 'application/json'
                 }
