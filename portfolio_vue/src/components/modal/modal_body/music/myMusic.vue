@@ -2,7 +2,7 @@
     <div class="music_list">
         <b-card no-body>
             <b-tabs pills card vertical nav-wrapper-class="w-50">
-                <b-tab title="Tab 1"><MusicPlayForm :source="audioSources" :loop="False"></MusicPlayForm></b-tab>
+                <b-tab title="Tab 1"><MusicPlayForm></MusicPlayForm></b-tab>
                 <b-tab title="Tab 2">test2</b-tab>
                 <b-tab title="Tab 3">test3</b-tab>
             </b-tabs>
@@ -17,9 +17,7 @@ export default {
     },
     data () {
       return {
-        audioSources: [
-          "@/assets/music/betelgeuse.mp3"
-        ]
+        musicFile : "betelgeuse.mp3"
       }
     }
 }

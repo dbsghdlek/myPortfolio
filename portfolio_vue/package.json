@@ -15,6 +15,7 @@
     "install": "^0.13.0",
     "npm": "^9.6.1",
     "vue": "^2.7.14",
+    "vue-howler": "^0.7.0",
     "vuex": "^2.5.0"
   },
   "devDependencies": {
