@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Data
 @AllArgsConstructor
-public class SkillEntity {
+public class Skill {
     @NotEmpty
     private int SkillID;
     @NotEmpty

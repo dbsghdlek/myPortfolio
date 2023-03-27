@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
@@ -14,18 +16,18 @@ import java.util.Date;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
-public class MusicEntity {
+public class Music {
     @NotEmpty
     @NonNull
     @Id
-    private int MusicID;
+    private int musicID;
     @NotEmpty
     @NonNull
-    private String MusinName;
-    private Date CreateDate;
-    private Date DeleteDate;
-    @NotEmpty
-    @NonNull
-    private int SingerID;
+    private String musicName;
+    private Date createDate;
+    private Date deleteDate;
+    @ManyToOne
+    @JoinColumn(name = "SINGER_ID")
+    private Singer singer;
 
 }

@@ -1,4 +1,4 @@
-package com.personal.portfolio.web.controller;
+package com.personal.portfolio.domain.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
