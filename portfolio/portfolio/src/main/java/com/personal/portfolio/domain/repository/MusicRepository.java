@@ -12,8 +12,8 @@ public class MusicRepository {
     public static List<Music> musicList = new ArrayList<>();
 
     public MusicRepository(){
-        musicList.add(new Music(1,"베텔기우스"));
-        musicList.add(new Music(1,"사건의 지평선"));
+        musicList.add(new Music(1,"잠깐나올래"));
+        musicList.add(new Music(2,"betelgeuse"));
     }
 
     public List<Music> getMusicList(){
