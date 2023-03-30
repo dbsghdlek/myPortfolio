@@ -1,5 +1,10 @@
 <template>
     <div>
+        <b-container fluid class="p-4 bg-dark">
+            <b-col>
+                <b-img thumbnail fluid :src="require(`@/assets/img/music/${musicList.musicName}.png`)" alt="Image 1"></b-img>
+            </b-col>
+        </b-container>
         <button @click="musicPlayAndPause">{{ playing ? 'pause' : 'play' }}</button>
     </div>
 </template>
@@ -8,38 +13,37 @@ import { Howl } from 'howler';
 import VueHowler from 'vue-howler'
 
 export default {
-    props:[
+    props: [
         "musicList"
     ],
     mixins: { VueHowler },
     data() {
         return {
-            musicPlayer : new Howl({}),
-            duration : 0,
-            playing: false,
+            musicPlayer: new Howl({ src: [] }),
+            duration: 0,
+            playing: false
         }
     },
     methods: {
-        setMusicPlayer(){
-            console.log(this.musicList.musicName);
-            this.musicPlayer = new Howl({src : [this.musicList.musicName + ".mp3"]});
+        setMusicPlayer() {
+            this.musicPlayer = new Howl({ src: [this.musicList.musicName + ".mp3"] });
         },
-        setDuration(){
-            this.duration = this.musicPlayer.duration();
-        },
-        musicPlayAndPause() { 
-            if (this.playing){
+        musicPlayAndPause() {
+            if (this.playing) {
                 this.musicPlayer.pause();
                 this.playing = !this.playing;
-            }else{
+            } else {
                 this.musicPlayer.play();
                 this.playing = !this.playing;
             }
         }
     },
-    computed: {},
+    computed: {
+        
+    },
     created() {
         this.setMusicPlayer();
     },
 }
 </script>
+<style></style>

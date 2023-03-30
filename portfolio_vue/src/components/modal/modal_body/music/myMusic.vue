@@ -2,9 +2,11 @@
     <div class="music_list">
         <b-card no-body>
             <b-tabs pills card vertical nav-wrapper-class="w-50">
-                <div v-for="(music) in musicList" :key="music.musicID">
-                    <b-tab :title="`${music.musicName}`"><MusicPlayForm :musicList="music"></MusicPlayForm></b-tab>
-                </div>
+                <b-tab :title="`${music.musicName}`" v-for="(music) in musicList" :key="music.musicID">
+                    <b-card-text>
+                        <MusicPlayForm :musicList="music"/>
+                    </b-card-text>
+                </b-tab>
             </b-tabs>
         </b-card>
     </div>
@@ -14,17 +16,16 @@ import MusicPlayForm from './musicPlayForm.vue'
 import Axios from 'axios'
 
 export default {
-    components:{
+    components: {
         MusicPlayForm
     },
-    data () {
-      return {
-        musicFile : "betelgeuse.mp3",
-        musicList : []
-      }
+    data() {
+        return {
+            musicList: []
+        }
     },
-    methods:{
-        musicListBinding(){
+    methods: {
+        musicListBinding() {
             Axios.get('/music/list', {
                 headers: {
                     Accept: 'application/json'
@@ -34,8 +35,8 @@ export default {
             ).catch()
         }
     },
-    created(){
-       this.musicListBinding();
+    created() {
+        this.musicListBinding();
     }
 }
 </script>
