@@ -12,17 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
-@Data
-@AllArgsConstructor
-@RequiredArgsConstructor
+
 @Entity
 public class Music {
-    @NotEmpty
-    @NonNull
+
     @Id
     private int musicID;
-    @NotEmpty
-    @NonNull
     private String musicName;
     private Date createDate;
     private Date deleteDate;

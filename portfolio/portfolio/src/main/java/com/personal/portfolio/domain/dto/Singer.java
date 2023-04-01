@@ -1,5 +1,6 @@
-package com.personal.portfolio.domain.entity;
+package com.personal.portfolio.domain.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -9,11 +10,9 @@ import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Data
-@Entity
+@Builder
 public class Singer {
-    @Id
     @NotEmpty
-    @Column(name = "SINGER_ID")
     private int SingerID;
     @NotEmpty
     private String SingerName;

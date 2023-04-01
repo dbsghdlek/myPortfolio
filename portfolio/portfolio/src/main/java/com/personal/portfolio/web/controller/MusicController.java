@@ -1,6 +1,6 @@
 package com.personal.portfolio.web.controller;
 
-import com.personal.portfolio.domain.entity.Music;
+import com.personal.portfolio.domain.dto.Music;
 import com.personal.portfolio.domain.repository.MusicRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

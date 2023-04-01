@@ -1,6 +1,7 @@
 package com.personal.portfolio.web.controller;
 
-import com.personal.portfolio.domain.entity.Singer;
+
+import com.personal.portfolio.domain.dto.Singer;
 import com.personal.portfolio.domain.repository.SingerRepository;
 import com.personal.portfolio.domain.result.ErrorResult;
 import com.personal.portfolio.domain.result.Result;

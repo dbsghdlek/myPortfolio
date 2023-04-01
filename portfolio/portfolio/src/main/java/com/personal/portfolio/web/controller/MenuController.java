@@ -1,6 +1,6 @@
 package com.personal.portfolio.web.controller;
 
-import com.personal.portfolio.domain.entity.Menu;
+import com.personal.portfolio.domain.dto.Menu;
 import com.personal.portfolio.domain.repository.MenuRepository;
 import com.personal.portfolio.domain.result.ErrorResult;
 import io.swagger.annotations.ApiOperation;

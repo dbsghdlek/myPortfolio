@@ -1,4 +1,4 @@
-package com.personal.portfolio.domain.entity;
+package com.personal.portfolio.domain.dto;
 
 public class Puppy {
 }

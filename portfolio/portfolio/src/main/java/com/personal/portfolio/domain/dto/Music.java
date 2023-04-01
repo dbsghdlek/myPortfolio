@@ -1,9 +1,7 @@
-package com.personal.portfolio.domain.entity;
+package com.personal.portfolio.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import com.personal.portfolio.domain.entity.Singer;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,20 +12,14 @@ import java.util.Date;
 
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
-@Entity
+@NoArgsConstructor
+@Builder
 public class Music {
     @NotEmpty
-    @NonNull
-    @Id
     private int musicID;
     @NotEmpty
-    @NonNull
     private String musicName;
     private Date createDate;
     private Date deleteDate;
-    @ManyToOne
-    @JoinColumn(name = "SINGER_ID")
-    private Singer singer;
 
 }

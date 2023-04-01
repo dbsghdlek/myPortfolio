@@ -1,6 +1,7 @@
 package com.personal.portfolio.domain.repository;
 
-import com.personal.portfolio.domain.entity.Singer;
+
+import com.personal.portfolio.domain.dto.Singer;
 import com.personal.portfolio.domain.result.Result;
 import org.springframework.stereotype.Repository;
 

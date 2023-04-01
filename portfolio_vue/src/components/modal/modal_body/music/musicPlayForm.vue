@@ -2,10 +2,32 @@
     <div>
         <b-container fluid class="p-4 bg-dark">
             <b-col>
-                <b-img thumbnail fluid :src="require(`@/assets/img/music/${musicList.musicName}.png`)" alt="Image 1"></b-img>
+                <b-img thumbnail fluid :src="require(`@/assets/img/music/${musicList.musicName}.png`)"
+                    alt="Image 1"></b-img>
             </b-col>
         </b-container>
-        <button @click="musicPlayAndPause">{{ playing ? 'pause' : 'play' }}</button>
+        <b-container class="bv-example-row">
+            <b-row>
+                <b-button-toolbar key-nav aria-label="Toolbar with button groups">
+                    <b-col>
+                        <b-button-group class="mx-1">
+                            <b-button>&lsaquo;</b-button>
+                        </b-button-group>
+                    </b-col>
+                    <b-col>
+                        <b-button-group class="mx-1">
+                            <b-button v-if="playing" @click="pauseMusic">pause</b-button>
+                            <b-button v-if="!playing" @click="playMusic">play</b-button>
+                        </b-button-group>
+                    </b-col>
+                    <b-col>
+                        <b-button-group class="mx-1">
+                            <b-button>&rsaquo;</b-button>
+                        </b-button-group>
+                    </b-col>
+                </b-button-toolbar>
+            </b-row>
+        </b-container>
     </div>
 </template>
 <script>
@@ -20,7 +42,6 @@ export default {
     data() {
         return {
             musicPlayer: new Howl({ src: [] }),
-            duration: 0,
             playing: false
         }
     },
@@ -28,18 +49,18 @@ export default {
         setMusicPlayer() {
             this.musicPlayer = new Howl({ src: [this.musicList.musicName + ".mp3"] });
         },
-        musicPlayAndPause() {
-            if (this.playing) {
-                this.musicPlayer.pause();
-                this.playing = !this.playing;
-            } else {
-                this.musicPlayer.play();
-                this.playing = !this.playing;
-            }
+        playMusic() {
+            this.musicPlayer.play();
+            this.playing = !this.playing;
+        },
+        pauseMusic() {
+            this.musicPlayer.pause();
+            this.playing = !this.playing;
         }
+
     },
     computed: {
-        
+
     },
     created() {
         this.setMusicPlayer();
