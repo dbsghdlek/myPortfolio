@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
@@ -17,6 +14,7 @@ import java.util.Date;
 public class Music {
 
     @Id
+    @Column(name = "MUSIC_ID")
     private int musicID;
     private String musicName;
     private Date createDate;
@@ -24,5 +22,7 @@ public class Music {
     @ManyToOne
     @JoinColumn(name = "SINGER_ID")
     private Singer singer;
+
+
 
 }

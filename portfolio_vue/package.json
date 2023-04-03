@@ -14,8 +14,9 @@
     "core-js": "^3.8.3",
     "install": "^0.13.0",
     "npm": "^9.6.1",
-    "vue": "^2.7.14",
+    "vue": "^2.7.0",
     "vue-howler": "^0.7.0",
+    "vue-router": "^4.1.6",
     "vuex": "^2.5.0"
   },
   "devDependencies": {

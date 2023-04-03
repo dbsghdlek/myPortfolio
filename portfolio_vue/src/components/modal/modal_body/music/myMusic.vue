@@ -1,14 +1,23 @@
 <template>
     <div class="music_list">
-        <b-card no-body>
-            <b-tabs pills card vertical nav-wrapper-class="w-50">
-                <b-tab :title="`${music.musicName}`" v-for="(music) in musicList" :key="music.musicID">
-                    <b-card-text>
-                        <MusicPlayForm :musicList="music"/>
-                    </b-card-text>
-                </b-tab>
-            </b-tabs>
-        </b-card>
+        <b-container class="bv-example-row">
+            <b-row>
+                <b-list-group>
+                    <b-list-group-item>
+                        <v-for>
+                            <router-link :to="`/music/${musicName}`"></router-link>
+                        </v-for>                       
+                    </b-list-group-item>
+                    
+                </b-list-group>
+            </b-row>
+            <b-row>
+                <router-view>
+                    
+                </router-view>               
+            </b-row>
+        </b-container>
+
     </div>
 </template>
 <script>

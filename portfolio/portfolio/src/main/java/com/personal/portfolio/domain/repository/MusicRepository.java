@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class MusicRepository {
@@ -19,6 +20,15 @@ public class MusicRepository {
 
     public List<Music> getMusicList(){
         return musicList;
+    }
+
+    public Optional<Music> musicFind(String musicName){
+        Optional<Music> music = musicList
+                .stream()
+                .filter(musicInfo -> musicInfo.getMusicName().equals(musicName))
+                .findFirst();
+
+        return music;
     }
 
 }

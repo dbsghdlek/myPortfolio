@@ -26,11 +26,11 @@ public class MenuController {
         log.error("[ExceptionHandle] ex", e);
         return new ErrorResult("BAD", "message");
     }
-    @ApiOperation(value="테스트 API", notes="메뉴 목록 가져오기")
+    @ApiOperation(value="메뉴 목록 API", notes="메뉴 목록 가져오기")
     @GetMapping("/list")
     public List<Menu> getMenus(){
         List<Menu> list = menuRepository.getMenuList();
-        log.info("API 호출됨");
         return list;
     }
+
 }

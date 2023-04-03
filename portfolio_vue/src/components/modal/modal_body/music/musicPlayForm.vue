@@ -31,8 +31,8 @@
     </div>
 </template>
 <script>
-import { Howl } from 'howler';
 import VueHowler from 'vue-howler'
+import { mapMutations, mapState } from 'vuex';
 
 export default {
     props: [
@@ -41,29 +41,17 @@ export default {
     mixins: { VueHowler },
     data() {
         return {
-            musicPlayer: new Howl({ src: [] }),
             playing: false
         }
     },
     methods: {
-        setMusicPlayer() {
-            this.musicPlayer = new Howl({ src: [this.musicList.musicName + ".mp3"] });
-        },
-        playMusic() {
-            this.musicPlayer.play();
-            this.playing = !this.playing;
-        },
-        pauseMusic() {
-            this.musicPlayer.pause();
-            this.playing = !this.playing;
-        }
-
+        ...mapMutations(['setMusicPlayer', 'playMusic', 'pauseMusic']),
     },
     computed: {
-
+        ...mapState(['musicPlayer'])
     },
     created() {
-        this.setMusicPlayer();
+        this.setMusicPlayer(this.musicList.musicName);
     },
 }
 </script>
