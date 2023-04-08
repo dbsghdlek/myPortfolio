@@ -1,8 +1,10 @@
 <template>
     <div>
         <b-container fluid class="p-4 bg-dark">
-            <b-col>
-                <b-img thumbnail fluid :src="require(`@/assets/img/music/${musicList.musicName}.png`)"
+            <b-col>     
+                <b-img v-if="selectMusic.musicName === undefined" thumbnail fluid :src="require('@/assets/img/music/basic_music.png')"
+                    alt="Image 1"></b-img>          
+                <b-img v-if="selectMusic.musicName !== undefined" thumbnail fluid :src="require(`@/assets/img/music/${selectMusic.musicName}.png`)"
                     alt="Image 1"></b-img>
             </b-col>
         </b-container>
@@ -32,27 +34,33 @@
 </template>
 <script>
 import VueHowler from 'vue-howler'
-import { mapMutations, mapState } from 'vuex';
+import { Howl } from 'howler';
 
 export default {
+    mixins : [{VueHowler}],
     props: [
-        "musicList"
+        'selectMusic'
     ],
-    mixins: { VueHowler },
     data() {
-        return {
-            playing: false
+        return {         
         }
     },
-    methods: {
-        ...mapMutations(['setMusicPlayer', 'playMusic', 'pauseMusic']),
+    methods:{
+        playMusic(){
+            this.musicPlayer.play();
+        },
+        pauseMusic(){
+            this.musicPlayer.pause();
+        }
     },
-    computed: {
-        ...mapState(['musicPlayer'])
+    computed : {
+        musicPlayer() {
+            return new Howl({src : [this.selectMusic.musicName + ".mp3"]});
+        }
     },
-    created() {
-        this.setMusicPlayer(this.musicList.musicName);
-    },
+    created(){
+    }
 }
 </script>
-<style></style>
+<style>
+</style>

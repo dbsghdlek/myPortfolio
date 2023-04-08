@@ -4,7 +4,7 @@ const routes = [
     {
         path : '/',
         name : 'menuGrid',
-        component : () => import('../components/menu_grid.vue'),
+        component : () => import('../components/main/menu_grid.vue'),
     },
     {
         path: '/menu/:menuName',

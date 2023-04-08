@@ -1,16 +1,21 @@
 <template>
-    <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"></h2>
+    <div class="container page-section">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+            {{ menuName.toUpperCase() }}
+        </h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star">{{ menuName.toUpperCase() }}</i></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"/></div>
             <div class="divider-custom-line"></div>
+        </div>
+        <div v-if="menuName === 'music'">
+            <music_body/>
         </div>
     </div>
 </template>
 <script>
-
+import music_body from './menu_body/music/myMusic.vue' 
 export default {
     data() {
         return {
@@ -20,10 +25,10 @@ export default {
     methods: {
     },
     components: {
-        //MusicBody,
+        music_body
         //HobbyBody
     }
 }
-</script>
+</script >
 
-<style></style>
+<style ></style>

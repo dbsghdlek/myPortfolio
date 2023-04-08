@@ -2,36 +2,33 @@
     <div class="music_list">
         <b-container class="bv-example-row">
             <b-row>
-                <b-list-group>
-                    <b-list-group-item>
-                        <v-for>
-                            <router-link :to="`/music/${musicName}`"></router-link>
-                        </v-for>                       
-                    </b-list-group-item>
-                    
-                </b-list-group>
-            </b-row>
-            <b-row>
-                <MusicPlayForm></MusicPlayForm>
-                <router-view>
-                    
-                </router-view>               
+                <b-col>
+                    <b-list-group>
+                        <b-list-group-item button v-for="music in musicList" :active="selectMusic == music" 
+                            :key="music.musicID" @click="selectMusic = music">
+                            {{ music.musicName }}
+                        </b-list-group-item>
+                    </b-list-group>
+                </b-col>
+                <b-col>
+                    <music_play_form :selectMusic = 'selectMusic'/>
+                </b-col>
             </b-row>
         </b-container>
-
     </div>
 </template>
 <script>
-import MusicPlayForm from './musicPlayForm.vue'
+import music_play_form from './musicPlayForm.vue'
 import Axios from 'axios'
 
 export default {
     components: {
-        MusicPlayForm
+        music_play_form
     },
     data() {
         return {
-            musicList: []
+            musicList: [],
+            selectMusic : {}
         }
     },
     methods: {
@@ -42,7 +39,7 @@ export default {
                 }
             }).then(
                 response => this.musicList = response.data
-            ).catch()
+            ).catch(error => console.log(error))
         }
     },
     created() {
@@ -52,6 +49,7 @@ export default {
 </script>
 <style>
 @import '@/css/styles.css';
+
 .music_list {
     padding: 15px;
 }

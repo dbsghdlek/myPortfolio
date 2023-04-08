@@ -25,7 +25,7 @@ public class MusicController {
     public List<Music> MusicList(){
         return musicRepository.getMusicList();
     }
-    @ApiOperation(value="노래 목록 API", notes="노래 목록 가져오기")
+    @ApiOperation(value="노래 찾기 API", notes="노래 목록 가져오기")
     @GetMapping("/{musicName}")
     public Music musicInfoRequest(@PathVariable("musicName") String musicName){
         Music music = musicRepository.musicFind(musicName).orElse(null);

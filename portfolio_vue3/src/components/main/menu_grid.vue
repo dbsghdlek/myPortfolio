@@ -48,11 +48,11 @@ export default {
                     this.menuList = response.data.map(item => {
                         return {
                             ...item,
-                            src: require('../assets/img/portfolio/' + item.menuName + '.png')
+                            src: require('@/assets/img/portfolio/' + item.menuName + '.png')
                         }
                     });
                 }
-            )
+            ).catch(error => console.log(error))
         }
     },
     created() {

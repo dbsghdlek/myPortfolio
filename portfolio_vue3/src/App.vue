@@ -15,10 +15,10 @@
     </body>
 </template>             
 <script>
-import main_header from './components/main_header'
-import main_nav from './components/main_nav'
-import basic_footer from './components/basic_footer.vue'
-import about_template from './components/my_about.vue'
+import main_header from './components/main/main_header.vue'
+import main_nav from './components/main/main_nav'
+import basic_footer from './components/main/basic_footer.vue'
+import about_template from './components/main/my_about.vue'
 
 export default {
     components: {
