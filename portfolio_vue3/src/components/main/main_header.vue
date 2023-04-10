@@ -1,5 +1,5 @@
 <template>
-    <header class="masthead bg-primary text-white text-center">
+    <header class="my-header masthead text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="@/assets/img/avataaars.svg" alt="..." />
@@ -22,4 +22,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.my-header{
+    background-color: rgb(86, 98, 112);
+}
+</style>

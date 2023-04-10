@@ -23,6 +23,4 @@ public class Music {
     @JoinColumn(name = "SINGER_ID")
     private Singer singer;
 
-
-
 }
