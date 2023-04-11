@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer text-center">
+    <footer class="footer text-center my-header">
         <div class="container">
             <div class="row">
                 <!-- Footer Location-->
@@ -38,5 +38,7 @@ export default {
 </script>
 
 <style>
-
+.my-header{
+    background-color: rgb(86, 98, 112);
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <section class="page-section bg-primary text-white mb-0" id="about">
+    <section class="my-about page-section text-white mb-0" id="about">
         <div class="container">
             <!-- About Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
@@ -31,3 +31,8 @@
         </div>
     </section>
 </template>
+<style>
+.my-about{
+    background-color: rgb(224, 227, 218);
+}
+</style>

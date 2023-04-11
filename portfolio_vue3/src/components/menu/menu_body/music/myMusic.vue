@@ -131,8 +131,9 @@ export default {
 
 .music-form{
     background-color: rgba(86, 98, 112);
-    border-radius: 50px;
-    
+    border-radius: 30px;
+    border: 10px solid rgb(170, 85, 153);
+    box-shadow: 10px 10px 10px 10px gray;
 }
 
 @font-face {
