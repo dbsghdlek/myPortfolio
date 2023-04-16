@@ -7,8 +7,9 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 
 @Entity
@@ -25,8 +26,8 @@ public class Menu {
     private String menuName;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
-    @ManyToOne
-    @JoinColumn(name = "MUSIC_ID")
-    private Music music;
-
+    @OneToMany(mappedBy = "menu")
+    private List<Music> music = new ArrayList<Music>();
+    @OneToMany(mappedBy = "menu")
+    private List<Hobby> hobby = new ArrayList<Hobby>();
 }
