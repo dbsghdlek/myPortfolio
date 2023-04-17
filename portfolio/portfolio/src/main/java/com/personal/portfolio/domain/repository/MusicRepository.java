@@ -1,7 +1,7 @@
 package com.personal.portfolio.domain.repository;
 
 
-import com.personal.portfolio.domain.dto.Music;
+import com.personal.portfolio.web.dto.Music;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

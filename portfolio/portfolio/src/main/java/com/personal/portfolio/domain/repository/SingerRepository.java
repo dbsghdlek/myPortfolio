@@ -1,8 +1,7 @@
 package com.personal.portfolio.domain.repository;
 
 
-import com.personal.portfolio.domain.dto.Singer;
-import com.personal.portfolio.domain.result.Result;
+import com.personal.portfolio.web.dto.Singer;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

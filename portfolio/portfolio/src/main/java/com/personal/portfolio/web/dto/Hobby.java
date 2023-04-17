@@ -1,4 +1,4 @@
-package com.personal.portfolio.domain.dto;
+package com.personal.portfolio.web.dto;
 
 public class Hobby {
 }

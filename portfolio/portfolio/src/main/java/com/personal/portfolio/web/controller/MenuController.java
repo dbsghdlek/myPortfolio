@@ -1,10 +1,8 @@
 package com.personal.portfolio.web.controller;
 
-import com.personal.portfolio.domain.dto.Menu;
-import com.personal.portfolio.domain.repository.MenuRepository;
+import com.personal.portfolio.web.dto.Menu;
 import com.personal.portfolio.domain.result.ErrorResult;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.TypeMismatchException;
 import org.springframework.http.HttpStatus;
@@ -16,9 +14,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping(value = "/menu", produces = MediaType.APPLICATION_JSON_VALUE)
-@RequiredArgsConstructor
 public class MenuController {
-    private final MenuRepository menuRepository;
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({IllegalArgumentException.class, TypeMismatchException.class})
@@ -29,8 +25,6 @@ public class MenuController {
     @ApiOperation(value="메뉴 목록 API", notes="메뉴 목록 가져오기")
     @GetMapping("/list")
     public List<Menu> getMenus(){
-        List<Menu> list = menuRepository.getMenuList();
-        return list;
-    }
 
+    }
 }

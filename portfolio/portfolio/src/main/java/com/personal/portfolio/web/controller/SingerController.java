@@ -1,10 +1,9 @@
 package com.personal.portfolio.web.controller;
 
 
-import com.personal.portfolio.domain.dto.Singer;
+import com.personal.portfolio.web.dto.Singer;
 import com.personal.portfolio.domain.repository.SingerRepository;
 import com.personal.portfolio.domain.result.ErrorResult;
-import com.personal.portfolio.domain.result.Result;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.TypeMismatchException;

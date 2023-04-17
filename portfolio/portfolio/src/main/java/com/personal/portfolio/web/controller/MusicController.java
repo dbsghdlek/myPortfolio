@@ -1,6 +1,6 @@
 package com.personal.portfolio.web.controller;
 
-import com.personal.portfolio.domain.dto.Music;
+import com.personal.portfolio.web.dto.Music;
 import com.personal.portfolio.domain.repository.MusicRepository;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
