@@ -2,7 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.personal.portfolio.domain.dao.MenuMapper">
-    <select id="getAllUser" resultType="com.personal.portfolio.web.dto.Menu">
-        SELECT * FROM menu;
+    <resultMap type="com.personal.portfolio.web.dto.Menu" id="menuSelectRM">
+        <result property="menuId" column="menu_id"/>
+        <result property="menuName" column="menu_name"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+
+    <select id="getAllUser" resultMap="menuSelectRM" resultType="com.personal.portfolio.web.dto.Menu">
+        SELECT * FROM menu
     </select>
 </mapper>

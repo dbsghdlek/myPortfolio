@@ -47,6 +47,7 @@
                                     <b-button-group class="mx-1">
                                         <b-button>&rsaquo;</b-button>
                                     </b-button-group>
+                                    <input v-model="volume" @change="setMusicPlayerVolume" min=0 max=1 step=0.01 type="range">
                                 </b-col>
                             </b-button-toolbar>
                         </b-row>
@@ -70,7 +71,8 @@ export default {
             musicList: [],
             selectMusic: {},
             playing: false,
-            musicPlayer: new Howl({ src: [''] })
+            musicPlayer: new Howl({ src: [''] }),
+            volume : 1
         }
     },
     methods: {
@@ -92,18 +94,22 @@ export default {
         playMusic() {
             this.playID = this.musicPlayer.play();
             this.playing = !this.playing;
-            console.log(this.playID);
         },
         pauseMusic() {
-            let testID = this.musicPlayer.pause(this.playID);
+            this.musicPlayer.pause(this.playID);
             this.playing = !this.playing;
-            console.log(testID);
         },
         musicStop() {
             this.musicPlayer.stop();
+        },
+        setMusicPlayerVolume(){
+            this.musicPlayer.volume(this.volume);
         }
     },
-    created() {
+    computed:{
+        
+    },
+     created() {
         this.musicListBinding();
     }
 }

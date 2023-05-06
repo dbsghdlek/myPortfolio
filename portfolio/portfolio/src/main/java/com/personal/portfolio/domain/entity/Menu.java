@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -24,6 +25,7 @@ public class Menu {
 
     @Column(name = "MENU_NAME", nullable = false, length = 200)
     private String menuName;
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @OneToMany(mappedBy = "menu")

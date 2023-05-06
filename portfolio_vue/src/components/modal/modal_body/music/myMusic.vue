@@ -12,22 +12,15 @@
                 </b-list-group>
             </b-row>
             <b-row>
-                <router-view>
-                    
-                </router-view>               
+                           
             </b-row>
         </b-container>
-
     </div>
 </template>
 <script>
-import MusicPlayForm from './musicPlayForm.vue'
 import Axios from 'axios'
 
 export default {
-    components: {
-        MusicPlayForm
-    },
     data() {
         return {
             musicList: []
