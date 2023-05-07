@@ -14,7 +14,7 @@
                 <b-col cols='5'>
                     <b-list-group >
                         <b-list-group-item variant="danger" button v-for="music in musicList" :active="selectMusic == music"
-                            :key="music.musicID" @click="setMusicPlayer(music)">
+                            :key="music.musicID" @click="clickMusic(music)">
                             <i class='music-name'>{{ music.musicName }}</i><br/>
                             <i class='singer-name'> 아이묭 </i>
                         </b-list-group-item>
@@ -61,6 +61,7 @@
 import Axios from 'axios'
 import VueHowler from 'vue-howler'
 import { Howl } from 'howler'
+import { mapMutations, mapActions, mapState } from 'vuex'
 
 export default {
     mixins: [{
@@ -68,9 +69,9 @@ export default {
     }],
     data() {
         return {
+            ...mapState(['musicBarExposed']),
             musicList: [],
             selectMusic: {},
-            playing: false,
             musicPlayer: new Howl({ src: [''] }),
             volume : 1
         }
@@ -85,26 +86,22 @@ export default {
                 response => this.musicList = response.data
             ).catch(error => console.log(error))
         },
-        setMusicPlayer(music) {
-            this.musicPlayer.stop();
+        clickMusic(music){
             this.selectMusic = music;
-            this.musicPlayer = new Howl({ src: [music.musicName + '.mp3'] });
-            this.playing = false;
+            this.setMusicPlayer([music.musicName + '.mp3']);
         },
-        playMusic() {
-            this.playID = this.musicPlayer.play();
-            this.playing = !this.playing;
-        },
-        pauseMusic() {
-            this.musicPlayer.pause(this.playID);
-            this.playing = !this.playing;
-        },
-        musicStop() {
-            this.musicPlayer.stop();
+        setMusicPlayer(musicArray){
+            if(this.musicBarExpoosed){
+                this.setMusicSource(musicArray);
+            }else{
+                this.setMusicBar(musicArray);
+            }
         },
         setMusicPlayerVolume(){
             this.musicPlayer.volume(this.volume);
-        }
+        },
+        ...mapMutations(['setMusicSource','playMusic']),
+        ...mapActions(['setMusicBar'])
     },
     computed:{
         
