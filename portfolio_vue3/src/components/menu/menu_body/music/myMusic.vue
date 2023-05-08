@@ -12,10 +12,10 @@
         <b-container class="bv-example-row">
             <b-row>
                 <b-col cols='5'>
-                    <b-list-group >
+                    <b-list-group>
                         <b-list-group-item variant="danger" button v-for="music in musicList" :active="selectMusic == music"
                             :key="music.musicID" @click="clickMusic(music)">
-                            <i class='music-name'>{{ music.musicName }}</i><br/>
+                            <i class='music-name'>{{ music.musicName }}</i><br />
                             <i class='singer-name'> 아이묭 </i>
                         </b-list-group-item>
                     </b-list-group>
@@ -23,10 +23,9 @@
                 <b-col>
                     <b-container fluid class="p-4 bg-dark">
                         <b-col>
-                            <b-img v-if="selectMusic.musicName === undefined" thumbnail fluid
+                            <b-img v-if="selectMusic.length <= 0" thumbnail fluid
                                 :src="require('@/assets/img/music/default_music.png')" alt="Image 1"></b-img>
-                            <b-img v-if="selectMusic.musicName !== undefined" thumbnail fluid
-                                :src="require(`@/assets/img/music/${selectMusic.musicName}.png`)" alt="Image 1"></b-img>
+                            <b-img v-if="selectMusic.length > 0" thumbnail fluid :src='musicImage' alt="Image 1"></b-img>
                         </b-col>
                     </b-container>
                     <b-container class="bv-example-row">
@@ -47,7 +46,8 @@
                                     <b-button-group class="mx-1">
                                         <b-button>&rsaquo;</b-button>
                                     </b-button-group>
-                                    <input v-model="volume" @change="setMusicPlayerVolume" min=0 max=1 step=0.01 type="range">
+                                    <input v-model="volume" @change="setMusicPlayerVolume" min=0 max=1 step=0.01
+                                        type="range">
                                 </b-col>
                             </b-button-toolbar>
                         </b-row>
@@ -61,7 +61,7 @@
 import Axios from 'axios'
 import VueHowler from 'vue-howler'
 import { Howl } from 'howler'
-import { mapMutations, mapActions, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
     mixins: [{
@@ -69,11 +69,11 @@ export default {
     }],
     data() {
         return {
-            ...mapState(['musicBarExposed']),
             musicList: [],
-            selectMusic: {},
+            selectMusic: [],
+            musicImage: '',
             musicPlayer: new Howl({ src: [''] }),
-            volume : 1
+            volume: 1
         }
     },
     methods: {
@@ -86,27 +86,31 @@ export default {
                 response => this.musicList = response.data
             ).catch(error => console.log(error))
         },
-        clickMusic(music){
-            this.selectMusic = music;
-            this.setMusicPlayer([music.musicName + '.mp3']);
+        clickMusic(music) {
+            this.selectMusic = [music.musicName + '.mp3'];
+            this.musicImage = require('@/assets/img/music/' + music.musicName + '.png');
         },
-        setMusicPlayer(musicArray){
-            if(this.musicBarExpoosed){
-                this.setMusicSource(musicArray);
+        playMusic() {
+            if (this.selectMusic.length > 0) {
+                if (this.musicBarExposed) {
+                    this.playMusicByStore(this.selectMusic);
+                } else {
+                    //처음 뮤직을 실행할 때 뮤직바 세팅시작
+                    this.setMusicBar().then(
+                        this.playMusicByStore(this.selectMusic)
+                    )
+                }
             }else{
-                this.setMusicBar(musicArray);
+                alert('음악이 선택되지 않았습니다.');
             }
         },
-        setMusicPlayerVolume(){
-            this.musicPlayer.volume(this.volume);
-        },
-        ...mapMutations(['setMusicSource','playMusic']),
+        ...mapMutations(['playMusicByStore']),
         ...mapActions(['setMusicBar'])
     },
-    computed:{
-        
+    computed: {
+        ...mapState(['musicBarExposed'])
     },
-     created() {
+    created() {
         this.musicListBinding();
     }
 }
@@ -123,16 +127,16 @@ export default {
     margin: 2%;
 }
 
-.music-name{
+.music-name {
     font-family: 'KCCChassam';
     font-size: 1.5rem;
 }
 
-.singer-name{
+.singer-name {
     float: right;
 }
 
-.music-form{
+.music-form {
     background-color: rgba(86, 98, 112);
     border-radius: 30px;
     border: 10px solid rgb(170, 85, 153);

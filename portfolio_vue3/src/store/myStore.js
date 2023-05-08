@@ -14,28 +14,37 @@ export const store = new Vuex.Store({
     },
     mutations: {
         setMusicSource(state, musicArray) {
-            state.musicPlayer.stop();
-            state.musicPlayer = new Howl({ src: musicArray});
+            state.musicPlayer.unload();
+            state.musicPlayer = new Howl({ src: musicArray });
         },
-        playMusic(state) {
-            state.musicPlayer.play();
+        setMusicList(state, musicArray) {
+            state.musicBarExposed = true;
+            state.musicList = musicArray;
+        },
+        playMusicByStore(state, musicArray){
+            // let musicPlayer = state.musicPlayer; 이렇게 하면 playing이 인식이 안됨..;;
+            let playing = state.musicPlayer.playing(); 
+            if(playing){
+                state.musicPlayer.unload(); 
+                state.musicPlayer = new Howl({ src: musicArray }) 
+                state.musicPlayer.play();
+            }else{
+                state.musicPlayer = new Howl({ src: musicArray }) 
+                state.musicPlayer.play();
+            }
         }
     },
     actions: {
-        setMusicBar(context, musicArray) {
-            return Axios.get('/music/list', {
+        //뮤직바 페이지 노출
+        setMusicBar(context) {
+            Axios.get('/music/list', {
                 headers: {
                     Accept: 'application/json'
                 }
             }).then(
-                (result) => {
-                    console.log(result.data.length);
-                    if (result.data.length > 0) {
-                        context.state.musicBarExposed = true;
-                        context.commit('setMusicSource',musicArray);
-                    }
+                (musicList) => {
+                    context.commit('setMusicList', musicList.data);
                 }
-                //response => state.musicList = response.data
             ).catch(error => console.log('error!! : ', error))
         }
     },
