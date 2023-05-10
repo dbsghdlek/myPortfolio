@@ -4,12 +4,12 @@ const routes = [
     {
         path : '/',
         name : 'menuGrid',
-        component : () => import('../components/main/menu_grid.vue'),
+        component : () => import('../views/main_menu.vue'),
     },
     {
         path: '/menu/:menuName',
         name: 'menuPage',
-        component : () => import('../components/menu/basic_body.vue')
+        component : () => import('../views/menu/basic_body.vue')
     }
 ]
 
