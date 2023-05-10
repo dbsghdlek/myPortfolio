@@ -8,10 +8,12 @@
         <about_template />
         <!-- Footer-->
         <basic_footer />
+        <music_bar class="music-bar"/>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
             <div class="container"><small>Copyright &copy; Your Website 2022</small></div>
-        </div>        
+        </div>    
+        
     </body>
 </template>             
 <script>
@@ -19,13 +21,17 @@ import main_header from './components/main_header.vue'
 import main_nav from './components/main_nav.vue'
 import basic_footer from './components/basic_footer.vue'
 import about_template from './components/my_about.vue'
+import music_bar from './components/music_bar.vue'
+import { mapState } from 'vuex'
+
 
 export default {
     components: {
         main_header,
         main_nav,
         basic_footer,
-        about_template
+        about_template,
+        music_bar
     },
     data() {
         return {
@@ -35,6 +41,9 @@ export default {
     methods: {
         
     },
+    computed:{
+        ...mapState(['musicBarExposed'])
+    }
     
 }
 
@@ -65,5 +74,16 @@ export default {
 
 .fade-leave-to {
     opacity: 0;
+}
+
+.music-bar{
+    position: fixed;
+    bottom: 0px;
+    background-color: #212121;
+    width: 100%;
+    height: 120px;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px 0px 0px 0px;
 }
 </style>
