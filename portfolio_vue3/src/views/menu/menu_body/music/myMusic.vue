@@ -1,6 +1,6 @@
 <template>
     <div class="music_list music-form">
-        <router-link to="/" @click="musicStop">
+        <router-link to="/">
             <b-button variant="dark" class="back" router>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
@@ -38,7 +38,7 @@
                                 </b-col>
                                 <b-col>
                                     <b-button-group class="mx-1">
-                                        <b-button v-if="playing" @click="pauseMusic">pause</b-button>
+                                        <b-button v-if="playing" @click="pauseMusicByStore">pause</b-button>
                                         <b-button v-if="!playing" @click="playMusic">play</b-button>
                                     </b-button-group>
                                 </b-col>
@@ -87,7 +87,7 @@ export default {
             ).catch(error => console.log(error))
         },
         clickMusic(music) {
-            this.selectMusic = [music.musicName + '.mp3'];
+            this.selectMusic = music.musicName + '.mp3';
             this.musicImage = require('@/assets/img/music/' + music.musicName + '.png');
         },
         playMusic() {
@@ -96,19 +96,25 @@ export default {
                     this.playMusicByStore(this.selectMusic);
                 } else {
                     //처음 뮤직을 실행할 때 뮤직바 세팅시작
-                    this.setMusicBar().then(
-                        this.playMusicByStore(this.selectMusic)
-                    )
+                    this.getMusicList().then(
+                        (response) => {
+                            let musicList = response.data.map((music) => {
+                                return music.musicName + '.mp3';
+                            })
+                            this.setMusicList(musicList);
+                            this.playMusicByStore(this.selectMusic);
+                        }
+                    ).catch(error => console.log('error!! : ', error))
                 }
-            }else{
+            } else {
                 alert('음악이 선택되지 않았습니다.');
             }
         },
-        ...mapMutations(['playMusicByStore']),
-        ...mapActions(['setMusicBar'])
+        ...mapMutations(['setMusicList','playMusicByStore', 'pauseMusicByStore']),
+        ...mapActions(['getMusicList'])
     },
     computed: {
-        ...mapState(['musicBarExposed'])
+        ...mapState(['musicBarExposed', 'playing'])
     },
     created() {
         this.musicListBinding();

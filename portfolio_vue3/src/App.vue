@@ -8,7 +8,7 @@
         <about_template />
         <!-- Footer-->
         <basic_footer />
-        <music_bar class="music-bar"/>
+        <music_bar v-if="musicBarExposed"/>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
             <div class="container"><small>Copyright &copy; Your Website 2022</small></div>
@@ -76,14 +76,5 @@ export default {
     opacity: 0;
 }
 
-.music-bar{
-    position: fixed;
-    bottom: 0px;
-    background-color: #212121;
-    width: 100%;
-    height: 120px;
-    border-style: solid;
-    border-color: white;
-    border-width: 3px 0px 0px 0px;
-}
+
 </style>
