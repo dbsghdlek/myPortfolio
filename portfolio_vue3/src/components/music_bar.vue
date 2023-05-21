@@ -1,41 +1,39 @@
 <template>
     <div class="music-bar">
-        <b-row>
-            <b-col class='music-bar-button' cols="12" md="3">
-                <img class="prev-button" src="@/assets/icon/prev.png">
-                <img v-if="!playing" @click="pauseMusicByStore" class="play-button" src="@/assets/icon/play.png">
-                <img v-if="playing" @click="pauseMusicByStore" class="play-button" src="@/assets/icon/pause.png">
-                <img class="next-button" src="@/assets/icon/next.png">
-            </b-col>
-            <b-col class="music-thumbnail-dev" cols="12" md="1">
-                <img class="music-thumbnail" src="@/assets/img/music/betelgeuse.png" alt="" />               
-            </b-col>
-            <b-col class="music-info" cols="12" md="4" >
-                <span>베텔기우스</span><br>
-                <span>ds</span>
-            </b-col>
-            <b-col cols="12" md="3">
-                <div class="volume_div">
-                <input class="music-volume" type="range">
-                <img class="volume-button" src="@/assets/icon/volume.png" alt="">
-                </div>
-            </b-col>
-        </b-row>
+        <audio-player :audio-list="selectMusic.map(elm => elm.url)"></audio-player>
     </div>
 </template>
 <script>
-import { mapMutations, mapState } from 'vuex'
+import Axios from 'axios'
+
 export default {
     data() {
         return {
-            
+            musicList : [],
+            selectMusic : []
         }
     },
     methods: {
-        ...mapMutations(['playMusicByStore', 'pauseMusicByStore'])
+        getMusicList() {
+            Axios.get('/music/list', {
+                headers: {
+                    Accept: 'application/json'
+                }
+            }).then(response =>{
+                this.musicList = response.data.map(music =>{
+                    return {
+                        ...music,
+                        url : '../menu/' + music.musicName + '.mp3',
+                        thumbnail : require('@/assets/img/music/'+ music.musicName + '.png')
+                    }
+                })          
+            })           
+        }
     },
     computed:{
-        ...mapState(['musicList', 'playing'])
+    },
+    created(){
+        this.getMusicList();
     }
 }
 </script>

@@ -5,10 +5,12 @@ import BootstrapVue3 from 'bootstrap-vue-3'
 import router from './router/MyRouter'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+import AudioPlayer from '@liripeng/vue-audio-player'
 
+const app = createApp(App)
 
-createApp(App)
-    .use(store)
-    .use(router)
-    .use(BootstrapVue3)
-    .mount('#app')
+app.use(AudioPlayer)
+app.use(store)
+app.use(router)
+app.use(BootstrapVue3)
+app.mount('#app')

@@ -23,33 +23,15 @@
                 <b-col>
                     <b-container fluid class="p-4 bg-dark">
                         <b-col>
-                            <b-img v-if="selectMusic.length <= 0" thumbnail fluid
+                            <b-img v-if="selectMusic.musicName === undefined" thumbnail fluid
                                 :src="require('@/assets/img/music/default_music.png')" alt="Image 1"></b-img>
-                            <b-img v-if="selectMusic.length > 0" thumbnail fluid :src='musicImage' alt="Image 1"></b-img>
+                            <b-img :src="selectMusic.thumbnail" v-if="selectMusic.musicName !== undefined" thumbnail fluid></b-img>
                         </b-col>
                     </b-container>
                     <b-container class="bv-example-row">
                         <b-row>
-                            <b-button-toolbar key-nav aria-label="Toolbar with button groups">
-                                <b-col>
-                                    <b-button-group class="mx-1">
-                                        <b-button>&lsaquo;</b-button>
-                                    </b-button-group>
-                                </b-col>
-                                <b-col>
-                                    <b-button-group class="mx-1">
-                                        <b-button v-if="playing" @click="pauseMusicByStore">pause</b-button>
-                                        <b-button v-if="!playing" @click="playMusic">play</b-button>
-                                    </b-button-group>
-                                </b-col>
-                                <b-col>
-                                    <b-button-group class="mx-1">
-                                        <b-button>&rsaquo;</b-button>
-                                    </b-button-group>
-                                    <input v-model="volume" @change="setMusicPlayerVolume" min=0 max=1 step=0.01
-                                        type="range">
-                                </b-col>
-                            </b-button-toolbar>
+                            <div class='music-bar'></div>
+                            <audio-player :audio-list="[selectMusic.url]"></audio-player>
                         </b-row>
                     </b-container>
                 </b-col>
@@ -59,65 +41,37 @@
 </template>
 <script>
 import Axios from 'axios'
-import VueHowler from 'vue-howler'
-import { Howl } from 'howler'
-import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
-    mixins: [{
-        VueHowler
-    }],
     data() {
         return {
-            musicList: [],
-            selectMusic: [],
-            musicImage: '',
-            musicPlayer: new Howl({ src: [''] }),
-            volume: 1
+            musicList : [],
+            selectMusic : {},
+            playList : []
         }
     },
     methods: {
-        musicListBinding() {
+        getMusicList() {
             Axios.get('/music/list', {
                 headers: {
                     Accept: 'application/json'
                 }
-            }).then(
-                response => this.musicList = response.data
-            ).catch(error => console.log(error))
+            }).then(response =>{
+                this.musicList = response.data.map(music =>{
+                    return {
+                        ...music,
+                        url : '../menu/' + music.musicName + '.mp3',
+                        thumbnail : require('@/assets/img/music/'+ music.musicName + '.png')
+                    }
+                })          
+            })           
         },
-        clickMusic(music) {
-            this.selectMusic = music.musicName + '.mp3';
-            this.musicImage = require('@/assets/img/music/' + music.musicName + '.png');
-        },
-        playMusic() {
-            if (this.selectMusic.length > 0) {
-                if (this.musicBarExposed) {
-                    this.playMusicByStore(this.selectMusic);
-                } else {
-                    //처음 뮤직을 실행할 때 뮤직바 세팅시작
-                    this.getMusicList().then(
-                        (response) => {
-                            let musicList = response.data.map((music) => {
-                                return music.musicName + '.mp3';
-                            })
-                            this.setMusicList(musicList);
-                            this.playMusicByStore(this.selectMusic);
-                        }
-                    ).catch(error => console.log('error!! : ', error))
-                }
-            } else {
-                alert('음악이 선택되지 않았습니다.');
-            }
-        },
-        ...mapMutations(['setMusicList','playMusicByStore', 'pauseMusicByStore']),
-        ...mapActions(['getMusicList'])
-    },
-    computed: {
-        ...mapState(['musicBarExposed', 'playing'])
+        clickMusic(music){
+            this.selectMusic = music;
+        }    
     },
     created() {
-        this.musicListBinding();
+        this.getMusicList();
     }
 }
 </script>
@@ -149,6 +103,9 @@ export default {
     box-shadow: 10px 10px 10px 10px gray;
 }
 
+.music-bar{
+    padding: 10px;
+}
 @font-face {
     font-family: 'KCCChassam';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCChassam.woff2') format('woff2');
