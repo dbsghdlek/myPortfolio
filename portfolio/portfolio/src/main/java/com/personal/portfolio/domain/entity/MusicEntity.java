@@ -1,19 +1,16 @@
 package com.personal.portfolio.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
 @Entity
-public class Music {
+@Getter
+public class MusicEntity {
 
     @Id
     @Column(name = "MUSIC_ID")
@@ -26,7 +23,7 @@ public class Music {
     private Date deleteDate;
     @ManyToOne
     @JoinColumn(name = "MENU_ID")
-    private Menu menu;
+    private MenuEntity menuEntity;
     @OneToMany(mappedBy = "SingerID")
-    private List<Singer> singer = new ArrayList<Singer>();
+    private List<SingerEntity> singerEntity = new ArrayList<SingerEntity>();
 }

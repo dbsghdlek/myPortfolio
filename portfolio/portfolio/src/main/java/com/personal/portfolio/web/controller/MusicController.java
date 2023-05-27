@@ -1,7 +1,7 @@
 package com.personal.portfolio.web.controller;
 
-import com.personal.portfolio.web.dto.Music;
 import com.personal.portfolio.domain.repository.MusicRepository;
+import com.personal.portfolio.web.dto.Music;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,14 +23,13 @@ public class MusicController {
     @ApiOperation(value="노래 목록 API", notes="노래 목록 가져오기")
     @GetMapping("/list")
     public List<Music> MusicList(){
-        return musicRepository.getMusicList();
+        return null;
     }
 
-    @ApiOperation(value="노래 찾기 API", notes="노래 목록 가져오기")
+    @ApiOperation(value="노래 찾기 API", notes="노래 정보 가져오기")
     @GetMapping("/{musicName}")
     public Music musicInfoRequest(@PathVariable("musicName") String musicName){
-        Music music = musicRepository.musicFind(musicName).orElse(null);
-        return music;
+        return null;
     }
 
 }

@@ -1,11 +1,14 @@
 package com.personal.portfolio.domain.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "HOBBY")
-public class Hobby {
+@Getter
+public class HobbyEntity {
     @Id @GeneratedValue
     @Column(name = "HOBBY_ID")
     private int hobbyId;
@@ -17,7 +20,7 @@ public class Hobby {
     private Date deleteDate;
     @ManyToOne
     @JoinColumn(name = "MENU_ID")
-    private Menu menu;
+    private MenuEntity menuEntity;
 //    @OneToMany(mappedBy = "keyboardId")
 //    private Keyboard keyboard;
 }

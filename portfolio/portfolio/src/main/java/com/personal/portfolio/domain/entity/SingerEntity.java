@@ -1,10 +1,13 @@
 package com.personal.portfolio.domain.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Singer {
+@Getter
+public class SingerEntity {
     @Id
     @Column(name = "SINGER_ID")
     private int SingerID;
@@ -16,5 +19,5 @@ public class Singer {
     private Date DeleteDate;
     @ManyToOne
     @JoinColumn(name = "MUSIC_ID")
-    private Music music;
+    private MusicEntity musicEntity;
 }

@@ -1,4 +1,4 @@
 package com.personal.portfolio.domain.entity;
 
-public class Puppy {
+public class PuppyEntity {
 }

@@ -1,15 +1,14 @@
 package com.personal.portfolio.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
-public class Skill {
+@Getter
+public class SkillEntity {
     @Id
     @Column(name = "SKILL_ID")
     private int SkillID;

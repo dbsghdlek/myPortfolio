@@ -2,7 +2,6 @@ package com.personal.portfolio.web.controller;
 
 
 import com.personal.portfolio.web.dto.Singer;
-import com.personal.portfolio.domain.repository.SingerRepository;
 import com.personal.portfolio.domain.result.ErrorResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class SingerController {
 
-    private final SingerRepository singerRepository;
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({TypeMismatchException.class})
@@ -27,7 +25,6 @@ public class SingerController {
     @PostMapping("/add")
     public ErrorResult singerAdd(@RequestBody Singer singer){
         log.info("singerInfo :", singer);
-        singerRepository.inputSinger(singer);
         return  new ErrorResult("200", "ok");
     }
 }

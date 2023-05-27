@@ -1,8 +1,9 @@
 package com.personal.portfolio.web.controller;
 
-import com.personal.portfolio.web.dto.Menu;
+import com.personal.portfolio.domain.entity.MenuEntity;
+import com.personal.portfolio.web.dto.MenuDto;
 import com.personal.portfolio.domain.result.ErrorResult;
-import com.personal.portfolio.web.service.cls.MenuService;
+import com.personal.portfolio.web.service.MenuService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +30,13 @@ public class MenuController {
     }
     @ApiOperation(value="메뉴 목록 API", notes="메뉴 목록 가져오기")
     @GetMapping("/list")
-    public List<Menu> getMenus(){
+    public List<MenuDto> getMenus(){
         return menuService.allMenu();
+    }
+
+    @GetMapping("/listJpa")
+    public List<MenuDto> getMenusByJpa(){
+        List<MenuDto> list = menuService.allMenuByJpa();
+        return list;
     }
 }

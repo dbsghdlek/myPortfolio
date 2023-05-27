@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Menu {
+public class MenuDto {
     @NotEmpty
     private int menuId;
     @NotEmpty

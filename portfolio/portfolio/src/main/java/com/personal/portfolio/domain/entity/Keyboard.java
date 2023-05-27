@@ -1,9 +1,12 @@
 package com.personal.portfolio.domain.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "KEYBOARD")
+@Getter
 public class Keyboard {
     @Id @GeneratedValue
     @Column(name = "KEYBOARD_ID")
@@ -20,5 +23,5 @@ public class Keyboard {
     private String keyboardImage;
     @ManyToOne
     @JoinColumn(name = "HOBBY_ID")
-    private Hobby hobby;
+    private HobbyEntity hobbyEntity;
 }
