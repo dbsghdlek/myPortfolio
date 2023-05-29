@@ -30,11 +30,15 @@ public class MenuController {
     }
     @ApiOperation(value="메뉴 목록 API", notes="메뉴 목록 가져오기")
     @GetMapping("/list")
-    public List<MenuDto> getMenusByJpa(){
+    public List<MenuDto> getMenus(){
         List<MenuDto> list = menuService.allMenuByJpa();
         return list;
     }
 
-
+    @GetMapping("/{menuId}")
+    public MenuDto getMenu(@PathVariable int menuId){
+        MenuDto menu = menuService.getMenu(menuId);
+        return menu;
+    }
 
 }

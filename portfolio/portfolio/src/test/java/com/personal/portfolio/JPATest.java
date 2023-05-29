@@ -21,6 +21,7 @@ public class JPATest {
     @Test
     public void searchTest(){
         Optional<MenuEntity> menu = menuRepository.findById(2);
-        assertThat(menu).isNull();
+        menu.orElse()
+        assertThat(menu.isPresent()).isEqualTo(true);
     }
 }
