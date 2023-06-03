@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.personal.portfolio.domain.dao.MenuMapper">
-    <resultMap type="com.personal.portfolio.web.dto.MenuDto" id="menuSelectRM">
+<mapper namespace="com.personal.portfolio.menu.MenuMapper">
+    <resultMap type="com.personal.portfolio.menu.MenuDto" id="menuSelectRM">
         <result property="menuId" column="menu_id"/>
         <result property="menuName" column="menu_name"/>
         <result property="createDate" column="create_date"/>
     </resultMap>
 
-    <select id="getAllUser" resultMap="menuSelectRM" resultType="com.personal.portfolio.web.dto.MenuDto">
+    <select id="getAllUser" resultMap="menuSelectRM" resultType="com.personal.portfolio.menu.MenuDto">
         SELECT * FROM menu
     </select>
 
-    <insert id="addMenu" parameterType="com.personal.portfolio.web.dto.MenuDto">
+    <insert id="addMenu" parameterType="com.personal.portfolio.menu.MenuDto">
         INSERT INTO menu(menu_id, menu_name) VALUES (menuId, menuName)
     </insert>
 </mapper>
