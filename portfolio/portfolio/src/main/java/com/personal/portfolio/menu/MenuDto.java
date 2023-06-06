@@ -16,5 +16,19 @@ public class MenuDto {
     private int menuId;
     @NotEmpty
     private String menuName;
-    private Date createDate;
+    private String createDate;
+
+    public MenuEntity toEntity(){
+        return MenuEntity.builder()
+                .menuId(menuId)
+                .menuName(menuName)
+                .createDate(createDate)
+                .build();
+    }
+
+    public MenuDto(MenuEntity menuEntity){
+        this.menuId = menuEntity.getMenuId();
+        this.menuName = menuEntity.getMenuName();
+        this.createDate = menuEntity.getCreateDate();
+    }
 }
