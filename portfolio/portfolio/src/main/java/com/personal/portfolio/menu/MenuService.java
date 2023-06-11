@@ -58,7 +58,15 @@ public class MenuService {
         menuDto.setCreateDate(formatter.format(new Date()));
         MenuEntity menuEntity = menuDto.toEntity();
         MenuEntity result = menuRepository.save(menuEntity);
-
         return result;
+    }
+
+    public boolean deleteMenu(int menuId){
+        if(menuRepository.findById(menuId) != null){
+            menuRepository.deleteById(menuId);
+        }else{
+            return false;
+        }
+        return true;
     }
 }

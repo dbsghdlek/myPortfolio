@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.TypeMismatchException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,12 @@ public class MenuController {
         log.error("[ExceptionHandle] ex", e);
         return new ErrorResult("BAD", "message");
     }
+    @ExceptionHandler({EmptyResultDataAccessException.class})
+    public ErrorResult dataExceptionHandler(Exception e){
+        log.error("[ExceptionHandle] ex", e);
+        return new ErrorResult("BAD", "message");
+    }
+
     @ApiOperation(value="메뉴 목록 API", notes="메뉴 목록 가져오기")
     @GetMapping("")
     public ResponseEntity<?> getMenus(){
@@ -50,14 +57,22 @@ public class MenuController {
     @ApiOperation(value="메뉴 추가", notes = "메뉴 추가하기")
     @PutMapping("")
     public ResponseEntity<?> saveMenu(MenuDto menuDto){
-        log.info("menuDto", menuDto);
         MenuEntity menuEntity = menuService.insertMenu(menuDto);
-        log.info("menuEntity", menuEntity.toString());
-        if(menuEntity == null){
+
+        if(menuEntity != null){
             return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
         }else {
             return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_4000), HttpStatus.BAD_REQUEST);
         }
     }
+    @ApiOperation(value = "메뉴 삭제", notes = "메뉴 삭제하기")
+    @DeleteMapping("/{menuId}")
+    public ResponseEntity<?> removeMenu(@PathVariable int menuId){
+        boolean result = menuService.deleteMenu(menuId);
 
+        if(!result){
+            return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_4000), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
+    }
 }
