@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         bindingItem() {
-            axios.get('/menu/list', {
+            axios.get('/menu', {
                 headers: {
                     Accept: 'application/json'
                 }

@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b8bf887-3d22-4851-bdd1-3eccfdcbf39d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/controller/AniController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/controller/FoodController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/controller/GameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/controller/PuppyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/controller/TravelController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/controller/YoonhoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/repository/AniRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/repository/FoodRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/repository/GameRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/repository/PuppyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/repository/TravelRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/repository/YoonhoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/test/JpaMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/test/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/resources/META-INF/persistance.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="6b8bf887-3d22-4851-bdd1-3eccfdcbf39d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,16 +53,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/portfolio/portfolio&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/myPortfolio/portfolio",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="PortfolioApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.personal.portfolio.PortfolioApplication" />

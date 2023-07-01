@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Slf4j
 @RestController
@@ -30,14 +31,14 @@ public class MenuController {
         log.error("[ExceptionHandle] ex", e);
         return new ErrorResult("BAD", "message");
     }
-    @ExceptionHandler({EmptyResultDataAccessException.class})
+    @ExceptionHandler({EmptyResultDataAccessException.class, NoSuchElementException.class})
     public ErrorResult dataExceptionHandler(Exception e){
         log.error("[ExceptionHandle] ex", e);
-        return new ErrorResult("BAD", "message");
+        return new ErrorResult("BAD", "DataNotEmpty");
     }
 
     @ApiOperation(value="메뉴 목록 API", notes="메뉴 목록 가져오기")
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<?> getMenus(){
         List<MenuDto> list = menuService.allMenuByJpa();
 
@@ -55,16 +56,24 @@ public class MenuController {
         return new ResponseEntity<>(menu, HttpStatus.OK);
     }
     @ApiOperation(value="메뉴 추가", notes = "메뉴 추가하기")
-    @PutMapping("")
+    @PostMapping("/")
     public ResponseEntity<?> saveMenu(MenuDto menuDto){
-        MenuEntity menuEntity = menuService.insertMenu(menuDto);
-
-        if(menuEntity != null){
+        if(menuService.insertMenu(menuDto)){
             return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
         }else {
             return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_4000), HttpStatus.BAD_REQUEST);
         }
     }
+    @ApiOperation(value = "메뉴 수정하기", notes = "메뉴 수정하기")
+    @PutMapping("/")
+    public ResponseEntity<?> updateMenu(MenuDto menuDto){
+        if(menuService.updateMenu(menuDto)){
+            return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_4000), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @ApiOperation(value = "메뉴 삭제", notes = "메뉴 삭제하기")
     @DeleteMapping("/{menuId}")
     public ResponseEntity<?> removeMenu(@PathVariable int menuId){

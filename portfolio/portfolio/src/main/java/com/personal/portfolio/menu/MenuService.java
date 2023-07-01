@@ -6,10 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -22,6 +19,7 @@ public class MenuService {
     public List<MenuDto> allMenu() {
         return menuMapper.getAllUser();
     }
+
 
     //메뉴 Entity 리스트를 Dto 리스트로 변환해주는 메서드
     public List<MenuDto> listEntityToDto(List<MenuEntity> list){
@@ -47,18 +45,21 @@ public class MenuService {
 
     //단일 메뉴 정보 가져오기
     public MenuDto getMenu(int menuId){
-        Optional<MenuEntity> optionalMenu = menuRepository.findById(menuId);
-        MenuEntity menuEntity = optionalMenu.orElse(null);
-        MenuDto menuDto = new MenuDto(menuEntity);
+        MenuEntity MenuEntity = menuRepository.findById(menuId).orElseThrow();
+        MenuDto menuDto = new MenuDto(MenuEntity);
         return menuDto;
     }
 
-    public MenuEntity insertMenu(MenuDto menuDto){
+    public boolean insertMenu(MenuDto menuDto){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         menuDto.setCreateDate(formatter.format(new Date()));
         MenuEntity menuEntity = menuDto.toEntity();
-        MenuEntity result = menuRepository.save(menuEntity);
-        return result;
+        return menuRepository.save(menuEntity) != null?true:false;
+    }
+
+    public boolean updateMenu(MenuDto menuDto){
+        MenuEntity menuEntity = menuRepository.findById(menuDto.getMenuId()).orElseThrow();
+        return menuEntity.valueUpdate(menuDto.toEntity());
     }
 
     public boolean deleteMenu(int menuId){

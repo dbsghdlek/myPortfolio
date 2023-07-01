@@ -3,6 +3,7 @@ package com.personal.portfolio.menu;
 import com.personal.portfolio.hobby.HobbyEntity;
 import com.personal.portfolio.music.MusicEntity;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+@Slf4j
 @Entity
 @Table(name = "MENU", uniqueConstraints = {
         @UniqueConstraint(name = "NAME_UNIQUE",
@@ -40,5 +41,16 @@ public class MenuEntity {
         this.menuId = menuId;
         this.menuName = menuName;
         this.createDate = createDate;
+    }
+
+    public boolean valueUpdate(MenuEntity menuEntity){
+        try{
+            this.menuId = menuEntity.getMenuId();
+            this.menuName = menuEntity.getMenuName();
+        }catch (Exception e){
+            log.info("Exception ->" +  e);
+            return false;
+        }
+        return true;
     }
 }
