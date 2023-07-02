@@ -23,13 +23,8 @@ public class MenuService {
 
     //메뉴 Entity 리스트를 Dto 리스트로 변환해주는 메서드
     public List<MenuDto> listEntityToDto(List<MenuEntity> list){
-
         List<MenuDto> dtoList = new ArrayList<MenuDto>();
-
-        for(MenuEntity menuEntity : list){
-            MenuDto menu = new MenuDto(menuEntity);
-            dtoList.add(menu);
-        }
+        list.stream().forEach(menuEntity -> dtoList.add(new MenuDto(menuEntity)));
 
         return  dtoList;
     };
@@ -59,7 +54,9 @@ public class MenuService {
 
     public boolean updateMenu(MenuDto menuDto){
         MenuEntity menuEntity = menuRepository.findById(menuDto.getMenuId()).orElseThrow();
-        return menuEntity.valueUpdate(menuDto.toEntity());
+        menuEntity.valueUpdate(menuDto.toEntity());
+
+        return menuRepository.save(menuEntity) != null?true:false;
     }
 
     public boolean deleteMenu(int menuId){

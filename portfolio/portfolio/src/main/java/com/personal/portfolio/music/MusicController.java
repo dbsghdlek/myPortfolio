@@ -18,16 +18,20 @@ import java.util.List;
 public class MusicController {
     public final MusicRepository musicRepository;
 
+    public final MusicService musicService;
+
     @ApiOperation(value="노래 목록 API", notes="노래 목록 가져오기")
-    @GetMapping("/list")
+    @GetMapping("/")
     public List<MusicDto> MusicList(){
-        return null;
+        List<MusicDto> list = musicService.allMusic();
+        return list;
     }
 
     @ApiOperation(value="노래 찾기 API", notes="노래 정보 가져오기")
-    @GetMapping("/{musicName}")
-    public MusicDto musicInfoRequest(@PathVariable("musicName") String musicName){
-        return null;
+    @GetMapping("/{musicId}")
+    public MusicDto musicInfoRequest(@PathVariable("musicId") int musicId){
+        MusicDto musicDto =musicService.getMusic(musicId);
+        return musicDto;
     }
 
 }

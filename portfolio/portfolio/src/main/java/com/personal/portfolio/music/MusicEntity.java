@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class MusicEntity {
 
     @Id
@@ -20,12 +21,27 @@ public class MusicEntity {
     @Column(name = "MUSIC_NAME")
     private String musicName;
     @Column(name = "CREATE_DATE")
-    private Date createDate;
+    private String createDate;
     @Column(name = "DELETE_DATE")
-    private Date deleteDate;
+    private String deleteDate;
     @ManyToOne
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menuEntity;
     @OneToMany(mappedBy = "SingerID")
     private List<SingerEntity> singerEntity = new ArrayList<SingerEntity>();
+
+    @Builder
+    public MusicEntity(int musicID, String musicName, String createDate, String deleteDate){
+        this.musicID = musicID;
+        this.musicName = musicName;
+        this.createDate = createDate;
+        this.deleteDate = deleteDate;
+    }
+
+    public void valueUpdate(MusicEntity musicEntity){
+        this.musicID = musicEntity.musicID;
+        this.musicName = musicEntity.musicName;
+        this.createDate = musicEntity.createDate;
+        this.deleteDate = musicEntity.deleteDate;
+    }
 }
