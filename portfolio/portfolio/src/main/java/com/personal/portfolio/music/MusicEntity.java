@@ -11,11 +11,12 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "MUSIC")
 @Getter
 @NoArgsConstructor
 public class MusicEntity {
 
-    @Id
+    @Id @GeneratedValue
     @Column(name = "MUSIC_ID")
     private int musicID;
     @Column(name = "MUSIC_NAME")

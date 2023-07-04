@@ -52,7 +52,7 @@ export default {
     },
     methods: {
         getMusicList() {
-            Axios.get('/music/list', {
+            Axios.get('/music/', {
                 headers: {
                     Accept: 'application/json'
                 }

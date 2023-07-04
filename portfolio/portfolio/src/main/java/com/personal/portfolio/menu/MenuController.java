@@ -77,11 +77,10 @@ public class MenuController {
     @ApiOperation(value = "메뉴 삭제", notes = "메뉴 삭제하기")
     @DeleteMapping("/{menuId}")
     public ResponseEntity<?> removeMenu(@PathVariable int menuId){
-        boolean result = menuService.deleteMenu(menuId);
-
-        if(!result){
+        if(menuService.deleteMenu(menuId)){
+            return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
+        }else {
             return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_4000), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
     }
 }
