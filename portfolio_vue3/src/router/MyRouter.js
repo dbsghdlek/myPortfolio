@@ -7,7 +7,7 @@ const routes = [
         component : () => import('../views/main_menu.vue'),
     },
     {
-        path: '/menu/:menuName',
+        path: '/:menuName',
         name: 'menuPage',
         component : () => import('../views/menu/basic_body.vue')
     }

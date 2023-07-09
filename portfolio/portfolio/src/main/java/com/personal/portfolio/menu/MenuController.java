@@ -38,7 +38,7 @@ public class MenuController {
     }
 
     @ApiOperation(value="메뉴 목록 API", notes="메뉴 목록 가져오기")
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<?> getMenus(){
         List<MenuDto> list = menuService.allMenuByJpa();
 

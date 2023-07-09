@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "KEYBOARD")
 @Getter
-public class Keyboard {
+public class KeyboardEntity {
     @Id @GeneratedValue
     @Column(name = "KEYBOARD_ID")
     private int keyboardId;

@@ -12,7 +12,7 @@
             <!-- Portfolio Grid Items-->
             <div class="row justify-content-center">
                 <div id="menu" v-for="(menu) in menuList" :key="menu.menuId" class="col-md-6 col-lg-4 mb-5">
-                    <router-link :to="`/menu/${menu.menuName}`">
+                    <router-link :to="`/${menu.menuName}`">
                         <div class="portfolio-item mx-auto">
                             <div
                                 class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         bindingItem() {
-            axios.get('/menu/', {
+            axios.get('/menu', {
                 headers: {
                     Accept: 'application/json'
                 }

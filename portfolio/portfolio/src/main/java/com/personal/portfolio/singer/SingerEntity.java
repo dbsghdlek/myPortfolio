@@ -15,9 +15,9 @@ public class SingerEntity {
     @Column(name = "SINGER_NAME")
     private String SingerName;
     @Column(name = "CREATE_DATE")
-    private Date CreateDate;
+    private String CreateDate;
     @Column(name = "DELETE_DATE")
-    private Date DeleteDate;
+    private String DeleteDate;
     @ManyToOne
     @JoinColumn(name = "MUSIC_ID")
     private MusicEntity musicEntity;

@@ -13,6 +13,6 @@ public class SingerDto {
     private int SingerID;
     @NotEmpty
     private String SingerName;
-    private Date CreateDate;
+    private String CreateDate;
     private Date DeleteDate;
 }

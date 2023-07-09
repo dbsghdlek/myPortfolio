@@ -22,7 +22,7 @@ public class MusicController {
     public final MusicService musicService;
 
     @ApiOperation(value="노래 목록 API", notes="노래 목록 가져오기")
-    @GetMapping("/")
+    @GetMapping("")
     public List<MusicDto> MusicList(){
         List<MusicDto> list = musicService.allMusic();
         return list;
