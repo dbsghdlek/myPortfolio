@@ -16,7 +16,7 @@ public class MenuDto {
     private int menuId;
     @NotEmpty
     private String menuName;
-    private String createDate;
+    private Date createDate;
 
     public MenuEntity toEntity(){
         return MenuEntity.builder()

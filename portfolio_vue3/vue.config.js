@@ -8,11 +8,11 @@ module.exports = {
   devServer : {
     port : 8080,
     proxy :{
-      '^/menu':{
+      '/menu':{
         target : 'http://localhost:8080',
         changeOrigin : true
       },
-      '^/music':{
+      '/music':{
         target : 'http://localhost:8080',
         changeOrigin : true
       }

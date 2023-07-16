@@ -14,8 +14,8 @@ public class MusicDto {
     private int musicID;
     @NotEmpty
     private String musicName;
-    private String createDate;
-    private String deleteDate;
+    private Date createDate;
+    private Date deleteDate;
 
     public MusicDto(MusicEntity musicEntity){
         this.musicID = musicEntity.getMusicID();

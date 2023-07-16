@@ -20,20 +20,12 @@ public class MenuService {
         return menuMapper.getAllUser();
     }
 
-
-    //메뉴 Entity 리스트를 Dto 리스트로 변환해주는 메서드
-    public List<MenuDto> listEntityToDto(List<MenuEntity> list){
-        List<MenuDto> dtoList = new ArrayList<MenuDto>();
-        list.stream().forEach(menuEntity -> dtoList.add(new MenuDto(menuEntity)));
-
-        return  dtoList;
-    };
-
     // * 메뉴 리스트 가져오기 */
     public List<MenuDto> allMenuByJpa(){
-        List<MenuEntity> Entitylist =menuRepository.findAll();
+        List<MenuEntity> entityList =menuRepository.findAll();
 
-        List<MenuDto> menuList = listEntityToDto(Entitylist);
+        List<MenuDto> menuList = new ArrayList<>();
+        entityList.stream().forEach(entity -> menuList.add(new MenuDto(entity)));
 
         return menuList;
     }
@@ -46,8 +38,7 @@ public class MenuService {
     }
 
     public boolean insertMenu(MenuDto menuDto){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        menuDto.setCreateDate(formatter.format(new Date()));
+        menuDto.setCreateDate(new Date());
         MenuEntity menuEntity = menuDto.toEntity();
         return menuRepository.save(menuEntity) != null?true:false;
     }

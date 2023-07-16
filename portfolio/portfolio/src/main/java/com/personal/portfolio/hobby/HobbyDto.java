@@ -3,13 +3,14 @@ package com.personal.portfolio.hobby;
 import lombok.Data;
 
 import javax.persistence.Column;
+import java.util.Date;
 
 @Data
 public class HobbyDto {
     private int hobbyId;
     private String hobbyName;
-    private String createDate;
-    private String deleteDate;
+    private Date createDate;
+    private Date deleteDate;
 
     public HobbyEntity toEntity(){
         return HobbyEntity.builder()

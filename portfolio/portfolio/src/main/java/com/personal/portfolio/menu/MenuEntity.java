@@ -30,14 +30,14 @@ public class MenuEntity {
     private String menuName;
 
     @Column(name = "CREATE_DATE", nullable = false, length = 60)
-    private String createDate;
+    private Date createDate;
     @OneToMany(mappedBy = "menuEntity")
     private List<MusicEntity> musicEntities = new ArrayList<MusicEntity>();
     @OneToMany(mappedBy = "menuEntity")
     private List<HobbyEntity> hobbyEntity = new ArrayList<HobbyEntity>();
 
     @Builder
-    public MenuEntity(int menuId, String menuName, String createDate){
+    public MenuEntity(int menuId, String menuName, Date createDate){
         this.menuId = menuId;
         this.menuName = menuName;
         this.createDate = createDate;

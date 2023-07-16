@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,33 +17,30 @@ public class HobbyService {
 
     private final HobbyRepository hobbyRepository;
 
-    private List<HobbyDto> toDtoList(List<HobbyEntity> list){
+    @Transactional
+    public List<HobbyDto> allHobby(){
+        List<HobbyEntity> list =  hobbyRepository.findAll();
         List<HobbyDto> dtoList = new ArrayList<>();
         list.stream().forEach(hobbyEntity -> dtoList.add(new HobbyDto(hobbyEntity)));
+
         return dtoList;
     }
-
-    public List<HobbyDto> allHobby(){
-        List<HobbyDto> list =  toDtoList(hobbyRepository.findAll());
-        return list;
-    }
-
+    @Transactional
     public HobbyDto getHobby(int hobbyId){
         return new HobbyDto((HobbyEntity) hobbyRepository.findById(hobbyId).orElseThrow());
     }
-
+    @Transactional
     public boolean insertHobby(HobbyDto hobbyDto){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        hobbyDto.setCreateDate(formatter.format(new Date()));
+        hobbyDto.setCreateDate(new Date());
         return hobbyRepository.save(hobbyDto.toEntity()) != null?true:false;
     }
-
-    public boolean updateHobby(HobbyDto hobbyDto){
+    @Transactional
+    public boolean updateHobby(HobbyDto hobbyDto) {
         HobbyEntity hobbyEntity = hobbyRepository.findById(hobbyDto.getHobbyId()).orElseThrow();
         hobbyEntity.valueUpdate(hobbyDto);
         return hobbyRepository.save(hobbyEntity) != null?true:false;
     }
-
+    @Transactional
     public boolean deleteHobby(int hobbyId){
         if(hobbyRepository.findById(hobbyId) != null){
             hobbyRepository.deleteById(hobbyId);

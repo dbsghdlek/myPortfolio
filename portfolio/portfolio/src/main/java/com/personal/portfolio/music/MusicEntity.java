@@ -22,9 +22,9 @@ public class MusicEntity {
     @Column(name = "MUSIC_NAME")
     private String musicName;
     @Column(name = "CREATE_DATE")
-    private String createDate;
+    private Date createDate;
     @Column(name = "DELETE_DATE")
-    private String deleteDate;
+    private Date deleteDate;
     @ManyToOne
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menuEntity;
@@ -32,7 +32,7 @@ public class MusicEntity {
     private List<SingerEntity> singerEntity = new ArrayList<SingerEntity>();
 
     @Builder
-    public MusicEntity(int musicID, String musicName, String createDate, String deleteDate){
+    public MusicEntity(int musicID, String musicName, Date createDate, Date deleteDate){
         this.musicID = musicID;
         this.musicName = musicName;
         this.createDate = createDate;
