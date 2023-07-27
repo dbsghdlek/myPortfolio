@@ -46,7 +46,7 @@ public class MenuController {
     }
     @ApiOperation(value = "메뉴 정보 가져오기", notes = "단일 메뉴 정보 가져오기")
     @GetMapping("/{menuId}")
-    public ResponseEntity<?> getMenu(@PathVariable int menuId){
+    public ResponseEntity<?> getMenu(@PathVariable Long menuId){
         MenuDto menu = menuService.getMenu(menuId);
 
         if(menu == null){
@@ -76,7 +76,7 @@ public class MenuController {
 
     @ApiOperation(value = "메뉴 삭제", notes = "메뉴 삭제하기")
     @DeleteMapping("/{menuId}")
-    public ResponseEntity<?> removeMenu(@PathVariable int menuId){
+    public ResponseEntity<?> removeMenu(@PathVariable Long menuId){
         if(menuService.deleteMenu(menuId)){
             return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
         }else {

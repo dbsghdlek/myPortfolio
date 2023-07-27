@@ -26,7 +26,7 @@ public class MusicService {
         return list;
     }
     @Transactional
-    public MusicDto getMusic(int musicId){
+    public MusicDto getMusic(Long musicId){
         MusicEntity musicEntity = musicRepository.findById(musicId).orElseThrow();
         MusicDto musicDto = new MusicDto(musicEntity);
         return musicDto;
@@ -46,7 +46,7 @@ public class MusicService {
         return musicRepository.save(musicEntity) != null?true:false;
     }
     @Transactional
-    public boolean deleteMusic(int musicId){
+    public boolean deleteMusic(Long musicId){
         if(musicRepository.findById(musicId) != null){
             musicRepository.deleteById(musicId);
         }else{

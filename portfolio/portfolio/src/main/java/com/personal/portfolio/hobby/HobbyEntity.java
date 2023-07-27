@@ -21,14 +21,18 @@ public class HobbyEntity {
     @Column(name = "HOBBY_NAME")
     private String hobbyName;
     @Column(name = "CREATE_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @Column(name = "DELETE_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date deleteDate;
     @ManyToOne
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menuEntity;
-    @OneToMany(mappedBy = "hobbyEntity")
-    private List<KeyboardEntity> keyboard;
+
+//    필요한 경우 주석해제하여 사용
+//    @OneToMany(mappedBy = "hobbyEntity")
+//    private List<KeyboardEntity> keyboard;
     @Builder
     public HobbyEntity(int hobbyId, String hobbyName, Date createDate, Date deleteDate){
         this.hobbyId = hobbyId;

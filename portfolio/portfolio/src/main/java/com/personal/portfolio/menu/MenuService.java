@@ -31,7 +31,7 @@ public class MenuService {
     }
 
     //단일 메뉴 정보 가져오기
-    public MenuDto getMenu(int menuId){
+    public MenuDto getMenu(Long menuId){
         MenuEntity MenuEntity = menuRepository.findById(menuId).orElseThrow();
         MenuDto menuDto = new MenuDto(MenuEntity);
         return menuDto;
@@ -50,7 +50,7 @@ public class MenuService {
         return menuRepository.save(menuEntity) != null?true:false;
     }
 
-    public boolean deleteMenu(int menuId){
+    public boolean deleteMenu(Long menuId){
         if(menuRepository.findById(menuId) != null){
             menuRepository.deleteById(menuId);
         }else{

@@ -21,7 +21,6 @@ import main_header from './components/main_header.vue'
 import main_nav from './components/main_nav.vue'
 import basic_footer from './components/basic_footer.vue'
 import about_template from './components/my_about.vue'
-// import music_bar from './components/music_bar.vue'
 
 
 
@@ -31,7 +30,6 @@ export default {
         main_nav,
         basic_footer,
         about_template,
-        // music_bar
     },
     data() {
         return {

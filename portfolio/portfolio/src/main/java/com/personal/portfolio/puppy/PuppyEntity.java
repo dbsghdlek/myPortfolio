@@ -1,13 +1,11 @@
 package com.personal.portfolio.puppy;
 
+import com.personal.portfolio.menu.MenuEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -18,7 +16,11 @@ public class PuppyEntity {
     @Id @GeneratedValue
     private Long pictureId;
     private String pictureName;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
+    @ManyToOne
+    @JoinColumn(name = "MENU_ID")
+    private MenuEntity menu;
     @Builder
     public PuppyEntity(Long pictureId, String pictureName, Date createDate){
         this.pictureId = pictureId;

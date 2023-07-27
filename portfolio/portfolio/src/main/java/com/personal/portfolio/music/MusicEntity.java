@@ -18,21 +18,25 @@ public class MusicEntity {
 
     @Id @GeneratedValue
     @Column(name = "MUSIC_ID")
-    private int musicID;
+    private Long musicID;
     @Column(name = "MUSIC_NAME")
     private String musicName;
     @Column(name = "CREATE_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @Column(name = "DELETE_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date deleteDate;
     @ManyToOne
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menuEntity;
-    @OneToMany(mappedBy = "SingerID")
-    private List<SingerEntity> singerEntity = new ArrayList<SingerEntity>();
+
+    @ManyToOne
+    @JoinColumn(name = "SINGER_ID")
+    private SingerEntity singerEntity;
 
     @Builder
-    public MusicEntity(int musicID, String musicName, Date createDate, Date deleteDate){
+    public MusicEntity(Long musicID, String musicName, Date createDate, Date deleteDate){
         this.musicID = musicID;
         this.musicName = musicName;
         this.createDate = createDate;

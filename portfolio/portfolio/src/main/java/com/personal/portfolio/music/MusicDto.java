@@ -11,7 +11,7 @@ import java.util.Date;
 @Builder
 public class MusicDto {
     @NotEmpty
-    private int musicID;
+    private Long musicID;
     @NotEmpty
     private String musicName;
     private Date createDate;

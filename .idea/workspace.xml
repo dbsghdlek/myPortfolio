@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b8bf887-3d22-4851-bdd1-3eccfdcbf39d" name="Changes" comment="" />
+    <list default="true" id="6b8bf887-3d22-4851-bdd1-3eccfdcbf39d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/hobby/HobbyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/hobby/HobbyEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/menu/MenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/music/MusicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/puppy/PuppyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/puppy/PuppyEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/singer/SingerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/java/com/personal/portfolio/singer/SingerEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/portfolio/src/main/resources/META-INF/persistance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/portfolio/src/main/resources/META-INF/persistance.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,16 +68,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/myPortfolio/portfolio",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/myPortfolio/portfolio&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="PortfolioApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.personal.portfolio.PortfolioApplication" />

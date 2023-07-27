@@ -30,7 +30,7 @@ public class MusicController {
 
     @ApiOperation(value="노래 찾기 API", notes="노래 정보 가져오기")
     @GetMapping("/{musicId}")
-    public MusicDto musicInfoRequest(@PathVariable("musicId") int musicId){
+    public MusicDto musicInfoRequest(@PathVariable("musicId") Long musicId){
         MusicDto musicDto =musicService.getMusic(musicId);
         return musicDto;
     }
@@ -55,7 +55,7 @@ public class MusicController {
     }
     @ApiOperation(value = "음원 삭제 API", notes = "음원 삭제하기")
     @DeleteMapping("/{musicId}")
-    public ResponseEntity<?> deleteMusic(@PathVariable int musicId){
+    public ResponseEntity<?> deleteMusic(@PathVariable Long musicId){
         if(musicService.deleteMusic(musicId)){
             return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
         }else{

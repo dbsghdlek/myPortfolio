@@ -4,21 +4,27 @@ import com.personal.portfolio.music.MusicEntity;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "SINGER")
 public class SingerEntity {
     @Id
     @Column(name = "SINGER_ID")
-    private int SingerID;
+    private int singerID;
     @Column(name = "SINGER_NAME")
-    private String SingerName;
+    private String singerName;
     @Column(name = "CREATE_DATE")
-    private Date CreateDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
     @Column(name = "DELETE_DATE")
-    private Date DeleteDate;
-    @ManyToOne
-    @JoinColumn(name = "MUSIC_ID")
-    private MusicEntity musicEntity;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deleteDate;
+
+//    필요한 경우 주석해제하여 사용
+//    @OneToMany(mappedBy = "singerEntity")
+//    private List<MusicEntity> musicEntity = new ArrayList<MusicEntity>();
 }

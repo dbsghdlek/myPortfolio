@@ -13,15 +13,18 @@ import java.util.Date;
 @Builder
 public class MenuDto {
     @NotEmpty
-    private int menuId;
+    private Long menuId;
     @NotEmpty
     private String menuName;
+
+    private String menuImage;
     private Date createDate;
 
     public MenuEntity toEntity(){
         return MenuEntity.builder()
                 .menuId(menuId)
                 .menuName(menuName)
+                .menuImage(menuImage)
                 .createDate(createDate)
                 .build();
     }
@@ -29,6 +32,7 @@ public class MenuDto {
     public MenuDto(MenuEntity menuEntity){
         this.menuId = menuEntity.getMenuId();
         this.menuName = menuEntity.getMenuName();
+        this.menuImage = menuEntity.getMenuImage();
         this.createDate = menuEntity.getCreateDate();
     }
 }
