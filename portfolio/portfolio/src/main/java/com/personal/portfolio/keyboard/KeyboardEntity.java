@@ -1,5 +1,6 @@
 package com.personal.portfolio.keyboard;
 
+import com.personal.portfolio.domain.base.BaseEntity;
 import com.personal.portfolio.hobby.HobbyEntity;
 import lombok.Getter;
 
@@ -8,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "KEYBOARD")
 @Getter
-public class KeyboardEntity {
+public class KeyboardEntity extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "KEYBOARD_ID")
     private int keyboardId;

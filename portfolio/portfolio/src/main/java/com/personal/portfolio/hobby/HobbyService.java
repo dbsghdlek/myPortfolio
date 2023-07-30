@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +32,7 @@ public class HobbyService {
     }
     @Transactional
     public boolean insertHobby(HobbyDto hobbyDto){
-        hobbyDto.setCreateDate(new Date());
+        hobbyDto.setCreateDate(LocalDateTime.now());
         return hobbyRepository.save(hobbyDto.toEntity()) != null?true:false;
     }
     @Transactional

@@ -1,5 +1,6 @@
 package com.personal.portfolio.hobby;
 
+import com.personal.portfolio.domain.base.BaseEntity;
 import com.personal.portfolio.keyboard.KeyboardEntity;
 import com.personal.portfolio.menu.MenuEntity;
 import lombok.Builder;
@@ -7,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -14,18 +16,12 @@ import java.util.List;
 @Table(name = "HOBBY")
 @Getter
 @NoArgsConstructor
-public class HobbyEntity {
+public class HobbyEntity extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "HOBBY_ID")
     private int hobbyId;
     @Column(name = "HOBBY_NAME")
     private String hobbyName;
-    @Column(name = "CREATE_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-    @Column(name = "DELETE_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deleteDate;
     @ManyToOne
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menuEntity;
@@ -34,16 +30,16 @@ public class HobbyEntity {
 //    @OneToMany(mappedBy = "hobbyEntity")
 //    private List<KeyboardEntity> keyboard;
     @Builder
-    public HobbyEntity(int hobbyId, String hobbyName, Date createDate, Date deleteDate){
+    public HobbyEntity(int hobbyId, String hobbyName, LocalDateTime createDate, LocalDateTime modifiedDate){
         this.hobbyId = hobbyId;
         this.hobbyName = hobbyName;
         this.createDate = createDate;
-        this.deleteDate = deleteDate;
+        this.modifiedDate = modifiedDate;
     }
 
     public void valueUpdate(HobbyDto hobbyDto) throws IllegalArgumentException{
         this.hobbyName = hobbyDto.getHobbyName();
         this.createDate = hobbyDto.getCreateDate();
-        this.deleteDate = hobbyDto.getDeleteDate();
+        this.modifiedDate = hobbyDto.getModifiedDate();
     }
 }

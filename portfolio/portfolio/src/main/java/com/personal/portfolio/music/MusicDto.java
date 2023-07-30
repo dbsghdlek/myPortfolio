@@ -3,6 +3,8 @@ package com.personal.portfolio.music;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -14,8 +16,8 @@ public class MusicDto {
     private Long musicID;
     @NotEmpty
     private String musicName;
-    private Date createDate;
-    private Date deleteDate;
+    private LocalDateTime createDate;
+    private LocalDateTime modifiedDate;
 
     public MusicDto(MusicEntity musicEntity){
         this.musicID = musicEntity.getMusicID();
@@ -27,7 +29,7 @@ public class MusicDto {
                 .musicID(musicID)
                 .musicName(musicName)
                 .createDate(createDate)
-                .deleteDate(deleteDate)
+                .modifiedDate(modifiedDate)
                 .build();
     }
 }

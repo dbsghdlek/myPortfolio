@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -38,7 +39,7 @@ public class MenuService {
     }
 
     public boolean insertMenu(MenuDto menuDto){
-        menuDto.setCreateDate(new Date());
+        menuDto.setCreateDate(LocalDateTime.now());
         MenuEntity menuEntity = menuDto.toEntity();
         return menuRepository.save(menuEntity) != null?true:false;
     }

@@ -1,5 +1,6 @@
 package com.personal.portfolio.singer;
 
+import com.personal.portfolio.domain.base.BaseEntity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,11 +9,9 @@ import java.util.Date;
 
 @Data
 @Builder
-public class SingerDto {
+public class SingerDto extends BaseEntity {
     @NotEmpty
     private int SingerID;
     @NotEmpty
     private String SingerName;
-    private String CreateDate;
-    private Date DeleteDate;
 }

@@ -1,5 +1,6 @@
 package com.personal.portfolio.menu;
 
+import com.personal.portfolio.domain.base.BaseEntity;
 import com.personal.portfolio.hobby.HobbyEntity;
 import com.personal.portfolio.music.MusicEntity;
 import lombok.*;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +23,7 @@ import java.util.List;
 })
 @Getter
 @NoArgsConstructor
-public class MenuEntity {
+public class MenuEntity extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MENU_ID", nullable = false)
     private Long menuId;
@@ -30,9 +32,6 @@ public class MenuEntity {
     private String menuName;
     @Column(name = "MENU_IMAGE", nullable = true, length = 255)
     private String menuImage;
-    @Column(name = "CREATE_DATE", nullable = false, length = 60)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
 
 //    필요한 경우 주석해제하여 사용
 //    @OneToMany(mappedBy = "menuEntity")
@@ -41,11 +40,12 @@ public class MenuEntity {
 //    private List<HobbyEntity> hobbyEntity = new ArrayList<HobbyEntity>();
 
     @Builder
-    public MenuEntity(Long menuId, String menuName, String menuImage, Date createDate){
+    public MenuEntity(Long menuId, String menuName, String menuImage, LocalDateTime createDate, LocalDateTime modifiedDate){
         this.menuId = menuId;
         this.menuName = menuName;
         this.menuImage = menuImage;
         this.createDate = createDate;
+        this.modifiedDate = modifiedDate;
     }
 
     public boolean valueUpdate(MenuEntity menuEntity){
@@ -53,6 +53,7 @@ public class MenuEntity {
             this.menuId = menuEntity.getMenuId();
             this.menuName = menuEntity.getMenuName();
             this.menuImage = menuEntity.getMenuImage();
+            this.modifiedDate = LocalDateTime.now();
         }catch (Exception e){
             log.info("Exception ->" +  e);
             return false;

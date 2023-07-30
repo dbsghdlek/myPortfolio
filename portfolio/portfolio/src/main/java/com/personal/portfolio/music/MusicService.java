@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +36,7 @@ public class MusicService {
 
     @Transactional
     public boolean insertMusic(MusicDto musicDto){
-        musicDto.setCreateDate(new Date());
+        musicDto.setCreateDate(LocalDateTime.now());
         MusicEntity musicEntity = musicDto.toEntity();
         return musicRepository.save(musicEntity) != null?true:false;
     }

@@ -1,20 +1,22 @@
 package com.personal.portfolio.puppy;
 
-import java.util.Date;
+import com.personal.portfolio.domain.base.BaseEntity;
 
-public class PuppyDto {
+
+
+public class PuppyDto extends BaseEntity {
 
     private Long pictureId;
 
     private String pictureName;
 
-    private Date createDate;
 
     public PuppyEntity toEntity(){
         return new PuppyEntity().builder()
                 .pictureId(pictureId)
                 .pictureName(pictureName)
                 .createDate(createDate)
+                .modifiedDate(modifiedDate)
                 .build();
     }
 
@@ -22,5 +24,6 @@ public class PuppyDto {
         this.pictureId = puppyEntity.getPictureId();
         this.pictureName = puppyEntity.getPictureName();
         this.createDate = puppyEntity.getCreateDate();
+        this.modifiedDate = puppyEntity.getModifiedDate();
     }
 }
