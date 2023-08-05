@@ -27,10 +27,10 @@ public class MusicEntity extends BaseEntity {
     private String musicName;
     @Column(name = "MUSIC_IMAGE")
     private String musicImage;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menuEntity;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SINGER_ID", nullable = false)
     private SingerEntity singerEntity;
 

@@ -1,5 +1,6 @@
 package com.personal.portfolio.hobby;
 
+import com.personal.portfolio.domain.base.BaseDto;
 import com.personal.portfolio.domain.base.BaseEntity;
 import lombok.Data;
 
@@ -7,7 +8,7 @@ import javax.persistence.Column;
 import java.util.Date;
 
 @Data
-public class HobbyDto extends BaseEntity {
+public class HobbyDto extends BaseDto {
     private int hobbyId;
     private String hobbyName;
 

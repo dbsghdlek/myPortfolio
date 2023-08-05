@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
+
 
 @Entity
 @Table(name = "HOBBY")
@@ -22,7 +21,7 @@ public class HobbyEntity extends BaseEntity {
     private int hobbyId;
     @Column(name = "HOBBY_NAME")
     private String hobbyName;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menuEntity;
 

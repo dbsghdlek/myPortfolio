@@ -1,5 +1,6 @@
 package com.personal.portfolio.menu;
 
+import com.personal.portfolio.domain.base.BaseDto;
 import com.personal.portfolio.domain.base.BaseEntity;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MenuDto extends BaseEntity {
+public class MenuDto extends BaseDto {
     @NotEmpty
     private Long menuId;
     @NotEmpty

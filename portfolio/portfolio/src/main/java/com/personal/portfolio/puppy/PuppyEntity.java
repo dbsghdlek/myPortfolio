@@ -19,7 +19,7 @@ public class PuppyEntity extends BaseEntity {
     private Long pictureId;
     @Column(name = "PICTURE_NAME")
     private String pictureName;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menu;
     @Builder

@@ -10,7 +10,6 @@ import javax.persistence.TemporalType;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 @MappedSuperclass
 public abstract class BaseEntity {
     @Column(name = "CREATE_DATE")

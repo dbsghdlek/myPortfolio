@@ -1,10 +1,11 @@
 package com.personal.portfolio.puppy;
 
+import com.personal.portfolio.domain.base.BaseDto;
 import com.personal.portfolio.domain.base.BaseEntity;
 
 
 
-public class PuppyDto extends BaseEntity {
+public class PuppyDto extends BaseDto {
 
     private Long pictureId;
 
