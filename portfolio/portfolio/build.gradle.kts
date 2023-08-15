@@ -1,7 +1,12 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
 	java
 	id("org.springframework.boot") version "2.7.7"
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
+	kotlin("jvm") version "1.3.61"
+	kotlin("kapt") version "1.3.61"
+	idea
 }
 
 group = "com.personal"
@@ -30,6 +35,18 @@ dependencies {
 	implementation ("io.springfox:springfox-swagger2:2.9.2")
 	implementation ("io.springfox:springfox-swagger-ui:2.9.2")
 	implementation ("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
+
+	//QueryDSL
+	implementation("com.querydsl:querydsl-jpa:5.0.0")
+	kapt("com.querydsl:querydsl-apt:4.2.2:jpa")
+}
+
+idea {
+	module {
+		val kaptMain = file("build/generated/source/kapt/main")
+		sourceDirs.add(kaptMain)
+		generatedSourceDirs.add(kaptMain)
+	}
 }
 
 tasks.withType<Test> {
