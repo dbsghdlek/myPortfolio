@@ -1,13 +1,17 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+	val kotlinVersion = "1.6.21"
 	java
 	id("org.springframework.boot") version "2.7.7"
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
-	kotlin("jvm") version "1.3.61"
-	kotlin("kapt") version "1.3.61"
+	kotlin("jvm") version kotlinVersion
+	kotlin("plugin.spring") version kotlinVersion
+	kotlin("kapt") version kotlinVersion
 	idea
 }
+
+val qeurydslVersion = "5.0.0"
 
 group = "com.personal"
 version = "0.0.1-SNAPSHOT"
@@ -35,10 +39,23 @@ dependencies {
 	implementation ("io.springfox:springfox-swagger2:2.9.2")
 	implementation ("io.springfox:springfox-swagger-ui:2.9.2")
 	implementation ("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
 
 	//QueryDSL
-	implementation("com.querydsl:querydsl-jpa:5.0.0")
-	kapt("com.querydsl:querydsl-apt:4.2.2:jpa")
+	implementation("com.querydsl:querydsl-jpa:$qeurydslVersion")
+	kapt("com.querydsl:querydsl-apt:$qeurydslVersion:jpa")
+	kapt("org.springframework.boot:spring-boot-configuration-processor")
+
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+}
+
+tasks.withType<KotlinCompile> {
+	kotlinOptions {
+		freeCompilerArgs = listOf("-Xjsr305=strict")
+		jvmTarget = "11"
+	}
 }
 
 idea {
@@ -49,6 +66,9 @@ idea {
 	}
 }
 
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+

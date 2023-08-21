@@ -55,6 +55,17 @@ public class MenuController {
 
         return new ResponseEntity<>(menu, HttpStatus.OK);
     }
+    @GetMapping("/querydsl/{menuId}")
+    public ResponseEntity<?> getMenuUsingQueryDsl(@PathVariable Long menuId){
+        MenuDto menu = menuService.getMenuUsingQueryDsl(menuId);
+
+        if(menu == null){
+            return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_3000), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(menu, HttpStatus.OK);
+    }
+
     @ApiOperation(value="메뉴 추가", notes = "메뉴 추가하기")
     @PostMapping("/")
     public ResponseEntity<?> saveMenu(MenuDto menuDto){

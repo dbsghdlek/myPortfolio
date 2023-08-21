@@ -38,6 +38,12 @@ public class MenuService {
         return menuDto;
     }
 
+    public MenuDto getMenuUsingQueryDsl(Long menuId){
+        MenuEntity menuEntity = menuRepository.getMenuUsingQueryDsl(menuId);
+        MenuDto menuDto = new MenuDto(menuEntity);
+        return menuDto;
+    }
+
     public boolean insertMenu(MenuDto menuDto){
         menuDto.setCreateDate(LocalDateTime.now());
         MenuEntity menuEntity = menuDto.toEntity();
