@@ -1,6 +1,6 @@
 package com.personal.portfolio.music;
 
-import com.personal.portfolio.error.ErrorCode;
+import com.personal.portfolio.error.ErrorCodeEnum;
 import com.personal.portfolio.error.ErrorVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -38,9 +38,9 @@ public class MusicController {
     @PostMapping("/")
     public ResponseEntity<?> saveMusic(MusicDto musicDto){
         if(musicService.insertMusic(musicDto)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
+            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
         }else {
-            return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_4000), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -48,18 +48,18 @@ public class MusicController {
     @PutMapping("/")
     public ResponseEntity<?> updateMusic(MusicDto musicDto){
         if(musicService.updateMusic(musicDto)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
+            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_4000), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
         }
     }
     @ApiOperation(value = "음원 삭제 API", notes = "음원 삭제하기")
     @DeleteMapping("/{musicId}")
     public ResponseEntity<?> deleteMusic(@PathVariable Long musicId){
         if(musicService.deleteMusic(musicId)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCode.SUCCESS_0000), HttpStatus.OK);
+            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>(new ErrorVO(ErrorCode.ERROR_4000), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
         }
     }
 }

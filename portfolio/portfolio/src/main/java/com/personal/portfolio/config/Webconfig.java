@@ -1,4 +1,4 @@
-package com.personal.portfolio.domain.config;
+package com.personal.portfolio.config;
 
 import com.personal.portfolio.domain.filter.MyFilter;
 import com.personal.portfolio.domain.interceptor.MyInterCeptor;

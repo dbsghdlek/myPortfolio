@@ -9,7 +9,7 @@ import lombok.Getter;
 //4000번대 DB 에러
 @Getter
 @AllArgsConstructor
-public enum ErrorCode {
+public enum ErrorCodeEnum {
     SUCCESS_0000(0000, "Success"),
     ERROR_1000(1000,"Authorization Denied"),
     ERROR_2000(2000,""),

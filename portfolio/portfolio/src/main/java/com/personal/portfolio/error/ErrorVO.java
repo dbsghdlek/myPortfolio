@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class ErrorVO {
 
-    public ErrorVO(ErrorCode errorCode){
-        this.errorCode = errorCode.getErrorCode();
-        this.errorReason = errorCode.getErrorReason();
+    public ErrorVO(ErrorCodeEnum errorCodeEnum){
+        this.errorCode = errorCodeEnum.getErrorCode();
+        this.errorReason = errorCodeEnum.getErrorReason();
     }
     private int errorCode;
     private String errorReason;
