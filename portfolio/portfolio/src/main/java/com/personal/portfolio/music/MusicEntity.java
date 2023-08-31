@@ -5,12 +5,7 @@ import com.personal.portfolio.menu.MenuEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 
 @Entity
@@ -24,11 +19,13 @@ public class MusicEntity extends BaseEntity {
     private Long musicID;
     @Column(name = "MUSIC_NAME", nullable = false)
     private String musicName;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(name = "GENRE")
-    private GenreEnum genre;
+    private Genre genre;
     @Column(name = "MUSIC_IMAGE")
     private String musicImage;
+    @Column(name = "FILE_NAME")
+    private String fileName;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MENU_ID")
     private MenuEntity menuEntity;
@@ -36,7 +33,7 @@ public class MusicEntity extends BaseEntity {
     private String singerName;
 
     @Builder
-    public MusicEntity(Long musicID, String musicName, GenreEnum genre,String singerName, LocalDateTime createDate, LocalDateTime modifiedDate){
+    public MusicEntity(Long musicID, String musicName, Genre genre, String singerName, LocalDateTime createDate, LocalDateTime modifiedDate){
         this.musicID = musicID;
         this.musicName = musicName;
         this.genre = genre;

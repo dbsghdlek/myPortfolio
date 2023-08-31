@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -28,38 +29,22 @@ public class MusicController {
         return list;
     }
 
-    @ApiOperation(value="노래 찾기 API", notes="노래 정보 가져오기")
+    @ApiOperation(value="노래 단일 정보 API", notes="단일 노래 정보 가져오기")
     @GetMapping("/{musicId}")
     public MusicDto musicInfoRequest(@PathVariable("musicId") Long musicId){
         MusicDto musicDto =musicService.getMusic(musicId);
         return musicDto;
     }
-    @ApiOperation(value = "노래 추가 API", notes = "노래 추가하기")
-    @PostMapping("/")
-    public ResponseEntity<?> saveMusic(MusicDto musicDto){
-        if(musicService.insertMusic(musicDto)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
-        }
-    }
 
-    @ApiOperation(value = "음원 정보 수정 API", notes = "음원 정보 수정하기")
-    @PutMapping("/")
-    public ResponseEntity<?> updateMusic(MusicDto musicDto){
-        if(musicService.updateMusic(musicDto)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
-        }
-    }
-    @ApiOperation(value = "음원 삭제 API", notes = "음원 삭제하기")
-    @DeleteMapping("/{musicId}")
-    public ResponseEntity<?> deleteMusic(@PathVariable Long musicId){
-        if(musicService.deleteMusic(musicId)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<?> musicBygenre(@PathVariable("genre") String genre){
+        List<MusicDto> list = new ArrayList<>();
+        try{
+            list = musicService.findByGenre(genre);
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        }catch (Exception e){
+            log.info("Exception -> "+ e.toString());
+            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_400), HttpStatus.BAD_REQUEST);
         }
     }
 }

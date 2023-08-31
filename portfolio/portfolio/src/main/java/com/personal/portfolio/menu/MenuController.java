@@ -45,17 +45,6 @@ public class MenuController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/querydsl/{menuId}")
-    public ResponseEntity<?> getMenuUsingQueryDsl(@PathVariable Long menuId){
-        MenuDto menu = menuService.getMenuUsingQueryDsl(menuId);
-
-        if(menu == null){
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_3000), HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>(menu, HttpStatus.OK);
-    }
-
     @ApiOperation(value = "메뉴 정보 가져오기", notes = "단일 메뉴 정보 가져오기")
     @GetMapping("/{menuId}")
     public ResponseEntity<?> getMenu(@PathVariable Long menuId){
@@ -66,34 +55,5 @@ public class MenuController {
         }
 
         return new ResponseEntity<>(menu, HttpStatus.OK);
-    }
-
-    @ApiOperation(value="메뉴 추가", notes = "메뉴 추가하기")
-    @PostMapping("/")
-    public ResponseEntity<?> saveMenu(MenuDto menuDto){
-        if(menuService.insertMenu(menuDto)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
-        }
-    }
-    @ApiOperation(value = "메뉴 수정하기", notes = "메뉴 수정하기")
-    @PutMapping("/")
-    public ResponseEntity<?> updateMenu(MenuDto menuDto){
-        if(menuService.updateMenu(menuDto)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @ApiOperation(value = "메뉴 삭제", notes = "메뉴 삭제하기")
-    @DeleteMapping("/{menuId}")
-    public ResponseEntity<?> removeMenu(@PathVariable Long menuId){
-        if(menuService.deleteMenu(menuId)){
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.SUCCESS_0000), HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_4000), HttpStatus.BAD_REQUEST);
-        }
     }
 }

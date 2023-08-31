@@ -18,7 +18,7 @@ public class MusicDto extends BaseDto {
     @NotEmpty
     private String musicName;
 
-    private GenreEnum genre;
+    private Genre genre;
     @NotEmpty
     private String singerName;
 

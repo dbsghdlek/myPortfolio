@@ -6,19 +6,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class MusicService {
     private final MusicRepository musicRepository;
 
-    @Transactional
+
     public List<MusicDto> allMusic(){
         List<MusicEntity> entityList = musicRepository.findAll();
         List<MusicDto> list = new ArrayList<MusicDto>();;
@@ -27,7 +25,7 @@ public class MusicService {
 
         return list;
     }
-    @Transactional
+
     public MusicDto getMusic(Long musicId){
         MusicEntity musicEntity = musicRepository.findById(musicId).orElseThrow();
         MusicDto musicDto = new MusicDto(musicEntity);
@@ -55,5 +53,11 @@ public class MusicService {
             return false;
         }
         return true;
+    }
+
+    public List<MusicDto> findByGenre(String genre){
+        List<MusicEntity> musicList = musicRepository.findByGenre(genre);
+        List<MusicDto> dtoList =  musicList.stream().map(entity -> new MusicDto(entity)).collect(Collectors.toList());
+        return  dtoList;
     }
 }

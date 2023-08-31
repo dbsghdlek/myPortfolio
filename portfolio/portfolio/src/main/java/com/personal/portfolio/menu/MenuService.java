@@ -13,13 +13,8 @@ import java.util.*;
 @Slf4j
 @RequiredArgsConstructor
 public class MenuService {
-    private final MenuMapper menuMapper;
 
     private final MenuRepository menuRepository;
-
-    public List<MenuDto> allMenu() {
-        return menuMapper.getAllUser();
-    }
 
     // * 메뉴 리스트 가져오기 */
     public List<MenuDto> allMenuByJpa(){

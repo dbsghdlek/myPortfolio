@@ -1,5 +1,5 @@
 package com.personal.portfolio.music;
 
-public enum GenreEnum {
+public enum Genre {
     KPOP, JPOP, POP, ROCK
 }
