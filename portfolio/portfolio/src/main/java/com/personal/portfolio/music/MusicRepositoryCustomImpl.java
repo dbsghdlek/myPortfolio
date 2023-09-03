@@ -8,7 +8,7 @@ public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public MusicEntity findMusic(Long musicId) {
+    public Music findMusic(Long musicId) {
         return null;
     }
 }

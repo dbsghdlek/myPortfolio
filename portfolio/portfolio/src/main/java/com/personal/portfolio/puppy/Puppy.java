@@ -1,20 +1,19 @@
 package com.personal.portfolio.puppy;
 
 import com.personal.portfolio.domain.base.BaseEntity;
-import com.personal.portfolio.menu.MenuEntity;
+import com.personal.portfolio.menu.Menu;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "PUPPY")
 @Getter
 @NoArgsConstructor
-public class PuppyEntity extends BaseEntity {
+public class Puppy extends BaseEntity {
     @Id @GeneratedValue
     private Long pictureId;
     @Column(name = "PICTURE_NAME", nullable = false)
@@ -23,9 +22,9 @@ public class PuppyEntity extends BaseEntity {
     private LocalDateTime pictureDate;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MENU_ID")
-    private MenuEntity menu;
+    private Menu menu;
     @Builder
-    public PuppyEntity(Long pictureId, String pictureName, LocalDateTime pictureDate,LocalDateTime createDate, LocalDateTime modifiedDate){
+    public Puppy(Long pictureId, String pictureName, LocalDateTime pictureDate, LocalDateTime createDate, LocalDateTime modifiedDate){
         this.pictureId = pictureId;
         this.pictureName = pictureName;
         this.createDate = createDate;

@@ -1,7 +1,6 @@
 package com.personal.portfolio.puppy;
 
 import com.personal.portfolio.domain.base.BaseDto;
-import com.personal.portfolio.domain.base.BaseEntity;
 
 import java.time.LocalDateTime;
 
@@ -14,8 +13,8 @@ public class PuppyDto extends BaseDto {
 
     private LocalDateTime pictureDate;
 
-    public PuppyEntity toEntity(){
-        return new PuppyEntity().builder()
+    public Puppy toEntity(){
+        return new Puppy().builder()
                 .pictureId(pictureId)
                 .pictureName(pictureName)
                 .pictureDate(pictureDate)
@@ -24,11 +23,11 @@ public class PuppyDto extends BaseDto {
                 .build();
     }
 
-    public PuppyDto(PuppyEntity puppyEntity){
-        this.pictureId = puppyEntity.getPictureId();
-        this.pictureName = puppyEntity.getPictureName();
-        this.pictureDate = puppyEntity.getPictureDate();
-        this.createDate = puppyEntity.getCreateDate();
-        this.modifiedDate = puppyEntity.getModifiedDate();
+    public PuppyDto(Puppy puppy){
+        this.pictureId = puppy.getPictureId();
+        this.pictureName = puppy.getPictureName();
+        this.pictureDate = puppy.getPictureDate();
+        this.createDate = puppy.getCreateDate();
+        this.modifiedDate = puppy.getModifiedDate();
     }
 }

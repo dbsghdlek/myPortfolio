@@ -5,10 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -20,7 +18,7 @@ public class HobbyService {
 
     @Transactional
     public List<HobbyDto> allHobby(){
-        List<HobbyEntity> list =  hobbyRepository.findAll();
+        List<Hobby> list =  hobbyRepository.findAll();
         List<HobbyDto> dtoList = new ArrayList<>();
         list.stream().forEach(hobbyEntity -> dtoList.add(new HobbyDto(hobbyEntity)));
 
@@ -28,7 +26,7 @@ public class HobbyService {
     }
     @Transactional
     public HobbyDto getHobby(int hobbyId){
-        return new HobbyDto((HobbyEntity) hobbyRepository.findById(hobbyId).orElseThrow());
+        return new HobbyDto((Hobby) hobbyRepository.findById(hobbyId).orElseThrow());
     }
     @Transactional
     public boolean insertHobby(HobbyDto hobbyDto){
@@ -37,9 +35,9 @@ public class HobbyService {
     }
     @Transactional
     public boolean updateHobby(HobbyDto hobbyDto) {
-        HobbyEntity hobbyEntity = hobbyRepository.findById(hobbyDto.getHobbyId()).orElseThrow();
-        hobbyEntity.valueUpdate(hobbyDto);
-        return hobbyRepository.save(hobbyEntity) != null?true:false;
+        Hobby hobby = hobbyRepository.findById(hobbyDto.getHobbyId()).orElseThrow();
+        hobby.valueUpdate(hobbyDto);
+        return hobbyRepository.save(hobby) != null?true:false;
     }
     @Transactional
     public boolean deleteHobby(int hobbyId){

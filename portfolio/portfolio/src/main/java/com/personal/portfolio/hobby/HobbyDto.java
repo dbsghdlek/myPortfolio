@@ -1,19 +1,15 @@
 package com.personal.portfolio.hobby;
 
 import com.personal.portfolio.domain.base.BaseDto;
-import com.personal.portfolio.domain.base.BaseEntity;
 import lombok.Data;
-
-import javax.persistence.Column;
-import java.util.Date;
 
 @Data
 public class HobbyDto extends BaseDto {
     private int hobbyId;
     private String hobbyName;
 
-    public HobbyEntity toEntity(){
-        return HobbyEntity.builder()
+    public Hobby toEntity(){
+        return Hobby.builder()
                 .hobbyId(hobbyId)
                 .hobbyName(hobbyName)
                 .createDate(createDate)
@@ -21,10 +17,10 @@ public class HobbyDto extends BaseDto {
                 .build();
     }
 
-    public HobbyDto(HobbyEntity hobbyEntity){
-        this.hobbyId = hobbyEntity.getHobbyId();
-        this.hobbyName = hobbyEntity.getHobbyName();
-        this.createDate = hobbyEntity.getCreateDate();
-        this.modifiedDate = hobbyEntity.getModifiedDate();
+    public HobbyDto(Hobby hobby){
+        this.hobbyId = hobby.getHobbyId();
+        this.hobbyName = hobby.getHobbyName();
+        this.createDate = hobby.getCreateDate();
+        this.modifiedDate = hobby.getModifiedDate();
     }
 }

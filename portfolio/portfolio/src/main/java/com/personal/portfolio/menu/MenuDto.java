@@ -1,12 +1,10 @@
 package com.personal.portfolio.menu;
 
 import com.personal.portfolio.domain.base.BaseDto;
-import com.personal.portfolio.domain.base.BaseEntity;
 import lombok.*;
 
 
 import javax.validation.constraints.NotEmpty;
-import java.util.Date;
 
 
 @Data
@@ -20,8 +18,8 @@ public class MenuDto extends BaseDto {
     private String menuName;
     private String menuImage;
 
-    public MenuEntity toEntity(){
-        return MenuEntity.builder()
+    public Menu toEntity(){
+        return Menu.builder()
                 .menuId(menuId)
                 .menuName(menuName)
                 .menuImage(menuImage)
@@ -30,11 +28,11 @@ public class MenuDto extends BaseDto {
                 .build();
     }
 
-    public MenuDto(MenuEntity menuEntity){
-        this.menuId = menuEntity.getMenuId();
-        this.menuName = menuEntity.getMenuName();
-        this.menuImage = menuEntity.getMenuImage();
-        this.createDate = menuEntity.getCreateDate();
-        this.modifiedDate = menuEntity.getModifiedDate();
+    public MenuDto(Menu menu){
+        this.menuId = menu.getMenuId();
+        this.menuName = menu.getMenuName();
+        this.menuImage = menu.getMenuImage();
+        this.createDate = menu.getCreateDate();
+        this.modifiedDate = menu.getModifiedDate();
     }
 }

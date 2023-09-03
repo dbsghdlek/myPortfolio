@@ -37,10 +37,10 @@ public class MusicController {
     }
 
     @GetMapping("/genre/{genre}")
-    public ResponseEntity<?> musicBygenre(@PathVariable("genre") String genre){
+    public ResponseEntity<?> musicBygenre(@PathVariable("genre") int genreNo){
         List<MusicDto> list = new ArrayList<>();
         try{
-            list = musicService.findByGenre(genre);
+            list = musicService.findByGenre(genreNo);
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e){
             log.info("Exception -> "+ e.toString());

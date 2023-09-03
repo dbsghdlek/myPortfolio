@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -18,7 +17,7 @@ public class MenuService {
 
     // * 메뉴 리스트 가져오기 */
     public List<MenuDto> allMenuByJpa(){
-        List<MenuEntity> entityList =menuRepository.findAll();
+        List<Menu> entityList =menuRepository.findAll();
 
         List<MenuDto> menuList = new ArrayList<>();
         entityList.stream().forEach(entity -> menuList.add(new MenuDto(entity)));
@@ -28,28 +27,28 @@ public class MenuService {
 
     //단일 메뉴 정보 가져오기
     public MenuDto getMenu(Long menuId){
-        MenuEntity MenuEntity = menuRepository.findById(menuId).orElseThrow();
-        MenuDto menuDto = new MenuDto(MenuEntity);
+        Menu Menu = menuRepository.findById(menuId).orElseThrow();
+        MenuDto menuDto = new MenuDto(Menu);
         return menuDto;
     }
 
     public MenuDto getMenuUsingQueryDsl(Long menuId){
-        MenuEntity menuEntity = menuRepository.getMenuUsingQueryDsl(menuId);
-        MenuDto menuDto = new MenuDto(menuEntity);
+        Menu menu = menuRepository.getMenuUsingQueryDsl(menuId);
+        MenuDto menuDto = new MenuDto(menu);
         return menuDto;
     }
 
     public boolean insertMenu(MenuDto menuDto){
         menuDto.setCreateDate(LocalDateTime.now());
-        MenuEntity menuEntity = menuDto.toEntity();
-        return menuRepository.save(menuEntity) != null?true:false;
+        Menu menu = menuDto.toEntity();
+        return menuRepository.save(menu) != null?true:false;
     }
 
     public boolean updateMenu(MenuDto menuDto){
-        MenuEntity menuEntity = menuRepository.findById(menuDto.getMenuId()).orElseThrow();
-        menuEntity.valueUpdate(menuDto.toEntity());
+        Menu menu = menuRepository.findById(menuDto.getMenuId()).orElseThrow();
+        menu.valueUpdate(menuDto.toEntity());
 
-        return menuRepository.save(menuEntity) != null?true:false;
+        return menuRepository.save(menu) != null?true:false;
     }
 
     public boolean deleteMenu(Long menuId){

@@ -4,9 +4,6 @@ import com.personal.portfolio.domain.base.BaseDto;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -17,25 +14,21 @@ public class MusicDto extends BaseDto {
     private Long musicID;
     @NotEmpty
     private String musicName;
-
-    private Genre genre;
     @NotEmpty
     private String singerName;
 
-    public MusicDto(MusicEntity musicEntity){
-        this.musicID = musicEntity.getMusicID();
-        this.musicName = musicEntity.getMusicName();
-        this.genre = musicEntity.getGenre();
-        this.createDate = musicEntity.getCreateDate();
-        this.modifiedDate = musicEntity.getModifiedDate();
-        this.singerName = musicEntity.getSingerName();
+    public MusicDto(Music music){
+        this.musicID = music.getMusicID();
+        this.musicName = music.getMusicName();
+        this.createDate = music.getCreateDate();
+        this.modifiedDate = music.getModifiedDate();
+        this.singerName = music.getSingerName();
     }
 
-    public MusicEntity toEntity(){
-        return new MusicEntity().builder()
+    public Music toEntity(){
+        return new Music().builder()
                 .musicID(musicID)
                 .musicName(musicName)
-                .genre(genre)
                 .createDate(createDate)
                 .modifiedDate(modifiedDate)
                 .build();

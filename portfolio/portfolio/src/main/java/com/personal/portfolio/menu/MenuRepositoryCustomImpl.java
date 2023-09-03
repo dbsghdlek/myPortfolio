@@ -10,7 +10,7 @@ public class MenuRepositoryCustomImpl implements MenuRepositoryCustom{
 
     private final JPAQueryFactory queryFactory;
     @Override
-    public MenuEntity getMenuUsingQueryDsl(Long menuId) {
+    public Menu getMenuUsingQueryDsl(Long menuId) {
         QMenuEntity menuEntity = QMenuEntity.menuEntity;
 
         return queryFactory.selectFrom(menuEntity)

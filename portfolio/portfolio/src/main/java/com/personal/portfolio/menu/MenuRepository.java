@@ -2,6 +2,6 @@ package com.personal.portfolio.menu;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MenuRepository extends JpaRepository<MenuEntity, Long>, MenuRepositoryCustom {
+public interface MenuRepository extends JpaRepository<Menu, Long>, MenuRepositoryCustom {
 
 }

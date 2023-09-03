@@ -1,19 +1,11 @@
 package com.personal.portfolio.menu;
 
 import com.personal.portfolio.domain.base.BaseEntity;
-import com.personal.portfolio.hobby.HobbyEntity;
-import com.personal.portfolio.music.MusicEntity;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.awt.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Slf4j
 @Entity
@@ -23,7 +15,7 @@ import java.util.List;
 })
 @Getter
 @NoArgsConstructor
-public class MenuEntity extends BaseEntity {
+public class Menu extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MENU_ID", nullable = false)
     private Long menuId;
@@ -35,12 +27,12 @@ public class MenuEntity extends BaseEntity {
 
 //    필요한 경우 주석해제하여 사용
 //    @OneToMany(mappedBy = "menuEntity")
-//    private List<MusicEntity> musicEntities = new ArrayList<MusicEntity>();
+//    private List<Music> musicEntities = new ArrayList<Music>();
 //    @OneToMany(mappedBy = "menuEntity")
-//    private List<HobbyEntity> hobbyEntity = new ArrayList<HobbyEntity>();
+//    private List<Hobby> hobbyEntity = new ArrayList<Hobby>();
 
     @Builder
-    public MenuEntity(Long menuId, String menuName, String menuImage, LocalDateTime createDate, LocalDateTime modifiedDate){
+    public Menu(Long menuId, String menuName, String menuImage, LocalDateTime createDate, LocalDateTime modifiedDate){
         this.menuId = menuId;
         this.menuName = menuName;
         this.menuImage = menuImage;
@@ -48,11 +40,11 @@ public class MenuEntity extends BaseEntity {
         this.modifiedDate = modifiedDate;
     }
 
-    public boolean valueUpdate(MenuEntity menuEntity){
+    public boolean valueUpdate(Menu menu){
         try{
-            this.menuId = menuEntity.getMenuId();
-            this.menuName = menuEntity.getMenuName();
-            this.menuImage = menuEntity.getMenuImage();
+            this.menuId = menu.getMenuId();
+            this.menuName = menu.getMenuName();
+            this.menuImage = menu.getMenuImage();
             this.modifiedDate = LocalDateTime.now();
         }catch (Exception e){
             log.info("Exception ->" +  e);
