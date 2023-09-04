@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class MusicService {
     private final MusicRepository musicRepository;
 
+    private final int size = 10;
 
     public List<MusicDto> allMusic(){
         List<Music> entityList = musicRepository.findAll();
@@ -56,10 +58,22 @@ public class MusicService {
         return true;
     }
 
-    public List<MusicDto> findByGenre(int genreNo){
-        PageRequest pageRequest = PageRequest.of(0,1);
-        List<Music> musicList = musicRepository.findByGenre(genreNo, pageRequest);
-        List<MusicDto> dtoList =  musicList.stream().map(entity -> new MusicDto(entity)).collect(Collectors.toList());
-        return  dtoList;
+    public List<MusicDto> findByGenre(String genreName){
+        PageRequest pageRequest = PageRequest.of(0,size);
+        Genre genre = Genre.valueOf(genreName.toUpperCase(Locale.ROOT));
+        List<MusicDto> musicList = musicRepository.findByGenre(genre, pageRequest).stream()
+                                    .map(entity -> new MusicDto(entity))
+                                    .collect(Collectors.toList());
+        return  musicList;
+    }
+
+    public List<MusicDto> findBySinger(String singerName){
+        PageRequest pageRequest = PageRequest.of(0, size);
+        List<Music> list =musicRepository.findBySinger(singerName, pageRequest);
+        List<MusicDto> musicList = musicRepository.findBySinger(singerName, pageRequest).stream()
+                                                .map(music -> new MusicDto(music))
+                                                .collect(Collectors.toList());
+
+        return musicList;
     }
 }

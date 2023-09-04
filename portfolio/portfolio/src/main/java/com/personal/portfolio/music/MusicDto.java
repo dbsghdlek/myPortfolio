@@ -16,11 +16,12 @@ public class MusicDto extends BaseDto {
     private String musicName;
     @NotEmpty
     private String singerName;
-
+    private Genre genre;
     public MusicDto(Music music){
         this.musicID = music.getMusicID();
         this.musicName = music.getMusicName();
         this.createDate = music.getCreateDate();
+        this.genre = music.getGenre();
         this.modifiedDate = music.getModifiedDate();
         this.singerName = music.getSingerName();
     }
@@ -29,6 +30,8 @@ public class MusicDto extends BaseDto {
         return new Music().builder()
                 .musicID(musicID)
                 .musicName(musicName)
+                .genre(genre)
+                .singerName(singerName)
                 .createDate(createDate)
                 .modifiedDate(modifiedDate)
                 .build();

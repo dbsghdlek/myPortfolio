@@ -1,7 +1,6 @@
 package com.personal.portfolio.music;
 
 import com.personal.portfolio.domain.base.BaseEntity;
-import com.personal.portfolio.genre.Genre;
 import com.personal.portfolio.menu.Menu;
 import lombok.*;
 
@@ -20,8 +19,8 @@ public class Music extends BaseEntity {
     private Long musicID;
     @Column(name = "MUSIC_NAME", nullable = false)
     private String musicName;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "GENRE_NO")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "GENRE")
     private Genre genre;
     @Column(name = "MUSIC_IMAGE")
     private String musicImage;

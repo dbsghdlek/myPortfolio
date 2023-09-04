@@ -9,6 +9,8 @@ import java.util.List;
 
 
 public interface MusicRepository extends JpaRepository<Music, Long>, MusicRepositoryCustom {
-    @Query(value = "select m from Music m inner join m.genre g where g.genreNo = :genreNo")
-    List<Music> findByGenre(@Param("genreNo") int genreNo, Pageable pageable);
+    @Query(value = "select m from Music m where m.genre = :genre")
+    List<Music> findByGenre(@Param("genre") Genre genre, Pageable pageable);
+    @Query(value = "select m from Music m where m.singerName =:singerName")
+    List<Music> findBySinger(@Param("singerName") String singerName, Pageable pageable);
 }

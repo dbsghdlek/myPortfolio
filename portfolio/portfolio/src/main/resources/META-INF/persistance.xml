@@ -12,7 +12,7 @@
 
             <!--추가 옵션 속성-->
             <!--하기 옵션은 개발서버 개발 시에만 사용 운영서버에 적용할 때는 none으로 변경해주어야 함.-->
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>
