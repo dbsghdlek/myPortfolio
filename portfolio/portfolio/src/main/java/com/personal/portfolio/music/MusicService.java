@@ -21,7 +21,7 @@ public class MusicService {
     private final int size = 10;
 
     public List<MusicDto> allMusic(){
-        List<Music> entityList = musicRepository.findAll();
+        List<MusicEntity> entityList = musicRepository.findAll();
         List<MusicDto> list = new ArrayList<MusicDto>();;
 
         entityList.stream().forEach(entity -> list.add(new MusicDto(entity)));
@@ -30,23 +30,23 @@ public class MusicService {
     }
 
     public MusicDto getMusic(Long musicId){
-        Music music = musicRepository.findById(musicId).orElseThrow();
-        MusicDto musicDto = new MusicDto(music);
+        MusicEntity musicEntity = musicRepository.findById(musicId).orElseThrow();
+        MusicDto musicDto = new MusicDto(musicEntity);
         return musicDto;
     }
 
     @Transactional
     public boolean insertMusic(MusicDto musicDto){
         musicDto.setCreateDate(LocalDateTime.now());
-        Music music = musicDto.toEntity();
-        return musicRepository.save(music) != null?true:false;
+        MusicEntity musicEntity = musicDto.toEntity();
+        return musicRepository.save(musicEntity) != null?true:false;
     }
     @Transactional
     public boolean updateMusic(MusicDto musicDto) throws IllegalArgumentException{
-        Music music = musicRepository.findById(musicDto.getMusicID()).orElseThrow();
-        music.valueUpdate(musicDto.toEntity());
+        MusicEntity musicEntity = musicRepository.findById(musicDto.getMusicID()).orElseThrow();
+        musicEntity.valueUpdate(musicDto.toEntity());
 
-        return musicRepository.save(music) != null?true:false;
+        return musicRepository.save(musicEntity) != null?true:false;
     }
     @Transactional
     public boolean deleteMusic(Long musicId){
@@ -58,22 +58,5 @@ public class MusicService {
         return true;
     }
 
-    public List<MusicDto> findByGenre(String genreName){
-        PageRequest pageRequest = PageRequest.of(0,size);
-        Genre genre = Genre.valueOf(genreName.toUpperCase(Locale.ROOT));
-        List<MusicDto> musicList = musicRepository.findByGenre(genre, pageRequest).stream()
-                                    .map(entity -> new MusicDto(entity))
-                                    .collect(Collectors.toList());
-        return  musicList;
-    }
 
-    public List<MusicDto> findBySinger(String singerName){
-        PageRequest pageRequest = PageRequest.of(0, size);
-        List<Music> list =musicRepository.findBySinger(singerName, pageRequest);
-        List<MusicDto> musicList = musicRepository.findBySinger(singerName, pageRequest).stream()
-                                                .map(music -> new MusicDto(music))
-                                                .collect(Collectors.toList());
-
-        return musicList;
-    }
 }

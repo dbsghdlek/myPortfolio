@@ -16,21 +16,19 @@ public class MusicDto extends BaseDto {
     private String musicName;
     @NotEmpty
     private String singerName;
-    private Genre genre;
-    public MusicDto(Music music){
-        this.musicID = music.getMusicID();
-        this.musicName = music.getMusicName();
-        this.createDate = music.getCreateDate();
-        this.genre = music.getGenre();
-        this.modifiedDate = music.getModifiedDate();
-        this.singerName = music.getSingerName();
+
+    public MusicDto(MusicEntity musicEntity){
+        this.musicID = musicEntity.getMusicID();
+        this.musicName = musicEntity.getMusicName();
+        this.createDate = musicEntity.getCreateDate();
+        this.modifiedDate = musicEntity.getModifiedDate();
+        this.singerName = musicEntity.getSingerName();
     }
 
-    public Music toEntity(){
-        return new Music().builder()
+    public MusicEntity toEntity(){
+        return new MusicEntity().builder()
                 .musicID(musicID)
                 .musicName(musicName)
-                .genre(genre)
                 .singerName(singerName)
                 .createDate(createDate)
                 .modifiedDate(modifiedDate)

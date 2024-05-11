@@ -1,8 +1,8 @@
 package com.personal.portfolio.menu;
 
 import com.personal.portfolio.domain.result.ErrorResult;
-import com.personal.portfolio.error.ErrorCodeEnum;
-import com.personal.portfolio.error.ErrorVO;
+import com.personal.portfolio.domain.error.ErrorCodeEnum;
+import com.personal.portfolio.domain.error.ErrorVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

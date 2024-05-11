@@ -9,10 +9,10 @@
     </resultMap>
 
     <select id="getAllUser" resultMap="menuSelectRM" resultType="com.personal.portfolio.menu.MenuDto">
-        SELECT * FROM menu
+        SELECT * FROM menuEntity
     </select>
 
     <insert id="addMenu" parameterType="com.personal.portfolio.menu.MenuDto">
-        INSERT INTO menu(menu_id, menu_name) VALUES (menuId, menuName)
+        INSERT INTO menuEntity(menu_id, menu_name) VALUES (menuId, menuName)
     </insert>
 </mapper>

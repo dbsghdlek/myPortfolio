@@ -13,8 +13,8 @@ public class PuppyDto extends BaseDto {
 
     private LocalDateTime pictureDate;
 
-    public Puppy toEntity(){
-        return new Puppy().builder()
+    public PuppyEntity toEntity(){
+        return new PuppyEntity().builder()
                 .pictureId(pictureId)
                 .pictureName(pictureName)
                 .pictureDate(pictureDate)
@@ -23,11 +23,11 @@ public class PuppyDto extends BaseDto {
                 .build();
     }
 
-    public PuppyDto(Puppy puppy){
-        this.pictureId = puppy.getPictureId();
-        this.pictureName = puppy.getPictureName();
-        this.pictureDate = puppy.getPictureDate();
-        this.createDate = puppy.getCreateDate();
-        this.modifiedDate = puppy.getModifiedDate();
+    public PuppyDto(PuppyEntity puppyEntity){
+        this.pictureId = puppyEntity.getPictureId();
+        this.pictureName = puppyEntity.getPictureName();
+        this.pictureDate = puppyEntity.getPictureDate();
+        this.createDate = puppyEntity.getCreateDate();
+        this.modifiedDate = puppyEntity.getModifiedDate();
     }
 }

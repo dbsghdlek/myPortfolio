@@ -8,9 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 
-public interface MusicRepository extends JpaRepository<Music, Long>, MusicRepositoryCustom {
-    @Query(value = "select m from Music m where m.genre = :genre")
-    List<Music> findByGenre(@Param("genre") Genre genre, Pageable pageable);
-    @Query(value = "select m from Music m where m.singerName =:singerName")
-    List<Music> findBySinger(@Param("singerName") String singerName, Pageable pageable);
+public interface MusicRepository extends JpaRepository<MusicEntity, Long>, MusicRepositoryCustom {
+
 }

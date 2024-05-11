@@ -18,7 +18,7 @@ public class HobbyService {
 
     @Transactional
     public List<HobbyDto> allHobby(){
-        List<Hobby> list =  hobbyRepository.findAll();
+        List<HobbyEntity> list =  hobbyRepository.findAll();
         List<HobbyDto> dtoList = new ArrayList<>();
         list.stream().forEach(hobbyEntity -> dtoList.add(new HobbyDto(hobbyEntity)));
 
@@ -26,7 +26,7 @@ public class HobbyService {
     }
     @Transactional
     public HobbyDto getHobby(int hobbyId){
-        return new HobbyDto((Hobby) hobbyRepository.findById(hobbyId).orElseThrow());
+        return new HobbyDto((HobbyEntity) hobbyRepository.findById(hobbyId).orElseThrow());
     }
     @Transactional
     public boolean insertHobby(HobbyDto hobbyDto){
@@ -35,9 +35,9 @@ public class HobbyService {
     }
     @Transactional
     public boolean updateHobby(HobbyDto hobbyDto) {
-        Hobby hobby = hobbyRepository.findById(hobbyDto.getHobbyId()).orElseThrow();
-        hobby.valueUpdate(hobbyDto);
-        return hobbyRepository.save(hobby) != null?true:false;
+        HobbyEntity hobbyEntity = hobbyRepository.findById(hobbyDto.getHobbyId()).orElseThrow();
+        hobbyEntity.valueUpdate(hobbyDto);
+        return hobbyRepository.save(hobbyEntity) != null?true:false;
     }
     @Transactional
     public boolean deleteHobby(int hobbyId){

@@ -1,7 +1,7 @@
 package com.personal.portfolio.music;
 
-import com.personal.portfolio.error.ErrorCodeEnum;
-import com.personal.portfolio.error.ErrorVO;
+import com.personal.portfolio.domain.error.ErrorCodeEnum;
+import com.personal.portfolio.domain.error.ErrorVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,29 +35,5 @@ public class MusicController {
     public MusicDto musicInfoRequest(@PathVariable("musicId") Long musicId){
         MusicDto musicDto =musicService.getMusic(musicId);
         return musicDto;
-    }
-    @ApiOperation(value = "장르별 노래 검색 API", notes = "장르별 노래 검색")
-    @GetMapping("/genre/{genre}")
-    public ResponseEntity<?> musicBygenre(@PathVariable("genre") String genre){
-        List<MusicDto> list = new ArrayList<>();
-        try{
-            list = musicService.findByGenre(genre);
-            return new ResponseEntity<>(list, HttpStatus.OK);
-        }catch (Exception e){
-            log.info("Exception -> "+ e.toString());
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_400), HttpStatus.BAD_REQUEST);
-        }
-    }
-    @GetMapping("/singer/{singerName}")
-    public ResponseEntity<?> musicBySinger(@PathVariable("singerName") String singerName){
-        log.info("singerName ->" + singerName);
-        List<MusicDto> list = new ArrayList<>();
-        try{
-            list = musicService.findBySinger(singerName);
-            return new ResponseEntity<>(list, HttpStatus.OK);
-        }catch (Exception e){
-            log.info("Exception -> "+ e.toString());
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_400), HttpStatus.BAD_REQUEST);
-        }
     }
 }

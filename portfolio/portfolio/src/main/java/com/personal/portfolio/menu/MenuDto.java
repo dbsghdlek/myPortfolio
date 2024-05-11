@@ -18,8 +18,8 @@ public class MenuDto extends BaseDto {
     private String menuName;
     private String menuImage;
 
-    public Menu toEntity(){
-        return Menu.builder()
+    public MenuEntity toEntity(){
+        return MenuEntity.builder()
                 .menuId(menuId)
                 .menuName(menuName)
                 .menuImage(menuImage)
@@ -28,11 +28,11 @@ public class MenuDto extends BaseDto {
                 .build();
     }
 
-    public MenuDto(Menu menu){
-        this.menuId = menu.getMenuId();
-        this.menuName = menu.getMenuName();
-        this.menuImage = menu.getMenuImage();
-        this.createDate = menu.getCreateDate();
-        this.modifiedDate = menu.getModifiedDate();
+    public MenuDto(MenuEntity menuEntity){
+        this.menuId = menuEntity.getMenuId();
+        this.menuName = menuEntity.getMenuName();
+        this.menuImage = menuEntity.getMenuImage();
+        this.createDate = menuEntity.getCreateDate();
+        this.modifiedDate = menuEntity.getModifiedDate();
     }
 }
