@@ -1,6 +1,8 @@
-package com.example.portfolio.music;
+package com.example.portfolio.music.dto;
 
 import com.example.portfolio.domain.base.BaseDto;
+import com.example.portfolio.genre.GenreDto;
+import com.example.portfolio.music.MusicEntity;
 import lombok.*;
 
 import jakarta.validation.constraints.NotEmpty;

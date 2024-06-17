@@ -1,6 +1,7 @@
 package com.example.portfolio.genre;
 
 import com.example.portfolio.domain.base.BaseEntity;
+import com.example.portfolio.music.MusicEntity;
 import lombok.Getter;
 
 import jakarta.persistence.*;

@@ -35,6 +35,5 @@ public class Music {
         for(MusicEntity music : result){
             System.out.println("뮤직 ->" + music.getMusicName() + " " + music.getGenreEntity().getGenreName());
         }
-
     }
 }

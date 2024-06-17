@@ -26,24 +26,24 @@ public class MenuService {
     }
 
     //단일 메뉴 정보 가져오기
-    public MenuDto getMenu(Long menuId){
-        MenuEntity MenuEntity = menuRepository.findById(menuId).orElseThrow();
-        MenuDto menuDto = new MenuDto(MenuEntity);
-        return menuDto;
-    }
+//    public MenuDto getMenu(Long menuId){
+//        MenuEntity MenuEntity = menuRepository.findById(menuId).orElseThrow();
+//        MenuDto menuDto = new MenuDto(MenuEntity);
+//        return menuDto;
+//    }
 
-    public boolean insertMenu(MenuDto menuDto){
-        menuDto.setCreateDate(LocalDateTime.now());
-        MenuEntity menuEntity = menuDto.toEntity();
-        return menuRepository.save(menuEntity) != null?true:false;
-    }
+//    public boolean insertMenu(MenuDto menuDto){
+//        menuDto.setCreateDate(LocalDateTime.now());
+//        MenuEntity menuEntity = menuDto.toEntity();
+//        return menuRepository.save(menuEntity) != null?true:false;
+//    }
 
-    public boolean updateMenu(MenuDto menuDto){
-        MenuEntity menuEntity = menuRepository.findById(menuDto.getMenuId()).orElseThrow();
-        menuEntity.valueUpdate(menuDto.toEntity());
-
-        return menuRepository.save(menuEntity) != null?true:false;
-    }
+//    public boolean updateMenu(MenuDto menuDto){
+//        MenuEntity menuEntity = menuRepository.findById(menuDto.getMenuId()).orElseThrow();
+//        menuEntity.valueUpdate(menuDto.toEntity());
+//
+//        return menuRepository.save(menuEntity) != null?true:false;
+//    }
 
     public boolean deleteMenu(Long menuId){
         if(menuRepository.findById(menuId) != null){

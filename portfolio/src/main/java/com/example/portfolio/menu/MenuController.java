@@ -46,15 +46,15 @@ public class MenuController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @Operation(summary = "메뉴 정보 가져오기", description = "단일 메뉴 정보 가져오기")
-    @GetMapping("/{menuId}")
-    public ResponseEntity<?> getMenu(@PathVariable Long menuId){
-        MenuDto menu = menuService.getMenu(menuId);
-
-        if(menu == null){
-            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_3000), HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>(menu, HttpStatus.OK);
-    }
+//    @Operation(summary = "메뉴 정보 가져오기", description = "단일 메뉴 정보 가져오기")
+//    @GetMapping("/{menuId}")
+//    public ResponseEntity<?> getMenu(@PathVariable Long menuId){
+//        MenuDto menu = menuService.getMenu(menuId);
+//
+//        if(menu == null){
+//            return new ResponseEntity<>(new ErrorVO(ErrorCodeEnum.ERROR_3000), HttpStatus.OK);
+//        }
+//
+//        return new ResponseEntity<>(menu, HttpStatus.OK);
+//    }
 }

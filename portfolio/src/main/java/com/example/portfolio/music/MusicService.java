@@ -1,11 +1,12 @@
 package com.example.portfolio.music;
 
+import com.example.portfolio.music.dto.MusicAndGenre;
+import com.example.portfolio.music.dto.MusicDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,11 +16,9 @@ public class MusicService {
 
     private final int size = 10;
 
-    public List<MusicDto> allMusic(){
-        List<MusicEntity> entityList = musicRepository.findAll();
-        List<MusicDto> list = new ArrayList<MusicDto>();;
+    public List<MusicAndGenre> allMusic(){
 
-        entityList.stream().forEach(entity -> list.add(new MusicDto(entity)));
+        List<MusicAndGenre> list = musicRepository.musicAllInfo();
 
         return list;
     }

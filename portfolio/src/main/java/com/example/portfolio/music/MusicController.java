@@ -1,17 +1,13 @@
 package com.example.portfolio.music;
 
-import com.example.portfolio.domain.error.ErrorCodeEnum;
-import com.example.portfolio.domain.error.ErrorVO;
+import com.example.portfolio.music.dto.MusicAndGenre;
+import com.example.portfolio.music.dto.MusicDto;
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -27,10 +23,12 @@ public class MusicController {
 
     @Operation(summary="노래 목록 API", description="노래 목록 가져오기")
     @GetMapping("")
-    public List<MusicDto> MusicList(){
-        List<MusicDto> list = musicService.allMusic();
+    public List<MusicAndGenre> MusicList(){
+        List<MusicAndGenre> list = musicService.allMusic();
         return list;
     }
+
+
 
     @Operation(summary="노래 단일 정보 API", description="단일 노래 정보 가져오기")
     @GetMapping("/{musicId}")
