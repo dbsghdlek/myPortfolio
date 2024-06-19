@@ -2,6 +2,7 @@ package com.example.portfolio.genre;
 
 import com.example.portfolio.domain.base.BaseEntity;
 import com.example.portfolio.music.MusicEntity;
+import lombok.Builder;
 import lombok.Getter;
 
 import jakarta.persistence.*;
@@ -16,4 +17,10 @@ public class GenreEntity extends BaseEntity {
     private Long genreId;
     @Column(name = "GENRE_NAME", nullable = false)
     private String genreName;
+
+    @Builder
+    private GenreEntity(Long genreId, String genreName){
+        this.genreId = genreId;
+        this.genreName = genreName;
+    }
 }

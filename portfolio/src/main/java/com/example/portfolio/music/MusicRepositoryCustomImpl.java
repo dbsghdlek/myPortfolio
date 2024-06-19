@@ -5,6 +5,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Collection;
 import java.util.List;
 
 import static com.example.portfolio.genre.QGenreEntity.genreEntity;
@@ -25,5 +26,15 @@ public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
                 .from(musicEntity)
                 .leftJoin(musicEntity.genreEntity, genreEntity)
                 .fetch();
+    }
+
+    public List<MusicEntity> genreByMusic(Long genreId){
+        List<MusicEntity> result = jpaQueryFactory.select(musicEntity)
+                .from(musicEntity)
+                .join(musicEntity.genreEntity, genreEntity)
+                .where(genreEntity.genreId.eq(genreId))
+                .fetch();
+        
+        return result;
     }
 }

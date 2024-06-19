@@ -22,12 +22,4 @@ public class PuppyDto extends BaseDto {
                 .modifiedDate(modifiedDate)
                 .build();
     }
-
-    public PuppyDto(PuppyEntity puppyEntity){
-        this.pictureId = puppyEntity.getPictureId();
-        this.pictureName = puppyEntity.getPictureName();
-        this.pictureDate = puppyEntity.getPictureDate();
-        this.createDate = puppyEntity.getCreateDate();
-        this.modifiedDate = puppyEntity.getModifiedDate();
-    }
 }

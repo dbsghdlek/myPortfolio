@@ -12,6 +12,7 @@ public class GenreDto {
     private Long genreId;
     @NotEmpty
     private String genreName;
+
     public GenreDto(Long genreId, String genreName){
         this.genreId = genreId;
         this.genreName = genreName;

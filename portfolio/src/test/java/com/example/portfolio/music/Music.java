@@ -11,6 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static com.example.portfolio.genre.QGenreEntity.genreEntity;
+import static com.example.portfolio.music.QMusicEntity.musicEntity;
+
 @SpringBootTest
 @Transactional
 public class Music {
@@ -34,6 +37,19 @@ public class Music {
 
         for(MusicEntity music : result){
             System.out.println("뮤직 ->" + music.getMusicName() + " " + music.getGenreEntity().getGenreName());
+        }
+    }
+
+    @Test
+    public void genreByMusicSearch(){
+        List<MusicEntity> result = queryFactory.select(musicEntity)
+                .from(musicEntity)
+                .join(musicEntity.genreEntity, genreEntity)
+                .where(genreEntity.genreId.eq(Long.valueOf(1)))
+                .fetch();
+
+        for (MusicEntity music : result) {
+            System.out.println("music = " + music.getMusicName());
         }
     }
 }
