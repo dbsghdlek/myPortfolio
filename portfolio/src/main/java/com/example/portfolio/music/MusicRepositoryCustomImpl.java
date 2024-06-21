@@ -4,6 +4,7 @@ import com.example.portfolio.music.dto.MusicAndGenre;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,9 +15,12 @@ import static com.example.portfolio.music.QMusicEntity.musicEntity;
 @RequiredArgsConstructor
 public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
 
+    @Value("${paging.limit}")
+    private int pagingLimit;
+
     private final JPAQueryFactory jpaQueryFactory;
 
-    //모든 음악 정보 가져오기
+    //음악 정보 가져오기 페이징 적용
     public List<MusicAndGenre> musicAllInfo(){
         return jpaQueryFactory.select(Projections.fields(MusicAndGenre.class
                     ,musicEntity.musicID
@@ -25,6 +29,8 @@ public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
                     , musicEntity.genreEntity.genreName))
                 .from(musicEntity)
                 .leftJoin(musicEntity.genreEntity, genreEntity)
+                .offset(0)
+                .limit(pagingLimit)
                 .fetch();
     }
 

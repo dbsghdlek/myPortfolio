@@ -34,5 +34,6 @@ springdoc:
   paths-to-match:
     - /v1/**
 
-
+paging:
+  limit : 1
 
