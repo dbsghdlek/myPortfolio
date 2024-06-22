@@ -21,7 +21,7 @@ public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
     private final JPAQueryFactory jpaQueryFactory;
 
     //음악 정보 가져오기 페이징 적용
-    public List<MusicAndGenre> musicAllInfo(){
+    public List<MusicAndGenre> musicAllInfo(int pageNumber){
         return jpaQueryFactory.select(Projections.fields(MusicAndGenre.class
                     ,musicEntity.musicID
                     , musicEntity.musicName
@@ -29,7 +29,7 @@ public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
                     , musicEntity.genreEntity.genreName))
                 .from(musicEntity)
                 .leftJoin(musicEntity.genreEntity, genreEntity)
-                .offset(0)
+                .offset(pageNumber)
                 .limit(pagingLimit)
                 .fetch();
     }

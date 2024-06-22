@@ -3,6 +3,7 @@ package com.example.portfolio.music;
 import com.example.portfolio.music.dto.MusicAndGenre;
 import com.example.portfolio.music.dto.MusicDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -11,14 +12,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MusicService {
     private final MusicRepository musicRepository;
 
-    private final int size = 10;
+    public List<MusicAndGenre> allMusic(int pageNumber){
 
-    public List<MusicAndGenre> allMusic(){
-
-        List<MusicAndGenre> list = musicRepository.musicAllInfo();
+        List<MusicAndGenre> list = musicRepository.musicAllInfo(pageNumber);
 
         return list;
     }
@@ -29,13 +29,12 @@ public class MusicService {
         return musicDto;
     }
 
-    @Transactional
     public boolean insertMusic(MusicDto musicDto){
         musicDto.setCreateDate(LocalDateTime.now());
-        MusicEntity musicEntity = musicDto.toEntity();
-        return musicRepository.save(musicEntity) != null?true:false;
+
+        return musicRepository.save(musicDto.toEntity()) != null?true:false;
     }
-    @Transactional
+
     public boolean updateMusic(MusicDto musicDto) throws IllegalArgumentException{
         MusicEntity musicEntity = musicRepository.findById(musicDto.getMusicID()).orElseThrow();
         musicEntity.valueUpdate(musicDto.toEntity());
@@ -43,7 +42,6 @@ public class MusicService {
         return musicRepository.save(musicEntity) != null?true:false;
     }
 
-    @Transactional
     public boolean deleteMusic(Long musicId){
         if(musicRepository.findById(musicId) != null){
             musicRepository.deleteById(musicId);

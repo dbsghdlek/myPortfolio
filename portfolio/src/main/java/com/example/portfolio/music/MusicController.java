@@ -16,19 +16,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MusicController {
 
-    public final MusicRepository musicRepository;
-
     public final MusicService musicService;
 
 
     @Operation(summary="노래 목록 API", description="노래 목록 가져오기")
     @GetMapping("")
-    public List<MusicAndGenre> MusicList(){
-        List<MusicAndGenre> list = musicService.allMusic();
+    public List<MusicAndGenre> MusicList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNUmber){
+        List<MusicAndGenre> list = musicService.allMusic(pageNUmber);
         return list;
     }
-
-
 
     @Operation(summary="노래 단일 정보 API", description="단일 노래 정보 가져오기")
     @GetMapping("/{musicId}")
