@@ -17,4 +17,14 @@ public class MenuDto extends BaseDto {
     @NotEmpty
     private String menuName;
     private String menuImage;
+
+    public MenuEntity toEntity(){
+        return MenuEntity.builder()
+                .menuId(this.menuId)
+                .menuName(this.menuName)
+                .createDate(this.createDate)
+                .modifiedDate(this.modifiedDate)
+                .menuImage(this.menuImage)
+                .build();
+    }
 }

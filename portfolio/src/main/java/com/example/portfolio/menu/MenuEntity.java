@@ -20,7 +20,7 @@ public class MenuEntity extends BaseEntity {
     @Column(name = "MENU_ID", nullable = false)
     private Long menuId;
 
-    @Column(name = "MENU_NAME", nullable = false, length = 200)
+    @Column(name = "MENU_NAME", nullable = false, length = 200, unique = true)
     private String menuName;
     @Column(name = "MENU_IMAGE", nullable = true, length = 255)
     private String menuImage;

@@ -13,8 +13,8 @@ public class FoodService {
 
     private final FoodRepository foodRepository;
 
-//    public List<FoodDto> foodList(){
-//        List<FoodDto> foodList = foodRepository.getFoodList();
-//        return foodList;
-//    }
+    public List<FoodDto> foodList(int pageNumber){
+        List<FoodDto> foodList = foodRepository.getFoodList(pageNumber);
+        return foodList;
+    }
 }

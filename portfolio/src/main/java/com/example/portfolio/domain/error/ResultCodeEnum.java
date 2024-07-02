@@ -9,7 +9,7 @@ import lombok.Getter;
 //4000번대 DB 에러
 @Getter
 @AllArgsConstructor
-public enum ErrorCodeEnum {
+public enum ResultCodeEnum {
 
     SUCCESS_0000(0000, "Success"),
     ERROR_400(400, "BAD Request"),
@@ -19,6 +19,6 @@ public enum ErrorCodeEnum {
     ERROR_4000(4000, "Save Failed"),
     ERROR_9999(9999, "Unknown error");
 
-    private int errorCode;
-    private String errorReason;
+    private int Code;
+    private String Reason;
 }

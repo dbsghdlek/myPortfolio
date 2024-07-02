@@ -11,7 +11,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ErrorCodeEnum {
     SUCCESS_0000(0000, "Success"),
-
     ERROR_400(400, "BAD Request"),
     ERROR_1000(1000,"Authorization Denied"),
     ERROR_2000(2000,""),
