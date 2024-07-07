@@ -14,9 +14,9 @@ import java.util.List;
 import static com.example.portfolio.genre.QGenreEntity.genreEntity;
 import static com.example.portfolio.music.QMusicEntity.musicEntity;
 
-@SpringBootTest
+
 @Transactional
-public class Music {
+public class MusicServiceTest {
     @Autowired
     EntityManager em;
 

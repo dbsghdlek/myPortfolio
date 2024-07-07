@@ -1,6 +1,7 @@
 package com.example.portfolio.music;
 
 import com.example.portfolio.music.dto.MusicAndGenre;
+import com.example.portfolio.music.dto.MusicDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -34,13 +35,16 @@ public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
                 .fetch();
     }
 
-    public List<MusicEntity> genreByMusic(Long genreId){
-        List<MusicEntity> result = jpaQueryFactory.select(musicEntity)
+    public List<MusicDto> genreByMusic(Long genreId){
+        return jpaQueryFactory.select(Projections.fields(MusicDto.class
+                ,musicEntity.musicID
+                , musicEntity.musicName
+                , musicEntity.musicImage
+                , musicEntity.createDate
+                , musicEntity.modifiedDate))
                 .from(musicEntity)
                 .join(musicEntity.genreEntity, genreEntity)
                 .where(genreEntity.genreId.eq(genreId))
                 .fetch();
-        
-        return result;
     }
 }
