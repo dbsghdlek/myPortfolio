@@ -1,5 +1,7 @@
 package com.example.portfolio.music;
 
+import com.example.portfolio.domain.result.ResponseResult;
+import com.example.portfolio.domain.result.Result;
 import com.example.portfolio.music.dto.MusicAndGenre;
 import com.example.portfolio.music.dto.MusicDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,20 +18,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MusicController {
 
-    public final MusicService musicService;
-
+    public final MusicService service;
 
     @Operation(summary="노래 목록 API", description="노래 목록 가져오기")
     @GetMapping("")
-    public List<MusicAndGenre> MusicList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNUmber){
-        List<MusicAndGenre> list = musicService.allMusic(pageNUmber);
-        return list;
+    public Result MusicList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNUmber){
+        List<MusicAndGenre> list = service.allMusic(pageNUmber);
+        return ResponseResult.wrapperResult(list);
     }
 
     @Operation(summary="노래 단일 정보 API", description="단일 노래 정보 가져오기")
     @GetMapping("/{musicId}")
-    public MusicDto musicInfoRequest(@PathVariable("musicId") Long musicId){
-        MusicDto musicDto =musicService.getMusic(musicId);
-        return musicDto;
+    public Result musicInfoRequest(@PathVariable("musicId") Long musicId){
+        MusicDto musicDto =service.getMusic(musicId);
+        return ResponseResult.wrapperResult(musicDto);
     }
 }

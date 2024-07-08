@@ -1,6 +1,7 @@
 package com.example.portfolio.menu;
 
 import com.example.portfolio.domain.error.ResultCodeEnum;
+import com.example.portfolio.domain.result.ResponseResult;
 import com.example.portfolio.domain.result.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -41,17 +42,7 @@ public class MenuAdmincontroller {
         menuDto.setMenuId(menuId);
         boolean response = menuService.updateMenu(menuDto);
 
-        Result result;
-        if(response){
-            result = Result.builder()
-                    .code(ResultCodeEnum.SUCCESS_0000.getCode())
-                    .message(ResultCodeEnum.SUCCESS_0000.getReason())
-                    .build();
-        }else
-            result = Result.builder()
-                .code(ResultCodeEnum.ERROR_400.getCode())
-                .message(ResultCodeEnum.ERROR_400.getReason())
-                .build();
+        Result result = ResponseResult.wrapperResult(response);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
@@ -61,18 +52,8 @@ public class MenuAdmincontroller {
     public ResponseEntity<?> deleteMenu(Long menuId){
         boolean response = menuService.deleteMenu(menuId);
 
-        Result result;
-        if(response){
-            result = Result.builder()
-                    .code(ResultCodeEnum.SUCCESS_0000.getCode())
-                    .message(ResultCodeEnum.SUCCESS_0000.getReason())
-                    .build();
-        }else
-            result = Result.builder()
-                    .code(ResultCodeEnum.ERROR_400.getCode())
-                    .message(ResultCodeEnum.ERROR_400.getReason())
-                    .build();
+        Result result = ResponseResult.wrapperResult(response);
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

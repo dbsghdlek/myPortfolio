@@ -1,6 +1,7 @@
 package com.example.portfolio.food;
 
 import com.example.portfolio.domain.error.ResultCodeEnum;
+import com.example.portfolio.domain.result.ResponseResult;
 import com.example.portfolio.domain.result.Result;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,9 +38,9 @@ public class FoodController {
     }
 
     @GetMapping("")
-    public ResponseEntity<?> foodList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNumber){
+    public Result foodList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNumber){
         List<FoodDto> foodDtoList = service.foodList(pageNumber);
 
-        return new ResponseEntity<>(foodDtoList, HttpStatus.OK);
+        return ResponseResult.wrapperResult(foodDtoList);
     }
 }

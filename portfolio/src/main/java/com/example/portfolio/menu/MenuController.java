@@ -1,5 +1,6 @@
 package com.example.portfolio.menu;
 
+import com.example.portfolio.domain.result.ResponseResult;
 import com.example.portfolio.domain.result.Result;
 import com.example.portfolio.domain.error.ResultCodeEnum;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,7 +23,7 @@ import java.util.NoSuchElementException;
 @RequestMapping(value = "/menu", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MenuController {
 
-    private final MenuService menuService;
+    private final MenuService service;
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({IllegalArgumentException.class, TypeMismatchException.class, SQLIntegrityConstraintViolationException.class})
@@ -39,23 +40,10 @@ public class MenuController {
     @Operation(summary="메뉴 목록 API", description="메뉴 목록 가져오기")
     @GetMapping("")
     public ResponseEntity<?> getMenus(){
-        List<MenuDto> list= menuService.allMenuByJpa();
+        List<MenuDto> list= service.allMenuByJpa();
 
-        Result result;
-        if (list.size() != 0 ){
-            result = Result.builder()
-                    .code(ResultCodeEnum.SUCCESS_0000.getCode())
-                    .contents(list)
-                    .message(ResultCodeEnum.SUCCESS_0000.getReason())
-                    .build();
-        }else result = Result.builder()
-                .code(ResultCodeEnum.ERROR_400.getCode())
-                .message(ResultCodeEnum.ERROR_400.getReason())
-                .build();
+        Result result = ResponseResult.wrapperResult(list);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
-
-
 }

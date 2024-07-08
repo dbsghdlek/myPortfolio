@@ -5,10 +5,20 @@ import com.example.portfolio.menu.MenuEntity;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity(name = "Travel")
 public class TravelEntity extends BaseEntity {
+
     @Id
-    private Long travelId;
+    @Column(name = "TRAVEL_ID")
+    private Long Id;
+
+    private String travelPictureName;
+
+    private String location;
+
+    private Date pictureDate;
 
     @ManyToOne
     @JoinColumn(name = "MENU_ID")

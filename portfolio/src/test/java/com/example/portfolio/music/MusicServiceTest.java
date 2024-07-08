@@ -17,39 +17,7 @@ import static com.example.portfolio.music.QMusicEntity.musicEntity;
 
 @Transactional
 public class MusicServiceTest {
+
     @Autowired
-    EntityManager em;
-
-    JPAQueryFactory queryFactory;
-
-    @BeforeEach
-    public void beforeMethod(){
-        queryFactory = new JPAQueryFactory(em);
-    }
-
-    @Test
-    public void musicAndGenreJoin(){
-        List<MusicEntity> result = queryFactory
-                .selectFrom(QMusicEntity.musicEntity)
-                .join(QMusicEntity.musicEntity.genreEntity, QGenreEntity.genreEntity)
-                .fetchJoin()
-                .fetch();
-
-        for(MusicEntity music : result){
-            System.out.println("뮤직 ->" + music.getMusicName() + " " + music.getGenreEntity().getGenreName());
-        }
-    }
-
-    @Test
-    public void genreByMusicSearch(){
-        List<MusicEntity> result = queryFactory.select(musicEntity)
-                .from(musicEntity)
-                .join(musicEntity.genreEntity, genreEntity)
-                .where(genreEntity.genreId.eq(Long.valueOf(1)))
-                .fetch();
-
-        for (MusicEntity music : result) {
-            System.out.println("music = " + music.getMusicName());
-        }
-    }
+    private MusicService musicService;
 }
