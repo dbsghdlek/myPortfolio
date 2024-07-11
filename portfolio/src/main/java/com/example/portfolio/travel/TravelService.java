@@ -1,14 +1,14 @@
 package com.example.portfolio.travel;
 
+import com.example.portfolio.travel.repository.TravelRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class TravelService {
 
-    private final TravelRepository travelRepository;
+//    private final TravelRepository Repository;
 
 
 }

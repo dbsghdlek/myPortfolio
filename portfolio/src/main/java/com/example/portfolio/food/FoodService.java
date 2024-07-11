@@ -1,5 +1,6 @@
 package com.example.portfolio.food;
 
+import com.example.portfolio.food.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -9,12 +10,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class FoodService {
+public class FoodService  {
 
     private final FoodRepository foodRepository;
 
-    public List<FoodDto> foodList(int pageNumber){
-        List<FoodDto> foodList = foodRepository.getFoodList(pageNumber);
-        return foodList;
+    public List<FoodDto> getListByPaging(int pageNumber) {
+
+        return foodRepository.getFoodListByPaging(pageNumber);
     }
 }

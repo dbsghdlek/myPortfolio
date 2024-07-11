@@ -1,6 +1,7 @@
 package com.example.portfolio.hobby;
 
 import com.example.portfolio.domain.base.BaseDto;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -10,11 +11,13 @@ public class HobbyDto extends BaseDto {
 
     public HobbyEntity toEntity(){
         return HobbyEntity.builder()
-                .hobbyId(hobbyId)
                 .hobbyName(hobbyName)
-                .createDate(createDate)
-                .modifiedDate(modifiedDate)
                 .build();
+    }
+
+    @Builder
+    public HobbyDto(String hobbyName){
+        this.hobbyName = hobbyName;
     }
 
     public HobbyDto(HobbyEntity hobbyEntity){

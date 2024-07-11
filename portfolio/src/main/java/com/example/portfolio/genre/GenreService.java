@@ -1,5 +1,6 @@
 package com.example.portfolio.genre;
 
+import com.example.portfolio.genre.repository.GenreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

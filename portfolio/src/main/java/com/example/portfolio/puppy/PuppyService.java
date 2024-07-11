@@ -1,11 +1,11 @@
 package com.example.portfolio.puppy;
 
+import com.example.portfolio.puppy.repository.PuppyRepository;
 import lombok.RequiredArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
+@Service
 public class PuppyService {
 
     private final PuppyRepository puppyRepository;

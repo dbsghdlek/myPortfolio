@@ -1,5 +1,6 @@
 package com.example.portfolio.keyboard;
 
+import com.example.portfolio.keyboard.repository.KeyboardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
