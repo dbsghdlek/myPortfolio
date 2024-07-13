@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/admin/keyboard", produces = MediaType.APPLICATION_JSON_VALUE)
-public class KeyboardAdmincontroller {
+public class KeyboardAdmincontroller extends BaseController{
 }

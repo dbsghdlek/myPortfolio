@@ -1,6 +1,7 @@
 package com.example.portfolio.music;
 
 import com.example.portfolio.music.dto.MusicAndGenre;
+import com.example.portfolio.music.dto.MusicDto;
 import com.example.portfolio.music.repository.MusicRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
+import java.util.Optional;
 
 @DataJpaTest
 public class MusicRepositoryTest {
@@ -37,5 +39,12 @@ public class MusicRepositoryTest {
         List<MusicAndGenre> list = musicRepository.musicAllInfo(1);
 
         Assertions.assertThat(list.size()).isEqualTo(pagingLimit);
+    }
+
+    @Test
+    public void getTest(){
+        MusicEntity music = musicRepository.findById(1L).orElseThrow();
+        MusicDto musicDto = new MusicDto(music);
+        Assertions.assertThat(musicDto.getMusicName()).isEqualTo("test1");
     }
 }

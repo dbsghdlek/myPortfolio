@@ -22,7 +22,7 @@ import java.util.NoSuchElementException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/food", produces = MediaType.APPLICATION_JSON_VALUE)
-public class FoodController {
+public class FoodController extends BaseController{
 
     private final FoodService service;
 

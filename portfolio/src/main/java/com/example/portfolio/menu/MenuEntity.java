@@ -42,7 +42,6 @@ public class MenuEntity extends BaseEntity {
 
     public boolean valueUpdate(MenuEntity menuEntity){
         try{
-            this.menuId = menuEntity.getMenuId();
             this.menuName = menuEntity.getMenuName();
             this.menuImage = menuEntity.getMenuImage();
             this.modifiedDate = LocalDateTime.now();

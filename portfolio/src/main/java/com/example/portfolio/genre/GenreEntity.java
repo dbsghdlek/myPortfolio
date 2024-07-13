@@ -6,10 +6,12 @@ import lombok.Builder;
 import lombok.Getter;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Genre")
 @Getter
+@NoArgsConstructor
 public class GenreEntity extends BaseEntity {
     @Id
     @GeneratedValue
@@ -19,7 +21,7 @@ public class GenreEntity extends BaseEntity {
     private String genreName;
 
     @Builder
-    private GenreEntity(Long genreId, String genreName){
+    public GenreEntity(Long genreId, String genreName){
         this.genreId = genreId;
         this.genreName = genreName;
     }

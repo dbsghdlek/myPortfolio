@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/admin/hobby", produces = MediaType.APPLICATION_JSON_VALUE)
-public class HobbyAdminController {
+public class HobbyAdminController extends BaseController{
 
     private final HobbyService service;
 

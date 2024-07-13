@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/admin/food", produces = MediaType.APPLICATION_JSON_VALUE)
-public class FoodAdminController  {
+public class FoodAdminController  extends BaseController{
 }

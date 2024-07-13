@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/admin/menu", produces = MediaType.APPLICATION_JSON_VALUE)
-public class MenuAdmincontroller{
+public class MenuAdmincontroller extends BaseController{
 
     private final MenuService menuService;
 
@@ -26,9 +26,7 @@ public class MenuAdmincontroller{
         menuDto.setMenuId(menuId);
         boolean response = menuService.updateMenu(menuDto);
 
-        Result result = ResponseResult.wrapperResult(response);
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(ResponseResult.wrapperResult(response), HttpStatus.OK);
     }
 
     @Operation(summary = "메뉴 삭제 API", description = "메뉴 정보 삭제")

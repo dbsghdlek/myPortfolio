@@ -1,23 +1,18 @@
 package com.example.portfolio.music;
 
-import com.example.portfolio.genre.QGenreEntity;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
+import com.example.portfolio.music.dto.MusicDto;
+import com.example.portfolio.music.repository.MusicRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.List;
-
-import static com.example.portfolio.genre.QGenreEntity.genreEntity;
-import static com.example.portfolio.music.QMusicEntity.musicEntity;
-
-
-@Transactional
+@DataJpaTest
 public class MusicServiceTest {
 
     @Autowired
-    private MusicService musicService;
+    MusicService service;
+
+
 }

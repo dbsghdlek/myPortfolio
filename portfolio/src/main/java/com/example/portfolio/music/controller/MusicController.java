@@ -9,7 +9,9 @@ import com.example.portfolio.music.dto.MusicDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,21 +20,21 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/music", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
-public class MusicController {
+public class MusicController extends BaseController{
 
     public final MusicService service;
 
     @Operation(summary="노래 목록 API", description="노래 목록 가져오기")
     @GetMapping("")
-    public Result MusicList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNUmber){
+    public ResponseEntity MusicList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNUmber){
         List<MusicAndGenre> list = service.allMusic(pageNUmber);
-        return ResponseResult.wrapperResult(list);
+        return new ResponseEntity<>(ResponseResult.wrapperResult(list), HttpStatus.OK);
     }
 
     @Operation(summary="노래 단일 정보 API", description="단일 노래 정보 가져오기")
     @GetMapping("/{musicId}")
-    public Result musicInfoRequest(@PathVariable("musicId") Long musicId){
-        MusicDto musicDto =service.getMusic(musicId);
-        return ResponseResult.wrapperResult(musicDto);
+    public ResponseEntity musicInfoRequest(@PathVariable("musicId") Long musicId){
+        MusicDto musicDto =service.getSingle(musicId);
+        return new ResponseEntity<>(ResponseResult.wrapperResult(musicDto), HttpStatus.OK);
     }
 }

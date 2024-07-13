@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/hobby", produces = MediaType.APPLICATION_JSON_VALUE)
-public class HobbyController {
+public class HobbyController extends BaseController{
 
 }

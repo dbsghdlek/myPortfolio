@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/admin/puppy", produces = MediaType.APPLICATION_JSON_VALUE)
-public class PuppyAdmincontroller {
+public class PuppyAdmincontroller extends BaseController{
 }

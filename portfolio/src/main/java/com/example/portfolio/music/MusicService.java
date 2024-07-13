@@ -23,26 +23,27 @@ public class MusicService {
         return list;
     }
 
-    public MusicDto getMusic(Long musicId){
+    public MusicDto getSingle(Long musicId){
         MusicEntity musicEntity = repository.findById(musicId).orElseThrow();
         MusicDto musicDto = new MusicDto(musicEntity);
         return musicDto;
     }
 
-    public boolean insertMusic(MusicDto musicDto){
+    public boolean insert(MusicDto musicDto){
         musicDto.setCreateDate(LocalDateTime.now());
 
         return repository.save(musicDto.toEntity()) != null?true:false;
     }
 
-    public boolean updateMusic(MusicDto musicDto) throws IllegalArgumentException{
+    public boolean update(MusicDto musicDto) throws IllegalArgumentException{
         MusicEntity musicEntity = repository.findById(musicDto.getMusicID()).orElseThrow();
-        musicEntity.valueUpdate(musicDto.toEntity());
+        //수정일 변경
+        musicDto.setModifiedDate(LocalDateTime.now());
 
-        return repository.save(musicEntity) != null?true:false;
+        return musicEntity.valueUpdate(musicDto.toEntity());
     }
 
-    public boolean deleteMusic(Long musicId){
+    public boolean delete(Long musicId){
         if(repository.findById(musicId) != null){
             repository.deleteById(musicId);
         }else{

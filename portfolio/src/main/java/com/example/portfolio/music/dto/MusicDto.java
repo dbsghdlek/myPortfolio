@@ -29,7 +29,6 @@ public class MusicDto extends BaseDto {
 
     public MusicEntity toEntity(){
         return new MusicEntity().builder()
-                .musicID(musicID)
                 .musicName(musicName)
                 .singerName(singerName)
                 .createDate(createDate)

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/keyboard", produces = MediaType.APPLICATION_JSON_VALUE)
-public class KeyboardContoller {
+public class KeyboardContoller extends BaseController{
 
     private final KeyboardService service;
 

@@ -42,12 +42,15 @@ public class MusicEntity extends BaseEntity {
         this.singerName = singerName;
     }
 
-    public void valueUpdate(MusicEntity musicEntity){
-        this.musicID = musicEntity.musicID;
-        this.musicName = musicEntity.musicName;
-        this.createDate = musicEntity.createDate;
-        this.singerName = musicEntity.singerName;
-        //포맷터 적용 필요
-        this.modifiedDate = LocalDateTime.now();
+    public boolean valueUpdate(MusicEntity musicEntity){
+        try {
+            this.musicName = musicEntity.musicName;
+            this.singerName = musicEntity.singerName;
+            //포맷터 적용 필요
+            this.modifiedDate = LocalDateTime.now();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }

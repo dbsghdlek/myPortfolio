@@ -24,11 +24,9 @@ import java.util.NoSuchElementException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/menu", produces = MediaType.APPLICATION_JSON_VALUE)
-public class MenuController{
+public class MenuController extends BaseController{
 
     private final MenuService service;
-
-
 
     @Operation(summary="메뉴 목록 API", description="메뉴 목록 가져오기")
     @GetMapping("")
