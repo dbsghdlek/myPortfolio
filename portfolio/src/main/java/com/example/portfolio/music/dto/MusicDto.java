@@ -19,9 +19,12 @@ public class MusicDto extends BaseDto {
     @NotEmpty
     private String singerName;
 
+    private String musicImage;
+
     public MusicDto(MusicEntity musicEntity){
         this.musicID = musicEntity.getMusicID();
         this.musicName = musicEntity.getMusicName();
+        this.musicImage = musicEntity.getMusicImage();
         this.createDate = musicEntity.getCreateDate();
         this.modifiedDate = musicEntity.getModifiedDate();
         this.singerName = musicEntity.getSingerName();

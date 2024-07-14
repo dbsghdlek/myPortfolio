@@ -11,6 +11,7 @@ public class MusicAndGenre {
     private Long musicID;
     @NotEmpty
     private String musicName;
+    private String musicImage;
     private String singerName;
     private Long genreId;
     private String genreName;

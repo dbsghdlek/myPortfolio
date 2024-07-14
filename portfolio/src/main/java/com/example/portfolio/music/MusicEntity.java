@@ -34,12 +34,13 @@ public class MusicEntity extends BaseEntity {
     private String singerName;
 
     @Builder
-    public MusicEntity(Long musicID, String musicName,  String singerName, LocalDateTime createDate, LocalDateTime modifiedDate){
+    public MusicEntity(Long musicID, String musicName,  String singerName, GenreEntity genre, LocalDateTime createDate, LocalDateTime modifiedDate){
         this.musicID = musicID;
         this.musicName = musicName;
         this.createDate = createDate;
         this.modifiedDate = modifiedDate;
         this.singerName = singerName;
+        this.genreEntity = genre;
     }
 
     public boolean valueUpdate(MusicEntity musicEntity){

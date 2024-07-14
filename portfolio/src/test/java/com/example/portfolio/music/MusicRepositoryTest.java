@@ -1,5 +1,7 @@
 package com.example.portfolio.music;
 
+import com.example.portfolio.genre.GenreEntity;
+import com.example.portfolio.genre.repository.GenreRepository;
 import com.example.portfolio.music.dto.MusicAndGenre;
 import com.example.portfolio.music.dto.MusicDto;
 import com.example.portfolio.music.repository.MusicRepository;
@@ -19,19 +21,18 @@ public class MusicRepositoryTest {
     @Autowired
     private MusicRepository musicRepository;
 
+    @Autowired
+    private GenreRepository genreRepository;
+
     @Value("${paging.limit}")
     private int pagingLimit;
 
     @BeforeEach
     public void dataSet(){
-        musicRepository.save(MusicEntity.builder().musicName("test1").singerName("test1").build());
-        musicRepository.save(MusicEntity.builder().musicName("test2").singerName("test1").build());
-        musicRepository.save(MusicEntity.builder().musicName("test3").singerName("test1").build());
-        musicRepository.save(MusicEntity.builder().musicName("test4").singerName("test1").build());
-        musicRepository.save(MusicEntity.builder().musicName("test5").singerName("test1").build());
-        musicRepository.save(MusicEntity.builder().musicName("test6").singerName("test1").build());
-        musicRepository.save(MusicEntity.builder().musicName("test7").singerName("test1").build());
-        musicRepository.save(MusicEntity.builder().musicName("test8").singerName("test1").build());
+        GenreEntity genre = GenreEntity.builder().genreId(1L).genreName("genreTest").build();
+        MusicEntity music = MusicEntity.builder().musicName("test1").singerName("test1").genre(genre).build();
+        genreRepository.save(genre);
+        musicRepository.save(music);
     }
 
     @Test
@@ -45,6 +46,14 @@ public class MusicRepositoryTest {
     public void getTest(){
         MusicEntity music = musicRepository.findById(1L).orElseThrow();
         MusicDto musicDto = new MusicDto(music);
+        System.out.println("music = " + music.getGenreEntity().getGenreName());
         Assertions.assertThat(musicDto.getMusicName()).isEqualTo("test1");
+    }
+
+    @Test
+    public void genreSearchTest(){
+        List<MusicAndGenre> list = musicRepository.genreByMusic("genreTest");
+
+        Assertions.assertThat(list.size()).isEqualTo(1);
     }
 }

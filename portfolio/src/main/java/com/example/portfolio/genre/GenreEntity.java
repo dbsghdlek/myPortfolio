@@ -17,7 +17,7 @@ public class GenreEntity extends BaseEntity {
     @GeneratedValue
     @Column(name = "GENRE_ID", nullable = false)
     private Long genreId;
-    @Column(name = "GENRE_NAME", nullable = false)
+    @Column(name = "GENRE_NAME", nullable = false, unique = true)
     private String genreName;
 
     @Builder

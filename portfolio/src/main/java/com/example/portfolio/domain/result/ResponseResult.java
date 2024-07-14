@@ -5,7 +5,7 @@ import com.example.portfolio.domain.error.ResultCodeEnum;
 import java.util.List;
 
 
-public class ResponseResult {
+public abstract class ResponseResult {
     public static Result wrapperResult(Object contents) {
         Result result;
 

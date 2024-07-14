@@ -23,6 +23,10 @@ public class MusicService {
         return list;
     }
 
+    public List<MusicAndGenre> getListByGenre(String genreName){
+        return repository.genreByMusic(genreName);
+    }
+
     public MusicDto getSingle(Long musicId){
         MusicEntity musicEntity = repository.findById(musicId).orElseThrow();
         MusicDto musicDto = new MusicDto(musicEntity);

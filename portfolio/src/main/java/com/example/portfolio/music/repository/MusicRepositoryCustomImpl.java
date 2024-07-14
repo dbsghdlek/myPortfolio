@@ -34,16 +34,18 @@ public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
                 .fetch();
     }
 
-    public List<MusicDto> genreByMusic(Long genreId){
-        return jpaQueryFactory.select(Projections.fields(MusicDto.class
+    public List<MusicAndGenre> genreByMusic(String genreName){
+        return jpaQueryFactory.select(Projections.fields(MusicAndGenre.class
                 ,musicEntity.musicID
                 , musicEntity.musicName
                 , musicEntity.musicImage
                 , musicEntity.createDate
-                , musicEntity.modifiedDate))
+                , musicEntity.modifiedDate
+                , musicEntity.genreEntity.genreId
+                , musicEntity.genreEntity.genreName))
                 .from(musicEntity)
                 .join(musicEntity.genreEntity, genreEntity)
-                .where(genreEntity.genreId.eq(genreId))
+                .where(genreEntity.genreName.eq(genreName))
                 .fetch();
     }
 }

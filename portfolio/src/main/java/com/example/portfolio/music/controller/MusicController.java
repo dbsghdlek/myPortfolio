@@ -37,4 +37,11 @@ public class MusicController extends BaseController{
         MusicDto musicDto =service.getSingle(musicId);
         return new ResponseEntity<>(ResponseResult.wrapperResult(musicDto), HttpStatus.OK);
     }
+
+    @GetMapping("/genre/{genreName}")
+    public ResponseEntity genreByList(@PathVariable String genreName){
+        List<MusicAndGenre> list = service.getListByGenre(genreName);
+
+        return new ResponseEntity<>(ResponseResult.wrapperResult(list), HttpStatus.OK);
+    }
 }
