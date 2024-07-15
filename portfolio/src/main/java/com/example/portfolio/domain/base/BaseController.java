@@ -18,13 +18,20 @@ public abstract class BaseController {
     @ExceptionHandler({IllegalArgumentException.class, TypeMismatchException.class, SQLIntegrityConstraintViolationException.class})
     public ResultVo illegalExHandle(Exception e){
         log.error("[ExceptionHandle] ex", e);
-        return new ResultVo(ResultCodeEnum.ERROR_400.getCode(), "message");
+        return new ResultVo(ResultCodeEnum.ERROR_400);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler({EmptyResultDataAccessException.class, NoSuchElementException.class})
+    @ExceptionHandler({EmptyResultDataAccessException.class})
     public ResultVo dataExceptionHandler(Exception e) {
         log.error("[ExceptionHandle] ex", e);
-        return new ResultVo(ResultCodeEnum.ERROR_400.getCode(), "DataNotEmpty");
+        return new ResultVo(ResultCodeEnum.ERROR_400);
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler({NoSuchElementException.class})
+    public ResultVo noDataExceptionHandler(Exception e) {
+        log.error("[ExceptionHandle] ex", e);
+        return new ResultVo(ResultCodeEnum.ERROR_3000);
     }
 }
