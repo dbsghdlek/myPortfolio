@@ -1,6 +1,5 @@
-package com.example.portfolio.travel;
+package com.example.portfolio.domain.travel;
 
-import com.example.portfolio.travel.repository.TravelRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

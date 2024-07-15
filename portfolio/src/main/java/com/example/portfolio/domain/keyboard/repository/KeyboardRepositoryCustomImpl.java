@@ -1,6 +1,7 @@
-package com.example.portfolio.keyboard.repository;
+package com.example.portfolio.domain.keyboard.repository;
 
-import com.example.portfolio.keyboard.KeyboardDto;
+import com.example.portfolio.domain.keyboard.KeyboardDto;
+import com.example.portfolio.domain.keyboard.QKeyboardEntity;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 
-import static com.example.portfolio.keyboard.QKeyboardEntity.keyboardEntity;
+import static com.example.portfolio.domain.keyboard.QKeyboardEntity.keyboardEntity;
 
 @RequiredArgsConstructor
 public class KeyboardRepositoryCustomImpl implements KeyboardRepositoryCustom{

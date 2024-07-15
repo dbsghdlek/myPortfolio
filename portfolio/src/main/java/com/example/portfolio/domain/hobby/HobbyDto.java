@@ -1,4 +1,4 @@
-package com.example.portfolio.hobby;
+package com.example.portfolio.domain.hobby;
 
 import com.example.portfolio.domain.base.BaseDto;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.example.portfolio.menu;
+package com.example.portfolio.domain.menu;
 
 import com.example.portfolio.domain.base.BaseDto;
 import lombok.*;

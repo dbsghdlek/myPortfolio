@@ -1,10 +1,10 @@
-package com.example.portfolio.menu.controller;
+package com.example.portfolio.domain.menu.controller;
 
-import com.example.portfolio.domain.base.controller.BaseController;
-import com.example.portfolio.domain.result.ResponseResult;
-import com.example.portfolio.domain.result.Result;
-import com.example.portfolio.menu.MenuDto;
-import com.example.portfolio.menu.MenuService;
+import com.example.portfolio.domain.base.BaseController;
+import com.example.portfolio.domain.menu.MenuDto;
+import com.example.portfolio.domain.menu.MenuService;
+import com.example.portfolio.web.response.result.ResultResponse;
+import com.example.portfolio.web.response.result.ResultVo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,7 @@ public class MenuAdmincontroller extends BaseController{
         menuDto.setMenuId(menuId);
         boolean response = menuService.updateMenu(menuDto);
 
-        return new ResponseEntity<>(ResponseResult.wrapperResult(response), HttpStatus.OK);
+        return ResultResponse.wrapperResult(response);
     }
 
     @Operation(summary = "메뉴 삭제 API", description = "메뉴 정보 삭제")
@@ -34,8 +34,7 @@ public class MenuAdmincontroller extends BaseController{
     public ResponseEntity<?> deleteMenu(Long menuId){
         boolean response = menuService.deleteMenu(menuId);
 
-        Result result = ResponseResult.wrapperResult(response);
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return ResultResponse.wrapperResult(response);
     }
 }

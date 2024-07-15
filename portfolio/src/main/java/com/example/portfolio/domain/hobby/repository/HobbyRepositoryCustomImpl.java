@@ -1,4 +1,4 @@
-package com.example.portfolio.hobby.repository;
+package com.example.portfolio.domain.hobby.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

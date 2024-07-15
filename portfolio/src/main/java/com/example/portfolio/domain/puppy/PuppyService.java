@@ -1,17 +1,22 @@
-package com.example.portfolio.puppy;
+package com.example.portfolio.domain.puppy;
 
-import com.example.portfolio.puppy.repository.PuppyRepository;
+import com.example.portfolio.domain.puppy.repository.PuppyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class PuppyService {
 
-    private final PuppyRepository puppyRepository;
+    private final PuppyRepository repository;
 
     public boolean addPicture(PuppyDto puppyDto){
-        PuppyEntity puppyEntity = puppyDto.toEntity();
-        return puppyRepository.save(puppyEntity) != null?true:false;
+        return repository.save(puppyDto.toEntity()) != null?true:false;
+    }
+
+    public List<PuppyDto> searchPuppyName(String puppyName){
+        return repository.searching(puppyName);
     }
 }

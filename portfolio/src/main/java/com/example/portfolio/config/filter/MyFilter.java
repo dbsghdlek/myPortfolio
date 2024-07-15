@@ -1,4 +1,4 @@
-package com.example.portfolio.domain.filter;
+package com.example.portfolio.config.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

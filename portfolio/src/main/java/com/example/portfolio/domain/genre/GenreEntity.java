@@ -1,7 +1,6 @@
-package com.example.portfolio.genre;
+package com.example.portfolio.domain.genre;
 
 import com.example.portfolio.domain.base.BaseEntity;
-import com.example.portfolio.music.MusicEntity;
 import lombok.Builder;
 import lombok.Getter;
 

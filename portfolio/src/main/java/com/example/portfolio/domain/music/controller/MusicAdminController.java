@@ -1,9 +1,9 @@
-package com.example.portfolio.music.controller;
+package com.example.portfolio.domain.music.controller;
 
-import com.example.portfolio.domain.base.controller.BaseController;
-import com.example.portfolio.domain.result.ResponseResult;
-import com.example.portfolio.music.MusicService;
-import com.example.portfolio.music.dto.MusicDto;
+import com.example.portfolio.domain.base.BaseController;
+import com.example.portfolio.domain.music.dto.MusicDto;
+import com.example.portfolio.web.response.result.ResultResponse;
+import com.example.portfolio.domain.music.MusicService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ public class MusicAdminController extends BaseController{
     @PostMapping("/")
     public ResponseEntity insertMusic(@RequestBody MusicDto dto){
         boolean result = service.insert(dto);
-        return new ResponseEntity(ResponseResult.wrapperResult(result), HttpStatus.OK);
+        return ResultResponse.wrapperResult(result);
     }
 
     @Operation(summary = "음악 정보 변경 Api", description = "음악 데이터 수정하기")
@@ -32,13 +32,13 @@ public class MusicAdminController extends BaseController{
     public ResponseEntity updateMusic(@RequestBody MusicDto dto, @PathVariable Long musicId){
         dto.setMusicID(musicId);
         boolean result = service.update(dto);
-        return new ResponseEntity(ResponseResult.wrapperResult(result), HttpStatus.OK);
+        return ResultResponse.wrapperResult(result);
     }
 
     @Operation(summary = "음악 삭제 Api",description = "음악 데이터 삭제하기")
     @DeleteMapping("/delete/{musicId}")
     public ResponseEntity deleteMusic(@PathVariable Long musicId){
         boolean result = service.delete(musicId);
-        return new ResponseEntity<>(ResponseResult.wrapperResult(result), HttpStatus.OK);
+        return ResultResponse.wrapperResult(result);
     }
 }

@@ -1,7 +1,7 @@
-package com.example.portfolio.keyboard;
+package com.example.portfolio.domain.keyboard;
 
 import com.example.portfolio.domain.base.BaseEntity;
-import com.example.portfolio.hobby.HobbyEntity;
+import com.example.portfolio.domain.hobby.HobbyEntity;
 import lombok.Getter;
 
 import jakarta.persistence.*;

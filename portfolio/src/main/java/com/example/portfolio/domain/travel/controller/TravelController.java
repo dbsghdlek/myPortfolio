@@ -1,7 +1,7 @@
-package com.example.portfolio.travel.controller;
+package com.example.portfolio.domain.travel.controller;
 
-import com.example.portfolio.domain.base.controller.BaseController;
-import com.example.portfolio.travel.TravelService;
+import com.example.portfolio.domain.base.BaseController;
+import com.example.portfolio.domain.travel.TravelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
-package com.example.portfolio.food.controller;
+package com.example.portfolio.domain.food.controller;
 
-import com.example.portfolio.domain.base.controller.BaseController;
+import com.example.portfolio.domain.base.BaseController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;

@@ -1,4 +1,4 @@
-package com.example.portfolio.music.dto;
+package com.example.portfolio.domain.music.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.example.portfolio.hobby.repository;
+package com.example.portfolio.domain.hobby.repository;
 
 public interface HobbyRepositoryCustom {
 }

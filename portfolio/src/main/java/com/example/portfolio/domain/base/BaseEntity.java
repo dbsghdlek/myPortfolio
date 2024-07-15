@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseEntity {
     @Column(name = "CREATE_DATE")
-    public LocalDateTime createDate;
+    protected LocalDateTime createDate;
     @Column(name = "MODIFIED_DATE")
-    public LocalDateTime modifiedDate;
+    protected LocalDateTime modifiedDate;
 
 }

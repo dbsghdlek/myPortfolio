@@ -13,9 +13,4 @@ public class PortfolioApplication {
 		SpringApplication.run(PortfolioApplication.class, args);
 	}
 
-
-	@Bean
-	static JPAQueryFactory jpaQueryFactory(EntityManager em){
-		return  new JPAQueryFactory(em);
-	}
 }

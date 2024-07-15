@@ -8,8 +8,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-@Builder
-public class Result {
+public class ResultVo {
     @NotEmpty
     private int code;
 
@@ -18,8 +17,8 @@ public class Result {
     @NotEmpty
     private String message;
 
-    public Result(int code, String message){
-        this.code = code;
-        this.message = message;
+    public ResultVo(ResultCodeEnum result){
+        this.code = result.getCode();
+        this.message = result.getDescription();
     }
 }

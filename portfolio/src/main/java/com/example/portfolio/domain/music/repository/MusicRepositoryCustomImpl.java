@@ -1,7 +1,8 @@
-package com.example.portfolio.music.repository;
+package com.example.portfolio.domain.music.repository;
 
-import com.example.portfolio.music.dto.MusicAndGenre;
-import com.example.portfolio.music.dto.MusicDto;
+import com.example.portfolio.domain.genre.QGenreEntity;
+import com.example.portfolio.domain.music.QMusicEntity;
+import com.example.portfolio.domain.music.dto.MusicAndGenre;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 
-import static com.example.portfolio.genre.QGenreEntity.genreEntity;
-import static com.example.portfolio.music.QMusicEntity.musicEntity;
+import static com.example.portfolio.domain.genre.QGenreEntity.genreEntity;
+import static com.example.portfolio.domain.music.QMusicEntity.musicEntity;
 
 @RequiredArgsConstructor
 public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
@@ -23,7 +24,7 @@ public class MusicRepositoryCustomImpl implements MusicRepositoryCustom{
     //음악 정보 가져오기 페이징 적용
     public List<MusicAndGenre> musicAllInfo(int pageNumber){
         return jpaQueryFactory.select(Projections.fields(MusicAndGenre.class
-                    ,musicEntity.musicID
+                    , musicEntity.musicID
                     , musicEntity.musicName
                     , musicEntity.genreEntity.genreId
                     , musicEntity.genreEntity.genreName))

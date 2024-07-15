@@ -1,6 +1,6 @@
-package com.example.portfolio.hobby.controller;
+package com.example.portfolio.domain.hobby.controller;
 
-import com.example.portfolio.domain.base.controller.BaseController;
+import com.example.portfolio.domain.base.BaseController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,6 @@
-package com.example.portfolio.genre.repository;
+package com.example.portfolio.domain.genre.repository;
 
-import com.example.portfolio.genre.GenreEntity;
+import com.example.portfolio.domain.genre.GenreEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GenreRepository extends JpaRepository<GenreEntity, Long>, GenreRepositoryCustom {

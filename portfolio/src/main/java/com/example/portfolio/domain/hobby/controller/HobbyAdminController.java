@@ -1,9 +1,9 @@
-package com.example.portfolio.hobby.controller;
+package com.example.portfolio.domain.hobby.controller;
 
-import com.example.portfolio.domain.base.controller.BaseController;
-import com.example.portfolio.domain.result.ResponseResult;
-import com.example.portfolio.hobby.HobbyDto;
-import com.example.portfolio.hobby.HobbyService;
+import com.example.portfolio.domain.base.BaseController;
+import com.example.portfolio.domain.hobby.HobbyDto;
+import com.example.portfolio.web.response.result.ResultResponse;
+import com.example.portfolio.domain.hobby.HobbyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -23,6 +23,6 @@ public class HobbyAdminController extends BaseController{
     public ResponseEntity<?> inputHobby(@RequestBody HobbyDto hobbyDto){
         boolean result = service.insert(hobbyDto);
 
-        return new ResponseEntity<>(ResponseResult.wrapperResult(result), HttpStatus.OK );
+        return ResultResponse.wrapperResult(result);
     }
 }

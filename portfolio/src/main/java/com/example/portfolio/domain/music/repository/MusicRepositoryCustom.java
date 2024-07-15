@@ -1,7 +1,6 @@
-package com.example.portfolio.music.repository;
+package com.example.portfolio.domain.music.repository;
 
-import com.example.portfolio.music.dto.MusicAndGenre;
-import com.example.portfolio.music.dto.MusicDto;
+import com.example.portfolio.domain.music.dto.MusicAndGenre;
 
 import java.util.List;
 

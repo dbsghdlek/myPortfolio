@@ -1,4 +1,4 @@
-package com.example.portfolio.genre;
+package com.example.portfolio.domain.genre;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;

@@ -1,13 +1,14 @@
-package com.example.portfolio.genre.repository;
+package com.example.portfolio.domain.genre.repository;
 
-import com.example.portfolio.genre.GenreDto;
+import com.example.portfolio.domain.genre.GenreDto;
+import com.example.portfolio.domain.genre.QGenreEntity;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-import static com.example.portfolio.genre.QGenreEntity.genreEntity;
+import static com.example.portfolio.domain.genre.QGenreEntity.genreEntity;
 
 @RequiredArgsConstructor
 public class GenreRepositoryCustomImpl implements GenreRepositoryCustom{

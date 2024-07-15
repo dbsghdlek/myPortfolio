@@ -1,4 +1,4 @@
-package com.example.portfolio.travel.repository;
+package com.example.portfolio.domain.travel.repository;
 
 public interface TravelRepositoryCustom {
 }

@@ -1,6 +1,6 @@
-package com.example.portfolio.keyboard.repository;
+package com.example.portfolio.domain.keyboard.repository;
 
-import com.example.portfolio.keyboard.KeyboardEntity;
+import com.example.portfolio.domain.keyboard.KeyboardEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

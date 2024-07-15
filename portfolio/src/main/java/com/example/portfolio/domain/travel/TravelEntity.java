@@ -1,7 +1,7 @@
-package com.example.portfolio.travel;
+package com.example.portfolio.domain.travel;
 
 import com.example.portfolio.domain.base.BaseEntity;
-import com.example.portfolio.menu.MenuEntity;
+import com.example.portfolio.domain.menu.MenuEntity;
 
 import jakarta.persistence.*;
 

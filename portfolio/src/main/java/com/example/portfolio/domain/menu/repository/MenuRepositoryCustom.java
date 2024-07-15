@@ -1,6 +1,6 @@
-package com.example.portfolio.menu.repository;
+package com.example.portfolio.domain.menu.repository;
 
-import com.example.portfolio.menu.MenuDto;
+import com.example.portfolio.domain.menu.MenuDto;
 
 import java.util.List;
 

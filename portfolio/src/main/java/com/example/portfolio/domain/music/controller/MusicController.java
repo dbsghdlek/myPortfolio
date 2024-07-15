@@ -1,10 +1,10 @@
-package com.example.portfolio.music.controller;
+package com.example.portfolio.domain.music.controller;
 
-import com.example.portfolio.domain.base.controller.BaseController;
-import com.example.portfolio.domain.result.ResponseResult;
-import com.example.portfolio.music.MusicService;
-import com.example.portfolio.music.dto.MusicAndGenre;
-import com.example.portfolio.music.dto.MusicDto;
+import com.example.portfolio.domain.base.BaseController;
+import com.example.portfolio.domain.music.MusicService;
+import com.example.portfolio.domain.music.dto.MusicAndGenre;
+import com.example.portfolio.domain.music.dto.MusicDto;
+import com.example.portfolio.web.response.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,20 +27,20 @@ public class MusicController extends BaseController{
     @GetMapping("")
     public ResponseEntity MusicList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNUmber){
         List<MusicAndGenre> list = service.allMusic(pageNUmber);
-        return new ResponseEntity<>(ResponseResult.wrapperResult(list), HttpStatus.OK);
+        return ResultResponse.wrapperResult(list);
     }
 
     @Operation(summary="노래 단일 정보 API", description="단일 노래 정보 가져오기")
     @GetMapping("/{musicId}")
     public ResponseEntity musicInfoRequest(@PathVariable("musicId") Long musicId){
         MusicDto musicDto =service.getSingle(musicId);
-        return new ResponseEntity<>(ResponseResult.wrapperResult(musicDto), HttpStatus.OK);
+        return ResultResponse.wrapperResult(musicDto);
     }
 
     @GetMapping("/genre/{genreName}")
     public ResponseEntity genreByList(@PathVariable String genreName){
         List<MusicAndGenre> list = service.getListByGenre(genreName);
 
-        return new ResponseEntity<>(ResponseResult.wrapperResult(list), HttpStatus.OK);
+        return ResultResponse.wrapperResult(list);
     }
 }

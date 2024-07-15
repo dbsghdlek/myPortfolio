@@ -1,17 +1,28 @@
 package com.example.portfolio.web.response.result;
 
 
+import org.springframework.http.ResponseEntity;
 
-public abstract class ResponseResult {
-    public static ResultCodeEnum wrapperResult(Object contents) {
-        if (contents != null ){
-            return ResultCodeEnum.SUCCESS_0000;
-        }else return ResultCodeEnum.ERROR_400;
+import java.util.Collection;
+
+public abstract class ResultResponse {
+    public static ResponseEntity<?> wrapperResult(Object contents) {
+        if(contents != null){
+            return new ResponseEntity<>(new ResultVo(ResultCodeEnum.SUCCESS_0000), ResultCodeEnum.SUCCESS_0000.getHttpStatus());
+        }else
+            return new ResponseEntity<>(new ResultVo(ResultCodeEnum.ERROR_400), ResultCodeEnum.ERROR_400.getHttpStatus());
+    }
+    public static ResponseEntity<?> wrapperResult(Collection contents) {
+        if(contents.size() != 0){
+            return new ResponseEntity<>(new ResultVo(ResultCodeEnum.SUCCESS_0000), ResultCodeEnum.SUCCESS_0000.getHttpStatus());
+        }else
+            return new ResponseEntity<>(new ResultVo(ResultCodeEnum.ERROR_3000), ResultCodeEnum.ERROR_3000.getHttpStatus());
     }
 
-    public static ResultCodeEnum wrapperResult(boolean contents) {
+    public static ResponseEntity<?> wrapperResult(boolean contents) {
         if (contents){
-            return ResultCodeEnum.SUCCESS_0000;
-        }else return ResultCodeEnum.ERROR_400;
+            return new ResponseEntity<>(new ResultVo(ResultCodeEnum.SUCCESS_0000), ResultCodeEnum.SUCCESS_0000.getHttpStatus());
+        }else
+            return new ResponseEntity<>(new ResultVo(ResultCodeEnum.ERROR_400), ResultCodeEnum.ERROR_400.getHttpStatus());
     }
 }

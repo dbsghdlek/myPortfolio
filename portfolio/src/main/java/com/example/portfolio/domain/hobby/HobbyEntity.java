@@ -1,7 +1,7 @@
-package com.example.portfolio.hobby;
+package com.example.portfolio.domain.hobby;
 
 import com.example.portfolio.domain.base.BaseEntity;
-import com.example.portfolio.menu.MenuEntity;
+import com.example.portfolio.domain.menu.MenuEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

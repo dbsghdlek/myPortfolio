@@ -1,4 +1,4 @@
-package com.example.portfolio.travel.repository;
+package com.example.portfolio.domain.travel.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

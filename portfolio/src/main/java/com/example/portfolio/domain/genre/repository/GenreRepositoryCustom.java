@@ -1,6 +1,6 @@
-package com.example.portfolio.genre.repository;
+package com.example.portfolio.domain.genre.repository;
 
-import com.example.portfolio.genre.GenreDto;
+import com.example.portfolio.domain.genre.GenreDto;
 
 import java.util.List;
 

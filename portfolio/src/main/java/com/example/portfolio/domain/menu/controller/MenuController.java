@@ -1,10 +1,10 @@
-package com.example.portfolio.menu.controller;
+package com.example.portfolio.domain.menu.controller;
 
-import com.example.portfolio.domain.base.controller.BaseController;
-import com.example.portfolio.domain.result.ResponseResult;
-import com.example.portfolio.domain.result.Result;
-import com.example.portfolio.menu.MenuDto;
-import com.example.portfolio.menu.MenuService;
+import com.example.portfolio.domain.base.BaseController;
+import com.example.portfolio.domain.menu.MenuService;
+import com.example.portfolio.web.response.result.ResultResponse;
+import com.example.portfolio.domain.menu.MenuDto;
+import com.example.portfolio.web.response.result.ResultVo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,8 +28,6 @@ public class MenuController extends BaseController{
     public ResponseEntity<?> getMenus(){
         List<MenuDto> list= service.allMenuByJpa();
 
-        Result result = ResponseResult.wrapperResult(list);
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return ResultResponse.wrapperResult(list);
     }
 }

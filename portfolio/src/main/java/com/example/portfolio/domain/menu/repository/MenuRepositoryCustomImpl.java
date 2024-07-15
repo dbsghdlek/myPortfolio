@@ -1,6 +1,7 @@
-package com.example.portfolio.menu.repository;
+package com.example.portfolio.domain.menu.repository;
 
-import com.example.portfolio.menu.MenuDto;
+import com.example.portfolio.domain.menu.MenuDto;
+import com.example.portfolio.domain.menu.QMenuEntity;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.example.portfolio.menu.QMenuEntity.menuEntity;
+import static com.example.portfolio.domain.menu.QMenuEntity.menuEntity;
 
 @Repository
 @RequiredArgsConstructor

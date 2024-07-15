@@ -1,6 +1,6 @@
-package com.example.portfolio.hobby;
+package com.example.portfolio.domain.hobby;
 
-import com.example.portfolio.hobby.repository.HobbyRepository;
+import com.example.portfolio.domain.hobby.repository.HobbyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

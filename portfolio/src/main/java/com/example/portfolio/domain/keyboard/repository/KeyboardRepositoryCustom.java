@@ -1,6 +1,6 @@
-package com.example.portfolio.keyboard.repository;
+package com.example.portfolio.domain.keyboard.repository;
 
-import com.example.portfolio.keyboard.KeyboardDto;
+import com.example.portfolio.domain.keyboard.KeyboardDto;
 
 import java.util.List;
 

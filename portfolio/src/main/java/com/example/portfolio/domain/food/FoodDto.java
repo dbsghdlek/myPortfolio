@@ -1,4 +1,4 @@
-package com.example.portfolio.food;
+package com.example.portfolio.domain.food;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;

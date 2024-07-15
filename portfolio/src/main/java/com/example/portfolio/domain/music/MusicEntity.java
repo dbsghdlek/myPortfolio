@@ -1,8 +1,8 @@
-package com.example.portfolio.music;
+package com.example.portfolio.domain.music;
 
 import com.example.portfolio.domain.base.BaseEntity;
-import com.example.portfolio.genre.GenreEntity;
-import com.example.portfolio.menu.MenuEntity;
+import com.example.portfolio.domain.genre.GenreEntity;
+import com.example.portfolio.domain.menu.MenuEntity;
 import lombok.*;
 
 import jakarta.persistence.*;

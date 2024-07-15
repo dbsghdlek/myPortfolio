@@ -1,4 +1,4 @@
-package com.example.portfolio.domain.interceptor;
+package com.example.portfolio.config.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

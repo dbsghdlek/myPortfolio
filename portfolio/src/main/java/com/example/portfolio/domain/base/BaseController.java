@@ -1,7 +1,7 @@
-package com.example.portfolio.domain.base.controller;
+package com.example.portfolio.domain.base;
 
-import com.example.portfolio.domain.error.ResultCodeEnum;
-import com.example.portfolio.domain.result.Result;
+import com.example.portfolio.web.response.result.ResultCodeEnum;
+import com.example.portfolio.web.response.result.ResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.TypeMismatchException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -16,15 +16,15 @@ import java.util.NoSuchElementException;
 public abstract class BaseController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({IllegalArgumentException.class, TypeMismatchException.class, SQLIntegrityConstraintViolationException.class})
-    public Result illegalExHandle(Exception e){
+    public ResultVo illegalExHandle(Exception e){
         log.error("[ExceptionHandle] ex", e);
-        return new Result(ResultCodeEnum.ERROR_400.getCode(), "message");
+        return new ResultVo(ResultCodeEnum.ERROR_400.getCode(), "message");
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({EmptyResultDataAccessException.class, NoSuchElementException.class})
-    public Result dataExceptionHandler(Exception e) {
+    public ResultVo dataExceptionHandler(Exception e) {
         log.error("[ExceptionHandle] ex", e);
-        return new Result(ResultCodeEnum.ERROR_400.getCode(), "DataNotEmpty");
+        return new ResultVo(ResultCodeEnum.ERROR_400.getCode(), "DataNotEmpty");
     }
 }

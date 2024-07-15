@@ -1,4 +1,4 @@
-package com.example.portfolio.keyboard;
+package com.example.portfolio.domain.keyboard;
 
 import com.example.portfolio.domain.base.BaseDto;
 import jakarta.validation.constraints.NotEmpty;

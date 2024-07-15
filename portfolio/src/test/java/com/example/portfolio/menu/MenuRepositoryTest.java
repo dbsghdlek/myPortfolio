@@ -1,18 +1,23 @@
 package com.example.portfolio.menu;
 
-import com.example.portfolio.menu.repository.MenuRepository;
+import com.example.portfolio.config.QueryDslConfig;
+import com.example.portfolio.domain.menu.MenuDto;
+import com.example.portfolio.domain.menu.MenuEntity;
+import com.example.portfolio.domain.menu.repository.MenuRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
+@Import(QueryDslConfig.class)
 public class MenuRepositoryTest {
 
     @Autowired
