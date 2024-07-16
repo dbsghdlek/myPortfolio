@@ -4,7 +4,9 @@ import com.example.portfolio.domain.puppy.repository.PuppyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -16,7 +18,17 @@ public class PuppyService {
         return repository.save(puppyDto.toEntity()) != null?true:false;
     }
 
-    public List<PuppyDto> searchPuppyName(String puppyName){
-        return repository.searching(puppyName);
+    public List<PuppyDto> searchPuppyName(String puppyName, int pageNumber){
+        return repository.searchingByPuppyName(puppyName, pageNumber);
+    }
+
+    public boolean updatePuppy(PuppyDto dto){
+        dto.setModifiedDate(LocalDateTime.now());
+        PuppyEntity entity = repository.findById(dto.getPictureId()).orElseThrow();
+        return entity.valueUpdate(dto);
+    }
+
+    public void deletePuppy(Long id){
+        repository.deleteById(id);
     }
 }

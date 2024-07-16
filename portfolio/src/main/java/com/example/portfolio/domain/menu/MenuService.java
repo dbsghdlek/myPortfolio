@@ -36,12 +36,7 @@ public class MenuService {
         return menuRepository.save(menuEntity) != null?true:false;
     }
 
-    public boolean deleteMenu(Long menuId){
-        if(menuRepository.findById(menuId) != null)
-            menuRepository.deleteById(menuId);
-        else{
-            return false;
-        }
-        return  true;
+    public void deleteMenu(Long menuId){
+        menuRepository.deleteById(menuId);
     }
 }

@@ -29,8 +29,8 @@ public class PuppyRepositoryTest {
     }
 
     @Test
-    public void groupSearchTest(){
-        List<PuppyDto> list = repository.searching("달이");
+    public void puppyNameSearchTest(){
+        List<PuppyDto> list = repository.searchingByPuppyName("달이", 4);
         Assertions.assertThat(list.size()).isEqualTo(2);
     }
 }

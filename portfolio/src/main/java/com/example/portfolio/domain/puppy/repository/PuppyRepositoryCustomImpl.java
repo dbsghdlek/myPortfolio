@@ -22,7 +22,7 @@ public class PuppyRepositoryCustomImpl implements PuppyRepositoryCustom{
     private final JPAQueryFactory jpaQueryFactory;
 
 
-    public List<PuppyDto> searching(String puppyName){
+    public List<PuppyDto> searchingByPuppyName(String puppyName, int pageNumber){
         return jpaQueryFactory.select(Projections.fields(PuppyDto.class
                     , puppyEntity.pictureId
                     , puppyEntity.pictureName
@@ -31,6 +31,8 @@ public class PuppyRepositoryCustomImpl implements PuppyRepositoryCustom{
                 ))
                 .from(puppyEntity)
                 .where(puppyNameEq(puppyName))
+                .offset(pageNumber)
+                .limit(pagingLimit)
                 .fetch();
     }
 

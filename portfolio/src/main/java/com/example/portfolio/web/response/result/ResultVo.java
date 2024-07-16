@@ -21,4 +21,10 @@ public class ResultVo {
         this.code = result.getCode();
         this.message = result.getDescription();
     }
+
+    public ResultVo(ResultCodeEnum result, Object contents){
+        this.code = result.getCode();
+        this.message = result.getDescription();
+        this.contents = contents;
+    }
 }

@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Slf4j
 public class PuppyEntity extends BaseEntity{
     @Id @GeneratedValue
     private Long pictureId;
@@ -38,5 +40,19 @@ public class PuppyEntity extends BaseEntity{
         this.menuEntity = menuEntity;
         this.createDate = createdDate;
         this.modifiedDate = modifiedDate;
+    }
+
+    public boolean valueUpdate(PuppyDto dto){
+        try {
+            this.pictureId = dto.getPictureId();
+            this.pictureName = dto.getPictureName();
+            this.pictureDate = dto.getPictureDate();
+            this.puppyName = dto.getPuppyName();
+            this.modifiedDate = dto.getModifiedDate();
+        }catch (Exception e){
+            log.info("Exception ->" +  e);
+            return false;
+        }
+        return true;
     }
 }

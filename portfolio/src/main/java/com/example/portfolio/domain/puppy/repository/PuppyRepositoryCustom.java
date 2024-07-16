@@ -5,5 +5,5 @@ import com.example.portfolio.domain.puppy.PuppyDto;
 import java.util.List;
 
 public interface PuppyRepositoryCustom {
-    public List<PuppyDto> searching(String puppyName);
+    public List<PuppyDto> searchingByPuppyName(String puppyName, int pageNumber);
 }

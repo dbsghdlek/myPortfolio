@@ -32,9 +32,7 @@ public class MenuAdmincontroller extends BaseController{
     @Operation(summary = "메뉴 삭제 API", description = "메뉴 정보 삭제")
     @DeleteMapping
     public ResponseEntity<?> deleteMenu(Long menuId){
-        boolean response = menuService.deleteMenu(menuId);
-
-
-        return ResultResponse.wrapperResult(response);
+        menuService.deleteMenu(menuId);
+        return ResultResponse.wrapperResult(true);
     }
 }

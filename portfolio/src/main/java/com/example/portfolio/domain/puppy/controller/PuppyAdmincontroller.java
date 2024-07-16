@@ -4,16 +4,12 @@ import com.example.portfolio.domain.base.BaseController;
 import com.example.portfolio.domain.puppy.PuppyDto;
 import com.example.portfolio.domain.puppy.PuppyService;
 import com.example.portfolio.web.response.result.ResultResponse;
-import com.example.portfolio.web.response.result.ResultVo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -31,5 +27,15 @@ public class PuppyAdmincontroller extends BaseController{
         return ResultResponse.wrapperResult(result);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updatePuppy(@RequestBody PuppyDto dto, @PathVariable Long id){
+        dto.setPictureId(id);
+        return ResultResponse.wrapperResult(service.updatePuppy(dto));
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePuppy(@PathVariable Long id){
+        service.deletePuppy(id);
+        return ResultResponse.wrapperResult(true);
+    }
 }

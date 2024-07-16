@@ -21,8 +21,8 @@ public class PuppyController extends BaseController {
 
     private final PuppyService service;
 
-    @GetMapping("/{puppyName}")
-    public ResponseEntity<?> searchByPuppyName(@PathVariable String puppyName){
-        return ResultResponse.wrapperResult(service.searchPuppyName(puppyName));
+    @GetMapping("/{puppyName}/{pageNumber}")
+    public ResponseEntity<?> searchByPuppyName(@PathVariable String puppyName, @PathVariable int pageNumber){
+        return ResultResponse.wrapperResult(service.searchPuppyName(puppyName, pageNumber));
     }
 }
