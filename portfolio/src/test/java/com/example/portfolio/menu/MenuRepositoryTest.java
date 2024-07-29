@@ -3,7 +3,7 @@ package com.example.portfolio.menu;
 import com.example.portfolio.config.QueryDslConfig;
 import com.example.portfolio.domain.menu.MenuDto;
 import com.example.portfolio.domain.menu.MenuEntity;
-import com.example.portfolio.domain.menu.repository.MenuRepository;
+import com.example.portfolio.domain.menu.MenuRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

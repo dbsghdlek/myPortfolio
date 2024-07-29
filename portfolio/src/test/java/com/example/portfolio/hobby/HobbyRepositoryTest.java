@@ -2,7 +2,7 @@ package com.example.portfolio.hobby;
 
 import com.example.portfolio.config.QueryDslConfig;
 import com.example.portfolio.domain.hobby.HobbyDto;
-import com.example.portfolio.domain.hobby.repository.HobbyRepository;
+import com.example.portfolio.domain.hobby.HobbyRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

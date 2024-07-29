@@ -1,12 +1,10 @@
 package com.example.portfolio.domain.puppy;
 
-import com.example.portfolio.domain.puppy.repository.PuppyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service

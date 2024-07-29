@@ -2,11 +2,11 @@ package com.example.portfolio.music;
 
 import com.example.portfolio.config.QueryDslConfig;
 import com.example.portfolio.domain.genre.GenreEntity;
-import com.example.portfolio.domain.genre.repository.GenreRepository;
+import com.example.portfolio.domain.genre.GenreRepository;
 import com.example.portfolio.domain.music.MusicEntity;
 import com.example.portfolio.domain.music.dto.MusicAndGenre;
 import com.example.portfolio.domain.music.dto.MusicDto;
-import com.example.portfolio.domain.music.repository.MusicRepository;
+import com.example.portfolio.domain.music.MusicRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

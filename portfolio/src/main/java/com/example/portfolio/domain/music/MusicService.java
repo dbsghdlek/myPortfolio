@@ -2,7 +2,6 @@ package com.example.portfolio.domain.music;
 
 import com.example.portfolio.domain.music.dto.MusicAndGenre;
 import com.example.portfolio.domain.music.dto.MusicDto;
-import com.example.portfolio.domain.music.repository.MusicRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

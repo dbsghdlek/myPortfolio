@@ -1,7 +1,6 @@
 package com.example.portfolio.domain.menu;
 
 
-import com.example.portfolio.domain.menu.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
