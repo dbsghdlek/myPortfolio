@@ -2,6 +2,7 @@ package com.example.portfolio.config;
 
 import com.example.portfolio.config.jwt.JwtAccessDeniedHandler;
 import com.example.portfolio.config.jwt.JwtAuthenticationEntryPoint;
+import com.example.portfolio.config.jwt.JwtSecurityConfig;
 import com.example.portfolio.config.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -39,14 +42,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf(csrf -> csrf.disable())
-
                 .exceptionHandling(authenticcationManager -> authenticcationManager
                         .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                         .accessDeniedHandler(jwtAccessDeniedHandler))
-                .headers(Customizer.withDefaults())
-                .authorizeRequests()
-                .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAnyRole("ADMIN")
-                .anyRequest().permitAll();
+                .headers(header ->
+                        header.frameOptions(
+                                HeadersConfigurer.FrameOptionsConfig::sameOrigin
+                        ))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeRequests(registry ->
+                        registry.requestMatchers("/admin/**").hasAnyRole("ADMIN")
+                                .anyRequest().permitAll())
+                .with(new JwtSecurityConfig(tokenProvider), jwtSecurityConfig -> jwtSecurityConfig.build());
 
         return http.build();
     }
