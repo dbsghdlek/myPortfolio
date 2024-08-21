@@ -1,6 +1,7 @@
 package com.example.portfolio.domain.user.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,36 +9,36 @@ import lombok.NoArgsConstructor;
 import java.util.Set;
 
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Table(name = "USER")
+@Table(name = "USER_TABLE")
 public class UserEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     @Column(name = "USER_ID")
     private Long id;
 
-    @Column(name = "LOGIN_ID", unique = true)
+    @Column(name = "LOGIN_ID")
     private String loginId;
 
     @Column(name = "PASSWORD")
     private String password;
 
     @Column(name = "USER_NAME")
-    private String userName;
+    private String username;
 
     @Column(name = "ACTIVATED")
     private boolean activated;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<UserAutorityEntity> authorities;
 
     @Builder
-    public UserEntity(Long id, String loginId, String password, String userName, boolean activated, Set<UserAutorityEntity> authorities) {
+    public UserEntity(Long id, String loginId, String password, String username, boolean activated, Set<UserAutorityEntity> authorities) {
         this.id = id;
         this.loginId = loginId;
         this.password = password;
-        this.userName = userName;
+        this.username = username;
         this.activated = activated;
         this.authorities = authorities;
     }

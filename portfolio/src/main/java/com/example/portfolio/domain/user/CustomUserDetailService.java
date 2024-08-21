@@ -1,5 +1,6 @@
 package com.example.portfolio.domain.user;
 
+import com.example.portfolio.domain.user.dto.UserDto;
 import com.example.portfolio.domain.user.entity.UserEntity;
 import com.example.portfolio.domain.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -26,7 +27,7 @@ public class CustomUserDetailService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findOneWithAuthoritiesByUsername(username)
-                .map(userEntity -> createUser(username, userEntity))
+                .map(user -> createUser(username, user))
                 .orElseThrow(()-> new UsernameNotFoundException(username + " -> 데이터베이스에서 찾을 수 없습니다."));
     }
     private org.springframework.security.core.userdetails.User createUser(String userName, UserEntity user){
@@ -35,10 +36,10 @@ public class CustomUserDetailService implements UserDetailsService {
         }
 
         List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
-                .map(authorityEntity -> new SimpleGrantedAuthority(authorityEntity.getAuthority().getAuthorityName()))
+                .map(authority -> new SimpleGrantedAuthority(authority.getAuthority().getAuthorityName()))
                 .collect(Collectors.toList());
 
-        return new User(user.getUserName()
+        return new User(user.getUsername()
                 ,user.getPassword()
                 , grantedAuthorities);
     }

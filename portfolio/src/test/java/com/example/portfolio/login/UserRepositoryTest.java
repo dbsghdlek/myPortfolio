@@ -2,11 +2,14 @@ package com.example.portfolio.login;
 
 import com.example.portfolio.config.QueryDslConfig;
 import com.example.portfolio.domain.user.entity.AuthorityEntity;
+import com.example.portfolio.domain.user.entity.UserAuthKey;
 import com.example.portfolio.domain.user.entity.UserAutorityEntity;
 import com.example.portfolio.domain.user.entity.UserEntity;
 import com.example.portfolio.domain.user.repository.AuthorityRepository;
 import com.example.portfolio.domain.user.repository.UserAuthRepository;
 import com.example.portfolio.domain.user.repository.UserRepository;
+import jakarta.persistence.EntityManager;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,21 +31,26 @@ public class UserRepositoryTest {
     @Autowired
     UserAuthRepository userAuthRepository;
 
+    @Autowired
+    EntityManager entityManager;
+
     @BeforeEach
     void beforeSetting(){
-        UserEntity user = UserEntity.builder().userName("test").loginId("test").password("test").build();
-//        AuthorityEntity authority = AuthorityEntity.builder().authorityName("ADMIN").build();
-//        UserAutorityEntity userAutority = UserAutorityEntity.builder().user(user).authority(authority).build();
+        UserEntity user = UserEntity.builder().username("test1").loginId("test").password("test").build();
+        AuthorityEntity authority = AuthorityEntity.builder().authorityName("ADMIN").build();
+        UserAutorityEntity userAutority = UserAutorityEntity.builder()
+                .userAuthKey(new UserAuthKey(user.getId(), authority.getAuthorityName()))
+                .user(user)
+                .authority(authority).build();
 
-//        userRepository.save(user);
-//        authorityRepository.save(authority);
-//        userAuthRepository.save(userAutority);
+        userAuthRepository.saveAndFlush(userAutority);
+
+        entityManager.clear();
     }
     @Test
     void mtmTest(){
-//        UserEntity user = userRepository.findOneWithAuthoritiesByUsername("test").get();
-//
-//        System.out.println(user.getUserName() + "/ " + user.getAuthorities().stream().map(authority -> authority.getAuthority().getAuthorityName()));
+        UserEntity test1 = userRepository.findOneWithAuthoritiesByUsername("test1").orElseThrow();
+        Assertions.assertThat(test1.getAuthorities().iterator().next().getAuthority().getAuthorityName()).isEqualTo("ADMIN");
     }
 
 }
