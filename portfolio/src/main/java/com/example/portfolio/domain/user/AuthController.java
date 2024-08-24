@@ -13,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,12 +28,14 @@ public class AuthController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<TokenDto> autorize(@Valid @RequestBody LoginDto loginDto){
-        UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginDto.getUserName(), loginDto.getPassWd());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(loginDto.getLoginId(), loginDto.getPassWd());
+
+        //여기서 CustomUserDetailService에서 Orverride한 메소드가 실행됨.
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
         String jwt = tokenProvider.createToken(authentication);
 
         HttpHeaders httpHeaders = new HttpHeaders();

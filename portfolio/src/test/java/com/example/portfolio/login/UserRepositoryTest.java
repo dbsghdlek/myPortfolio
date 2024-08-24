@@ -36,7 +36,7 @@ public class UserRepositoryTest {
 
     @BeforeEach
     void beforeSetting(){
-        UserEntity user = UserEntity.builder().username("test1").loginId("test").password("test").build();
+        UserEntity user = UserEntity.builder().username("test1").loginid("test").password("test").build();
         AuthorityEntity authority = AuthorityEntity.builder().authorityName("ADMIN").build();
         UserAutorityEntity userAutority = UserAutorityEntity.builder()
                 .userAuthKey(new UserAuthKey(user.getId(), authority.getAuthorityName()))
@@ -48,8 +48,8 @@ public class UserRepositoryTest {
         entityManager.clear();
     }
     @Test
-    void mtmTest(){
-        UserEntity test1 = userRepository.findOneWithAuthoritiesByUsername("test1").orElseThrow();
+    void manyTomanyTest(){
+        UserEntity test1 = userRepository.findOneWithAuthoritiesByloginid("test").orElseThrow();
         Assertions.assertThat(test1.getAuthorities().iterator().next().getAuthority().getAuthorityName()).isEqualTo("ADMIN");
     }
 

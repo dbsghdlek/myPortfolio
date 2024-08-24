@@ -18,8 +18,8 @@ public class UserEntity {
     @Column(name = "USER_ID")
     private Long id;
 
-    @Column(name = "LOGIN_ID")
-    private String loginId;
+    @Column(name = "LOGIN_ID", unique = true)
+    private String loginid;
 
     @Column(name = "PASSWORD")
     private String password;
@@ -34,9 +34,9 @@ public class UserEntity {
     private Set<UserAutorityEntity> authorities;
 
     @Builder
-    public UserEntity(Long id, String loginId, String password, String username, boolean activated, Set<UserAutorityEntity> authorities) {
+    public UserEntity(Long id, String loginid, String password, String username, boolean activated, Set<UserAutorityEntity> authorities) {
         this.id = id;
-        this.loginId = loginId;
+        this.loginid = loginid;
         this.password = password;
         this.username = username;
         this.activated = activated;

@@ -25,21 +25,21 @@ public class CustomUserDetailService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findOneWithAuthoritiesByUsername(username)
-                .map(user -> createUser(username, user))
-                .orElseThrow(()-> new UsernameNotFoundException(username + " -> 데이터베이스에서 찾을 수 없습니다."));
+    public UserDetails loadUserByUsername(String loginid) throws UsernameNotFoundException {
+        return userRepository.findOneWithAuthoritiesByloginid(loginid)
+                .map(user -> createUser(loginid, user))
+                .orElseThrow(()-> new UsernameNotFoundException(loginid + " -> 데이터베이스에서 찾을 수 없습니다."));
     }
-    private org.springframework.security.core.userdetails.User createUser(String userName, UserEntity user){
+    private org.springframework.security.core.userdetails.User createUser(String loginid, UserEntity user){
         if(!user.isActivated()){
-            throw new RuntimeException(userName + "-> 활성화되어 있지 않습니다.");
+            throw new RuntimeException(loginid + "-> 활성화되어 있지 않습니다.");
         }
 
         List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getAuthority().getAuthorityName()))
                 .collect(Collectors.toList());
 
-        return new User(user.getUsername()
+        return new User(user.getLoginid()
                 ,user.getPassword()
                 , grantedAuthorities);
     }

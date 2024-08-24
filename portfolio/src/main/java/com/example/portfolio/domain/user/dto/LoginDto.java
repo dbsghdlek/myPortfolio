@@ -15,6 +15,9 @@ public class LoginDto {
 
     @NotNull
     @Size(min = 3, max = 50)
+    private String loginId;
+
+    @Size(min = 3, max = 50)
     private String userName;
 
     @NotNull

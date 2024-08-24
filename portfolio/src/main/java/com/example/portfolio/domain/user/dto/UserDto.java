@@ -32,7 +32,7 @@ public class UserDto {
     @QueryProjection
     public UserDto(UserEntity user, List<AuthorityEntity> authorities){
         this.id = user.getId();
-        this.loginId = user.getLoginId();
+        this.loginId = user.getLoginid();
         this.userName = user.getUsername();
         this.password = user.getPassword();
         this.activated = user.isActivated();
