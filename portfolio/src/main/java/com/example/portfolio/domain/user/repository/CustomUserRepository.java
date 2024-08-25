@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface CustomUserRepository {
 
-
+    public boolean searchLoginIdDuplicated(String loginId);
 }

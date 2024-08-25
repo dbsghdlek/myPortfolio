@@ -1,6 +1,5 @@
-package com.example.portfolio.domain.user;
+package com.example.portfolio.domain.user.service;
 
-import com.example.portfolio.domain.user.dto.UserDto;
 import com.example.portfolio.domain.user.entity.UserEntity;
 import com.example.portfolio.domain.user.repository.UserRepository;
 import jakarta.transaction.Transactional;

@@ -3,6 +3,8 @@ package com.example.portfolio.domain.user.dto;
 import com.example.portfolio.domain.user.entity.AuthorityEntity;
 import com.example.portfolio.domain.user.entity.UserEntity;
 import com.querydsl.core.annotations.QueryProjection;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,10 +21,16 @@ public class UserDto {
 
     private Long id;
 
+    @NotNull
+    @Size(min = 3, max = 50)
     private String loginId;
 
+    @NotNull
+    @Size(min = 3, max = 50)
     private String password;
 
+    @NotNull
+    @Size(min = 3, max = 30)
     private String userName;
 
     private boolean activated;

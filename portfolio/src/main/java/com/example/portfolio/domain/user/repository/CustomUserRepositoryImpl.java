@@ -7,11 +7,13 @@ import static com.querydsl.core.group.GroupBy.groupBy;
 import com.example.portfolio.domain.user.dto.UserDto;
 import com.example.portfolio.domain.user.entity.QAuthorityEntity;
 import com.example.portfolio.domain.user.entity.QUserAutorityEntity;
+import com.example.portfolio.domain.user.entity.QUserEntity;
 import com.example.portfolio.domain.user.entity.UserEntity;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.example.portfolio.domain.user.entity.QUserEntity.userEntity;
@@ -23,4 +25,11 @@ public class CustomUserRepositoryImpl implements CustomUserRepository{
 
     private final JPAQueryFactory jpaQueryFactory;
 
+    @Override
+    public boolean searchLoginIdDuplicated(String loginId) {
+        List<UserEntity> fetch = jpaQueryFactory.selectFrom(userEntity)
+                .where(userEntity.loginid.eq(loginId))
+                .fetch();
+        return fetch.size() >0? true:false;
+    }
 }

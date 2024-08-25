@@ -53,4 +53,12 @@ public class UserRepositoryTest {
         Assertions.assertThat(test1.getAuthorities().iterator().next().getAuthority().getAuthorityName()).isEqualTo("ADMIN");
     }
 
+    @Test
+    void duplicatedLoginIdTest(){
+        boolean test = userRepository.searchLoginIdDuplicated("test");
+        boolean test1 = userRepository.searchLoginIdDuplicated("test1");
+        Assertions.assertThat(test).isEqualTo(true);
+        Assertions.assertThat(test1).isEqualTo(false);
+    }
+
 }
