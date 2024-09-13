@@ -37,7 +37,7 @@ public class UserRepositoryTest {
     @BeforeEach
     void beforeSetting(){
         UserEntity user = UserEntity.builder().username("test1").loginid("test").password("test").build();
-        AuthorityEntity authority = AuthorityEntity.builder().authorityName("ADMIN").build();
+        AuthorityEntity authority = AuthorityEntity.builder().authorityName("ROLE_USER").build();
         UserAutorityEntity userAutority = UserAutorityEntity.builder()
                 .userAuthKey(new UserAuthKey(user.getId(), authority.getAuthorityName()))
                 .user(user)
@@ -53,6 +53,11 @@ public class UserRepositoryTest {
         Assertions.assertThat(test1.getAuthorities().iterator().next().getAuthority().getAuthorityName()).isEqualTo("ADMIN");
     }
 
+    @Test
+    void signInTest(){
+        UserEntity user = UserEntity.builder().loginid("test2").password("test2").username("test2").activated(true).build();
+        userAuthRepository.save();
+    }
     @Test
     void duplicatedLoginIdTest(){
         boolean test = userRepository.searchLoginIdDuplicated("test");
