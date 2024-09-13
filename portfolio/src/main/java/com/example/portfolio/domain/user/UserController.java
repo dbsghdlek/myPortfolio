@@ -16,6 +16,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -61,5 +62,13 @@ public class UserController {
         httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt );
 
         return new ResponseEntity<>(new TokenDto(jwt), httpHeaders, HttpStatus.OK);
+    }
+
+    @GetMapping("/test")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    public ResponseEntity<String> authTest(Authentication authentication){
+        authentication.getAuthorities().forEach(System.out::println);
+
+        return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 }
