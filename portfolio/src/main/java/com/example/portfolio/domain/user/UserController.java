@@ -64,11 +64,11 @@ public class UserController {
         return new ResponseEntity<>(new TokenDto(jwt), httpHeaders, HttpStatus.OK);
     }
 
-    @GetMapping("/test")
-    @PreAuthorize("hasAnyRole('ROLE_USER')")
-    public ResponseEntity<String> authTest(Authentication authentication){
-        authentication.getAuthorities().forEach(System.out::println);
-
-        return new ResponseEntity<>("OK", HttpStatus.OK);
-    }
+//    @GetMapping("/test")
+//    @PreAuthorize("hasAnyRole('ROLE_USER')")
+//    public ResponseEntity<String> authTest(Authentication authentication){
+//
+//
+//        return new ResponseEntity<>(authentication.getName(), HttpStatus.OK);
+//    }
 }

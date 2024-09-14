@@ -1,5 +1,6 @@
 package com.example.portfolio.domain.user.service;
 
+import com.example.portfolio.config.jwt.CustomUserDetails;
 import com.example.portfolio.domain.user.entity.UserEntity;
 import com.example.portfolio.domain.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -27,18 +28,18 @@ public class CustomUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String loginid) throws UsernameNotFoundException {
         return userRepository.findOneWithAuthoritiesByloginid(loginid)
                 .map(user -> createUser(loginid, user))
-                .orElseThrow(()-> new UsernameNotFoundException(loginid + " -> 데이터베이스에서 찾을 수 없습니다."));
+                .orElseThrow(() -> new UsernameNotFoundException(loginid + " -> 데이터베이스에서 찾을 수 없습니다."));
     }
-    private org.springframework.security.core.userdetails.User createUser(String loginid, UserEntity user){
+    private CustomUserDetails createUser(String loginid, UserEntity user){
         if(!user.isActivated()){
             throw new RuntimeException(loginid + "-> 활성화되어 있지 않습니다.");
         }
 
-        List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getAuthority().getAuthorityName()))
+        List<String> grantedAuthorities = user.getAuthorities().stream()
+                .map(authority -> new String(authority.getAuthority().getAuthorityName()))
                 .collect(Collectors.toList());
 
-        return new User(user.getLoginid()
+        return new CustomUserDetails(user.getLoginid()
                 ,user.getPassword()
                 , grantedAuthorities);
     }
