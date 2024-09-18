@@ -1,12 +1,10 @@
 package com.example.portfolio.domain.puppy.controller;
 
 import com.example.portfolio.domain.base.BaseController;
-import com.example.portfolio.domain.puppy.PuppyService;
+import com.example.portfolio.domain.puppy.service.PuppyService;
 import com.example.portfolio.web.response.result.ResultResponse;
 
-import com.example.portfolio.web.response.result.ResultVo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

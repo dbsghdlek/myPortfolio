@@ -1,14 +1,14 @@
 package com.example.portfolio.domain.user.repository;
 
 import com.example.portfolio.domain.user.entity.AuthorityEntity;
-import com.example.portfolio.domain.user.entity.QAuthorityEntity;
+import com.example.portfolio.domain.user.service.CustomAuthorityRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
 import static com.example.portfolio.domain.user.entity.QAuthorityEntity.authorityEntity;
 
 @RequiredArgsConstructor
-public class CustomAuthorityRepositoryImpl implements CustomAuthorityRepository{
+public class CustomAuthorityRepositoryImpl implements CustomAuthorityRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
 

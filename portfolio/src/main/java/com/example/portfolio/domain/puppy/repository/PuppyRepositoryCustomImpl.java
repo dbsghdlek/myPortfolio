@@ -1,7 +1,7 @@
 package com.example.portfolio.domain.puppy.repository;
 
 import com.example.portfolio.domain.puppy.PuppyDto;
-import com.example.portfolio.domain.puppy.QPuppyEntity;
+import com.example.portfolio.domain.puppy.service.PuppyRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -14,7 +14,7 @@ import static com.example.portfolio.domain.puppy.QPuppyEntity.puppyEntity;
 
 
 @RequiredArgsConstructor
-public class PuppyRepositoryCustomImpl implements PuppyRepositoryCustom{
+public class PuppyRepositoryCustomImpl implements PuppyRepositoryCustom {
 
     @Value("${paging.limit}")
     private int pagingLimit;

@@ -1,7 +1,7 @@
 package com.example.portfolio.domain.keyboard.repository;
 
 import com.example.portfolio.domain.keyboard.KeyboardDto;
-import com.example.portfolio.domain.keyboard.QKeyboardEntity;
+import com.example.portfolio.domain.keyboard.service.KeyboardRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.List;
 import static com.example.portfolio.domain.keyboard.QKeyboardEntity.keyboardEntity;
 
 @RequiredArgsConstructor
-public class KeyboardRepositoryCustomImpl implements KeyboardRepositoryCustom{
+public class KeyboardRepositoryCustomImpl implements KeyboardRepositoryCustom {
     private final JPAQueryFactory queryFactory;
     
     @Value("${paging.limit}")

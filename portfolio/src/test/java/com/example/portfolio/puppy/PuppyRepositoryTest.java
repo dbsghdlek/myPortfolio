@@ -3,7 +3,7 @@ package com.example.portfolio.puppy;
 import com.example.portfolio.config.QueryDslConfig;
 import com.example.portfolio.domain.puppy.PuppyDto;
 import com.example.portfolio.domain.puppy.PuppyEntity;
-import com.example.portfolio.domain.puppy.PuppyRepository;
+import com.example.portfolio.domain.puppy.service.PuppyRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

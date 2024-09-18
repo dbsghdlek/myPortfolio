@@ -2,9 +2,9 @@ package com.example.portfolio.domain.food.controller;
 
 import com.example.portfolio.domain.base.BaseController;
 import com.example.portfolio.domain.food.FoodDto;
-import com.example.portfolio.domain.food.FoodService;
+import com.example.portfolio.domain.food.service.FoodService;
 import com.example.portfolio.web.response.result.ResultResponse;
-import com.example.portfolio.web.response.result.ResultVo;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -21,11 +21,12 @@ public class FoodController extends BaseController{
 
     private final FoodService service;
 
-
+    @Operation(summary = "음식 사진 가져오기 API", description = "음식 사진 가져오기")
     @GetMapping("")
     public ResponseEntity foodList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNumber){
         List<FoodDto> foodDtoList = service.getListByPaging(pageNumber);
 
         return ResultResponse.wrapperResult(foodDtoList);
     }
+
 }

@@ -1,9 +1,13 @@
 package com.example.portfolio.domain.food;
 
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class FoodDto {
     @NotEmpty
     private Long Id;
@@ -12,4 +16,18 @@ public class FoodDto {
     // 음식 사진 이름
     @NotEmpty
     private String pictureName;
+
+    public FoodEntity toEntity(){
+        return FoodEntity.builder()
+                .id(this.Id)
+                .restaurant(this.restaurant)
+                .pictureName(this.pictureName)
+                .build();
+    }
+
+    public FoodDto(FoodEntity food){
+        this.Id = food.getId();
+        this.restaurant = food.getRestaurant();
+        this.pictureName = food.getPictureName();
+    }
 }

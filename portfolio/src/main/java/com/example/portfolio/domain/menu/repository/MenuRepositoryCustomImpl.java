@@ -1,7 +1,7 @@
 package com.example.portfolio.domain.menu.repository;
 
 import com.example.portfolio.domain.menu.MenuDto;
-import com.example.portfolio.domain.menu.QMenuEntity;
+import com.example.portfolio.domain.menu.service.MenuRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import static com.example.portfolio.domain.menu.QMenuEntity.menuEntity;
 
 @Repository
 @RequiredArgsConstructor
-public class MenuRepositoryCustomImpl implements MenuRepositoryCustom{
+public class MenuRepositoryCustomImpl implements MenuRepositoryCustom {
 
     private final JPAQueryFactory jpaQueryFactory;
 

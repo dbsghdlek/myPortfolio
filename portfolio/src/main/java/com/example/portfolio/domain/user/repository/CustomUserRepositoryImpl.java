@@ -1,6 +1,7 @@
 package com.example.portfolio.domain.user.repository;
 
 import com.example.portfolio.domain.user.entity.UserEntity;
+import com.example.portfolio.domain.user.service.CustomUserRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
@@ -12,7 +13,7 @@ import static com.querydsl.core.group.GroupBy.list;
 
 
 @RequiredArgsConstructor
-public class CustomUserRepositoryImpl implements CustomUserRepository{
+public class CustomUserRepositoryImpl implements CustomUserRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
 

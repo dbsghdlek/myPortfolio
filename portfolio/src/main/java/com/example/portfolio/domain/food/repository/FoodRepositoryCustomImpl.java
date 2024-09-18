@@ -1,7 +1,7 @@
 package com.example.portfolio.domain.food.repository;
 
 import com.example.portfolio.domain.food.FoodDto;
-import com.example.portfolio.domain.food.QFoodEntity;
+import com.example.portfolio.domain.food.service.FoodRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import static com.example.portfolio.domain.food.QFoodEntity.foodEntity;
 
 @Repository
 @RequiredArgsConstructor
-public class FoodRepositoryCustomImpl implements FoodRepositoryCustom{
+public class FoodRepositoryCustomImpl implements FoodRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 

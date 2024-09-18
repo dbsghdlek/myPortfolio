@@ -33,8 +33,8 @@ public class MusicAdminController extends BaseController{
     @PutMapping("/update/{musicId}")
     public ResponseEntity updateMusic(@RequestBody MusicDto dto, @PathVariable Long musicId){
         dto.setMusicID(musicId);
-        boolean result = service.update(dto);
-        return ResultResponse.wrapperResult(result);
+
+        return ResultResponse.wrapperResult(service.update(dto));
     }
 
     @Operation(summary = "음악 삭제 Api",description = "음악 데이터 삭제하기")

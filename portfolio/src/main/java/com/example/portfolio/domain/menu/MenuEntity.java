@@ -45,10 +45,10 @@ public class MenuEntity extends BaseEntity {
             this.menuName = menuEntity.getMenuName();
             this.menuImage = menuEntity.getMenuImage();
             this.modifiedDate = LocalDateTime.now();
+            return true;
         }catch (Exception e){
-            log.info("Exception ->" +  e);
+            log.info(new StringBuilder().append("MenuValue Update Error : ").append(e).toString());
             return false;
         }
-        return true;
     }
 }

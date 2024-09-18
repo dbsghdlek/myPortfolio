@@ -1,7 +1,7 @@
 package com.example.portfolio.domain.keyboard.controller;
 
 import com.example.portfolio.domain.base.BaseController;
-import com.example.portfolio.domain.keyboard.KeyboardService;
+import com.example.portfolio.domain.keyboard.service.KeyboardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;

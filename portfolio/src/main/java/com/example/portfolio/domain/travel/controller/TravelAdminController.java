@@ -1,6 +1,7 @@
 package com.example.portfolio.domain.travel.controller;
 
 import com.example.portfolio.domain.base.BaseController;
+import com.example.portfolio.domain.travel.service.TravelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -14,4 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/admin/travel", produces = MediaType.APPLICATION_JSON_VALUE)
 @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 public class TravelAdminController extends BaseController {
+
+    private final TravelService service;
+
 }

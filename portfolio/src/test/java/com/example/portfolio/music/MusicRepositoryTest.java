@@ -2,7 +2,7 @@ package com.example.portfolio.music;
 
 import com.example.portfolio.config.QueryDslConfig;
 import com.example.portfolio.domain.genre.GenreEntity;
-import com.example.portfolio.domain.genre.GenreRepository;
+import com.example.portfolio.domain.genre.service.GenreRepository;
 import com.example.portfolio.domain.music.MusicEntity;
 import com.example.portfolio.domain.music.dto.MusicAndGenre;
 import com.example.portfolio.domain.music.dto.MusicDto;

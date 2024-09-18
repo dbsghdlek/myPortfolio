@@ -5,9 +5,9 @@ import com.example.portfolio.domain.user.entity.AuthorityEntity;
 import com.example.portfolio.domain.user.entity.UserAuthKey;
 import com.example.portfolio.domain.user.entity.UserAutorityEntity;
 import com.example.portfolio.domain.user.entity.UserEntity;
-import com.example.portfolio.domain.user.repository.AuthorityRepository;
-import com.example.portfolio.domain.user.repository.UserAuthRepository;
-import com.example.portfolio.domain.user.repository.UserRepository;
+import com.example.portfolio.domain.user.service.AuthorityRepository;
+import com.example.portfolio.domain.user.service.UserAuthRepository;
+import com.example.portfolio.domain.user.service.UserRepository;
 import jakarta.persistence.EntityManager;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
-
-import java.util.Optional;
 
 @DataJpaTest
 @Import(QueryDslConfig.class)

@@ -1,7 +1,7 @@
 package com.example.portfolio.domain.genre.repository;
 
 import com.example.portfolio.domain.genre.GenreDto;
-import com.example.portfolio.domain.genre.QGenreEntity;
+import com.example.portfolio.domain.genre.service.GenreRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 import static com.example.portfolio.domain.genre.QGenreEntity.genreEntity;
 
 @RequiredArgsConstructor
-public class GenreRepositoryCustomImpl implements GenreRepositoryCustom{
+public class GenreRepositoryCustomImpl implements GenreRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
 
     public List<GenreDto> genreList(){

@@ -6,6 +6,8 @@ import com.example.portfolio.domain.menu.MenuEntity;
 import lombok.*;
 
 import jakarta.persistence.*;
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.LocalDateTime;
 
 
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "MUSIC")
 @Getter
 @NoArgsConstructor
+@Slf4j
 public class MusicEntity extends BaseEntity {
 
     @Id @GeneratedValue
@@ -51,6 +54,7 @@ public class MusicEntity extends BaseEntity {
             this.modifiedDate = LocalDateTime.now();
             return true;
         }catch (Exception e){
+            log.error(new StringBuilder().append("MusicValue Update error : ").append(e).toString());
             return false;
         }
     }
