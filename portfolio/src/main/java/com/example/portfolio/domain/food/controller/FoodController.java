@@ -22,7 +22,7 @@ public class FoodController extends BaseController{
     private final FoodService service;
 
     @Operation(summary = "음식 사진 가져오기 API", description = "음식 사진 가져오기")
-    @GetMapping("")
+    @GetMapping("/list/{pageNumber}")
     public ResponseEntity foodList(@RequestParam(name = "page", required = false, defaultValue = "0") int pageNumber){
         List<FoodDto> foodDtoList = service.getListByPaging(pageNumber);
 

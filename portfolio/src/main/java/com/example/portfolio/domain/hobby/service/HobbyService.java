@@ -19,12 +19,8 @@ public class HobbyService {
 
     private final HobbyRepository hobbyRepository;
 
-    public List<HobbyDto> allHobby(){
-        List<HobbyEntity> list =  hobbyRepository.findAll();
-        List<HobbyDto> dtoList = new ArrayList<>();
-        list.stream().forEach(hobbyEntity -> dtoList.add(new HobbyDto(hobbyEntity)));
-
-        return dtoList;
+    public List<HobbyDto> allHobby(int pageNumber){
+        return hobbyRepository.getHobbyList(pageNumber);
     }
 
     public HobbyDto get(int hobbyId){

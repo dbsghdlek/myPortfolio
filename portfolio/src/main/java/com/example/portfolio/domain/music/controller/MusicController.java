@@ -37,6 +37,7 @@ public class MusicController extends BaseController{
         return ResultResponse.wrapperResult(musicDto);
     }
 
+    @Operation(summary="노래 장르 검색 API", description="특정 장르 노래 정보 가져오기")
     @GetMapping("/genre/{genreName}")
     public ResponseEntity genreByList(@PathVariable String genreName){
         List<MusicAndGenre> list = service.getListByGenre(genreName);
