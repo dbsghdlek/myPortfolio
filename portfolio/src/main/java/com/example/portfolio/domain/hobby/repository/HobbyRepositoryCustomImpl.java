@@ -1,8 +1,6 @@
 package com.example.portfolio.domain.hobby.repository;
 
 import com.example.portfolio.domain.hobby.HobbyDto;
-import com.example.portfolio.domain.hobby.QHobbyEntity;
-import com.example.portfolio.domain.hobby.service.HobbyRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

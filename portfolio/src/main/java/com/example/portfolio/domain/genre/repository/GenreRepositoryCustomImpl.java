@@ -1,7 +1,6 @@
 package com.example.portfolio.domain.genre.repository;
 
 import com.example.portfolio.domain.genre.GenreDto;
-import com.example.portfolio.domain.genre.service.GenreRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

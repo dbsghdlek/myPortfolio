@@ -1,4 +1,4 @@
-package com.example.portfolio.domain.food.service;
+package com.example.portfolio.domain.food.repository;
 
 import com.example.portfolio.domain.food.FoodDto;
 

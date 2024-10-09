@@ -6,7 +6,7 @@ import com.example.portfolio.domain.genre.service.GenreRepository;
 import com.example.portfolio.domain.music.MusicEntity;
 import com.example.portfolio.domain.music.dto.MusicAndGenre;
 import com.example.portfolio.domain.music.dto.MusicDto;
-import com.example.portfolio.domain.music.MusicRepository;
+import com.example.portfolio.domain.music.service.MusicRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

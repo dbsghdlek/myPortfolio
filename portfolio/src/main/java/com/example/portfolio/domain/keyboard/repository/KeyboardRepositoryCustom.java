@@ -1,4 +1,4 @@
-package com.example.portfolio.domain.keyboard.service;
+package com.example.portfolio.domain.keyboard.repository;
 
 import com.example.portfolio.domain.keyboard.KeyboardDto;
 

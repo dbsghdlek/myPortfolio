@@ -1,7 +1,6 @@
 package com.example.portfolio.domain.food.repository;
 
 import com.example.portfolio.domain.food.FoodDto;
-import com.example.portfolio.domain.food.service.FoodRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

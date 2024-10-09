@@ -1,5 +1,6 @@
-package com.example.portfolio.domain.music;
+package com.example.portfolio.domain.music.service;
 
+import com.example.portfolio.domain.music.MusicEntity;
 import com.example.portfolio.domain.music.dto.MusicAndGenre;
 import com.example.portfolio.domain.music.dto.MusicDto;
 import lombok.RequiredArgsConstructor;

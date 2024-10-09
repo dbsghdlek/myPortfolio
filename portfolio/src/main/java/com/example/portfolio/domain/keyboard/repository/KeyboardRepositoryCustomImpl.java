@@ -1,7 +1,6 @@
 package com.example.portfolio.domain.keyboard.repository;
 
 import com.example.portfolio.domain.keyboard.KeyboardDto;
-import com.example.portfolio.domain.keyboard.service.KeyboardRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

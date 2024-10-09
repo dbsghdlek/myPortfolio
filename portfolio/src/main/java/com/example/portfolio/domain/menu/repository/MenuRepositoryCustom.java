@@ -1,4 +1,4 @@
-package com.example.portfolio.domain.menu.service;
+package com.example.portfolio.domain.menu.repository;
 
 import com.example.portfolio.domain.menu.MenuDto;
 

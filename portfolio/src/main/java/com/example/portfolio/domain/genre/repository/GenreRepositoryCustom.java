@@ -1,4 +1,4 @@
-package com.example.portfolio.domain.genre.service;
+package com.example.portfolio.domain.genre.repository;
 
 import com.example.portfolio.domain.genre.GenreDto;
 

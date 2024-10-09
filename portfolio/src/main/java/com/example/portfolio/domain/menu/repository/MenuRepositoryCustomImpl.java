@@ -1,7 +1,6 @@
 package com.example.portfolio.domain.menu.repository;
 
 import com.example.portfolio.domain.menu.MenuDto;
-import com.example.portfolio.domain.menu.service.MenuRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

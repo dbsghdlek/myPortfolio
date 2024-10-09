@@ -1,4 +1,4 @@
-package com.example.portfolio.domain.puppy.service;
+package com.example.portfolio.domain.puppy.repository;
 
 import com.example.portfolio.domain.puppy.PuppyDto;
 

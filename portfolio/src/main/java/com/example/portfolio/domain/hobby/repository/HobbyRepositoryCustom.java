@@ -1,4 +1,4 @@
-package com.example.portfolio.domain.hobby.service;
+package com.example.portfolio.domain.hobby.repository;
 
 import com.example.portfolio.domain.hobby.HobbyDto;
 
