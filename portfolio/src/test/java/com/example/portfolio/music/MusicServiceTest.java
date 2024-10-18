@@ -3,6 +3,8 @@ package com.example.portfolio.music;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import net.minidev.json.parser.JSONParser;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import org.junit.jupiter.api.Test;
@@ -43,11 +45,15 @@ public class MusicServiceTest {
         String body = exchange.getBody();
 
         JSONObject jsonObject = XML.toJSONObject(body);
+        JSONArray jsonArray = jsonObject.getJSONObject("rss")
+                .getJSONObject("channel")
+                .getJSONArray("item");
+
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         try {
-            Object json = mapper.readValue(jsonObject.toString(), Object.class);
+            Object json = mapper.readValue(jsonArray.toString(), Object.class);
             String output = mapper.writeValueAsString(json);
             System.out.println(output);
         } catch (JsonProcessingException e) {

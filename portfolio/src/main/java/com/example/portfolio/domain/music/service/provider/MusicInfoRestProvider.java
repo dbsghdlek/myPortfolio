@@ -4,6 +4,7 @@ import com.example.portfolio.domain.music.service.MusicInfoProvider;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.http.*;
@@ -23,13 +24,19 @@ public class MusicInfoRestProvider implements MusicInfoProvider {
         ResponseEntity<String> exchange = restTemplate.exchange(stb.toString(), HttpMethod.GET, entity, String.class);
 
         if(HttpStatus.OK.equals(exchange.getStatusCode())){
-            JSONObject jsonObject = XML.toJSONObject(exchange.getBody());
+            
+            // XML에서 Item만 추출하여 JSON으로 추출
+            JSONArray jsonArray = XML.toJSONObject(exchange.getBody())
+                    .getJSONObject("rss")
+                    .getJSONObject("channel")
+                    .getJSONArray("item");
+
             ObjectMapper mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
             String output;
 
             try {
-                Object json = mapper.readValue(jsonObject.toString(), Object.class);
+                Object json = mapper.readValue(jsonArray.toString(), Object.class);
                 output = mapper.writeValueAsString(json);
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
