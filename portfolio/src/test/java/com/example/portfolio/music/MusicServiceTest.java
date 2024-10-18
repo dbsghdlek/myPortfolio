@@ -1,5 +1,10 @@
 package com.example.portfolio.music;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import org.json.JSONObject;
+import org.json.XML;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.*;
 import org.springframework.web.client.RestClient;
@@ -34,8 +39,20 @@ public class MusicServiceTest {
         }else {
             exchange = null;
         }
+        System.out.println("status 200 =" + (exchange.getStatusCode() == HttpStatus.OK));
+        String body = exchange.getBody();
 
-        System.out.println("exchange = " + exchange);
+        JSONObject jsonObject = XML.toJSONObject(body);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+
+        try {
+            Object json = mapper.readValue(jsonObject.toString(), Object.class);
+            String output = mapper.writeValueAsString(json);
+            System.out.println(output);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
@@ -60,8 +77,18 @@ public class MusicServiceTest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        JSONObject jsonObject = XML.toJSONObject(response);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        System.out.println("response = " + response);
+        try {
+            Object json = mapper.readValue(jsonObject.toString(), Object.class);
+            String output = mapper.writeValueAsString(json);
+            System.out.println(output);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Test

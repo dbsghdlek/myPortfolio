@@ -43,4 +43,10 @@ public class MusicController extends BaseController{
 
         return ResultResponse.wrapperResult(list);
     }
+
+    @Operation
+    @GetMapping("/search/artist/{keyword}")
+    public ResponseEntity searchByArtist(@PathVariable String keyword){
+        return ResultResponse.wrapperResult(service.musicInfoSearch(keyword));
+    }
 }

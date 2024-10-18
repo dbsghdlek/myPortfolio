@@ -16,6 +16,8 @@ import java.util.List;
 public class MusicService {
     private final MusicRepository repository;
 
+    private final MusicInfoProvider musicInfoProvider;
+
     public List<MusicAndGenre> allMusic(int pageNumber){
         List<MusicAndGenre> list = repository.musicAllInfo(pageNumber);
         return list;
@@ -54,4 +56,7 @@ public class MusicService {
         return true;
     }
 
+    public String musicInfoSearch(String keyword){
+        return musicInfoProvider.musicInfo(keyword);
+    }
 }
