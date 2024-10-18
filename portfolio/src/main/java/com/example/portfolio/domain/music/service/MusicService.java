@@ -17,9 +17,7 @@ public class MusicService {
     private final MusicRepository repository;
 
     public List<MusicAndGenre> allMusic(int pageNumber){
-
         List<MusicAndGenre> list = repository.musicAllInfo(pageNumber);
-
         return list;
     }
 
