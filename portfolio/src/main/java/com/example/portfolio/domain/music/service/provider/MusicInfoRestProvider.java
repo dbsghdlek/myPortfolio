@@ -22,9 +22,9 @@ public class MusicInfoRestProvider implements MusicInfoProvider {
 
         HttpEntity<String> entity = new HttpEntity(new HttpHeaders());
         ResponseEntity<String> exchange = restTemplate.exchange(stb.toString(), HttpMethod.GET, entity, String.class);
-
+        
+        // 200 응답 받으면 파싱 후 데이터 전달
         if(HttpStatus.OK.equals(exchange.getStatusCode())){
-            
             // XML에서 Item만 추출하여 JSON으로 추출
             JSONArray jsonArray = XML.toJSONObject(exchange.getBody())
                     .getJSONObject("rss")

@@ -1,5 +1,6 @@
-package com.example.portfolio.domain.food;
+package com.example.portfolio.domain.food.entity;
 
+import com.example.portfolio.domain.food.dto.FoodDto;
 import com.example.portfolio.domain.menu.MenuEntity;
 import jakarta.persistence.*;
 import lombok.Builder;

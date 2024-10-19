@@ -1,5 +1,6 @@
-package com.example.portfolio.domain.food;
+package com.example.portfolio.domain.food.dto;
 
+import com.example.portfolio.domain.food.entity.FoodEntity;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

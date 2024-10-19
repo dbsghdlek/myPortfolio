@@ -1,6 +1,6 @@
 package com.example.portfolio.domain.food.repository;
 
-import com.example.portfolio.domain.food.FoodDto;
+import com.example.portfolio.domain.food.dto.FoodDto;
 
 import java.util.List;
 

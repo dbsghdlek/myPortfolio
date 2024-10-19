@@ -1,7 +1,7 @@
 package com.example.portfolio.domain.food.service;
 
-import com.example.portfolio.domain.food.FoodDto;
-import com.example.portfolio.domain.food.FoodEntity;
+import com.example.portfolio.domain.food.dto.FoodDto;
+import com.example.portfolio.domain.food.entity.FoodEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
