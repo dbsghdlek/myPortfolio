@@ -57,6 +57,9 @@ dependencies {
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
 
+	//Redis DB 설정
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
 	//test 롬복 사용
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'

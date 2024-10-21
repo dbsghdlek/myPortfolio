@@ -1,6 +1,7 @@
 package com.example.portfolio.domain.food.repository;
 
 import com.example.portfolio.domain.food.dto.FoodDto;
+import com.example.portfolio.domain.food.entity.QFoodEntity;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.example.portfolio.domain.food.QFoodEntity.foodEntity;
+import static com.example.portfolio.domain.food.entity.QFoodEntity.foodEntity;
+
 
 @Repository
 @RequiredArgsConstructor

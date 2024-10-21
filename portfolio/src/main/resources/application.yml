@@ -13,11 +13,14 @@ spring:
     properties:
       hibernate:
         format_sql: 'true'
-
   # Swagger
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  #Redis
+  redis:
+    host: localhost
+    port: 6379
 
 springdoc:
   swagger-ui:
