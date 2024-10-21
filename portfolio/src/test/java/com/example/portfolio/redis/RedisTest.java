@@ -1,18 +1,17 @@
 package com.example.portfolio.redis;
 
-import com.example.portfolio.config.QueryDslConfig;
-import com.example.portfolio.config.RedisConfig;
 import com.example.portfolio.config.redis.RefreshToken;
 import com.example.portfolio.config.redis.RefreshTokenRepository;
-import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@Import(RedisConfig.class)
-public class RepositoryTest {
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DisplayName("Redis CRUD Test")
+public class RedisTest {
 
     @Autowired
     private RefreshTokenRepository repository;
@@ -29,9 +28,15 @@ public class RepositoryTest {
         repository.save(token);
     }
 
+
     @Test
+    @DisplayName("Redis search 테스트")
     public void getTest(){
         RefreshToken test = repository.findByAuthId("test").orElseThrow();
-        Assertions.assertThat(test).isEqualTo("test");
+        System.out.println("test.getAuthId() = " + test.getAuthId());
+        System.out.println("test.getRole() = " + test.getRole());
+        System.out.println("test.getTtl() = " + test.getTtl());
+        System.out.println("test.getToken() = " + test.getToken());
+        Assertions.assertThat(test.getAuthId()).isEqualTo("test");
     }
 }
