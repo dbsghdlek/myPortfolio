@@ -1,11 +1,13 @@
 package com.example.portfolio.domain.music.dto;
 
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @Data
+@AllArgsConstructor
+@Builder
+@ToString
 public class MusicAndGenre {
     @NotEmpty
     private Long musicID;

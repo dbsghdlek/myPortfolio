@@ -1,4 +1,4 @@
-package com.example.portfolio.config.redis;
+package com.example.portfolio.domain.redis;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

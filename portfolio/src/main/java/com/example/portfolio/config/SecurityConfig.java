@@ -41,6 +41,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        // 실제 배포 시에는 csrf.enable()로 설정해야 함.
         http.csrf(csrf -> csrf.disable())
                 .exceptionHandling(authenticcationManager -> authenticcationManager
                         .authenticationEntryPoint(jwtAuthenticationEntryPoint)

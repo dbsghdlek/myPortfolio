@@ -11,7 +11,7 @@ import java.util.List;
 public class KeyboardService {
     private final KeyboardRepository keyboardRepository;
 
-    public List<KeyboardDto> getKeyboardList(int pageNumber){
+    public List<KeyboardDto> getList(int pageNumber){
         List<KeyboardDto> list = keyboardRepository.keyboardDtoList(pageNumber);
 
         return list;

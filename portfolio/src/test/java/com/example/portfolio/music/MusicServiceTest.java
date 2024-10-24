@@ -1,14 +1,21 @@
 package com.example.portfolio.music;
 
+import com.example.portfolio.domain.genre.GenreEntity;
+import com.example.portfolio.domain.music.dto.MusicAndGenre;
+import com.example.portfolio.domain.music.service.MusicRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import net.minidev.json.parser.JSONParser;
+import org.assertj.core.api.Assertions;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.*;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
@@ -21,10 +28,35 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.mockito.BDDMockito.given;
 
 @SpringBootTest
 public class MusicServiceTest {
+
+    @MockBean
+    private MusicRepository musicRepository;
+
+    @BeforeEach
+    void dataSet(){
+        ArrayList<MusicAndGenre> musicAndGenres = new ArrayList<>();
+        musicAndGenres.add(MusicAndGenre.builder()
+                        .musicID(1L)
+                        .musicImage("test").build());
+
+        given(musicRepository.genreByMusic("genreTest")).willReturn(musicAndGenres);
+    }
+
+    @Test
+    public void mockBeanTest(){
+        List<MusicAndGenre> genreTest = musicRepository.genreByMusic("genreTest");
+        MusicAndGenre musicAndGenre = genreTest.get(0);
+        System.out.println("musicAndGenre = " + musicAndGenre.toString());
+        Assertions.assertThat(genreTest.get(0).getMusicImage()).isEqualTo("test");
+    }
 
     @Test
     public void apiTestByRestTemplate(){
