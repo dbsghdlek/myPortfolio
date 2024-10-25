@@ -3,7 +3,7 @@
 <!-- logo -->
 <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA2MjBfMjI0%2FMDAxNzE4ODU0NjE2NTEx.EGlSQtG4A7foGqij66is5ReorZZlNs0FSQljZxpbqmcg.62caY61ZYGQ9Vo3D5N-OzibHQJWWgaiXPUZxYZqmW0og.JPEG%2FGettyImages-jv13450691_%25281%2529.jpg&type=sc960_832" width="400"/>
 
-### Back-end Git Reamd.me Template ✅
+### '나'를 보여주기 위한 포트폴리오 토이 프로젝트 ✅
 
 [<img src="https://img.shields.io/badge/-spring boot-important?style=flat&logo=spring-boot&logoColor=white" />]() 
 [<img src="https://img.shields.io/badge/-spring boot jpa-important?style=flat&logo=java&logoColor=white" />]() 
