@@ -10,6 +10,11 @@ import com.example.portfolio.domain.user.service.UserService;
 import com.example.portfolio.web.response.result.ResultCodeEnum;
 import com.example.portfolio.web.response.result.ResultResponse;
 import com.example.portfolio.web.response.result.ResultVo;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -47,6 +52,13 @@ public class UserController {
         return ResultResponse.wrapperResult(userDto);
     }
 
+    @Operation(summary = "회원 가입 요청", description = "회원 정보가 등록됩니다.", tags = { "Member Controller" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+    })
     @PostMapping("/login")
     public ResponseEntity<?> autorize(@Valid @RequestBody LoginDto loginDto){
 

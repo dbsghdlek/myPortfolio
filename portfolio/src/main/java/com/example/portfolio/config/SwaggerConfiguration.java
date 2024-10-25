@@ -2,7 +2,8 @@ package com.example.portfolio.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
-import org.springdoc.core.GroupedOpenApi;
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,12 +15,16 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfiguration {
 
     @Bean
-    public GroupedOpenApi chatOpenApi() {
-        String[] paths = {"/v1/**"};
+    public OpenAPI openAPI() {
+        return new OpenAPI()
+                .components(new Components())
+                .info(apiInfo());
+    }
 
-        return GroupedOpenApi.builder()
-                .group("내 포트폴리오 API v1")
-                .pathsToMatch(paths)
-                .build();
+    private io.swagger.v3.oas.models.info.Info apiInfo() {
+        return new io.swagger.v3.oas.models.info.Info()
+                .title("Springdoc Test")
+                .description("Springdoc Swagger UI Test")
+                .version("1.0.0");
     }
 }

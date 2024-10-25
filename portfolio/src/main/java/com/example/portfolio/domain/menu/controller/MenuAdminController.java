@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping(value = "/admin/menu", produces = MediaType.APPLICATION_JSON_VALUE)
 @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-public class MenuAdmincontroller extends BaseController{
+public class MenuAdminController extends BaseController{
 
     private final MenuService menuService;
 

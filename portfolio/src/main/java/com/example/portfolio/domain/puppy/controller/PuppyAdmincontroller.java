@@ -22,7 +22,7 @@ public class PuppyAdmincontroller extends BaseController{
     private final PuppyService service;
 
     @Operation(summary = "강아지 사진 등록", description = "강아지 사진을 등록하는 API")
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<?> insertPuppy(PuppyDto dto){
         boolean result = service.addPicture(dto);
 
