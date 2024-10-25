@@ -17,30 +17,13 @@
 </div> 
 
 ## 📝 소개
-백엔드 깃 레파지토리의 README.md를 빠르게 작성하기 위해 만든 템플릿입니다.
+기술 적용 및 연습을 위한 개인 프로젝트입니다.
 
-다음과 같은 내용을 작성할 수 있습니다.
-- 프로젝트 소개
-- 프로젝트 화면 구성 또는 프로토 타입
-- 프로젝트 API 설계
-- 사용한 기술 스택
-- 프로젝트 아키텍쳐
-- 기술적 이슈와 해결 과정
-- 프로젝트 팀원
-
-필요한 기술 스택에 대한 logo는 [skills 폴더](/skills/)에서 다운로드 받을 수 있습니다.
 
 <br />
 
-> 화면 구성과 프로토 타입 중 원하는 것을 사용해주세요.
-
-### 화면 구성
-|ERD 데이터 모델링|Screen #2|
-|:---:|:---:|
-|<img src="https://github.com/dbsghdlek/myPortfolio/issues/1#issue-2614308639" width="400"/>|<img src="https://user-images.githubusercontent.com/80824750/208456234-fb5fe434-aa65-4d7a-b955-89098d5bbe0b.gif" width="400"/>|
-
-### 프로토타입
-<img src="https://user-images.githubusercontent.com/80824750/208454673-0449e49c-57c6-4a6b-86cf-66c5b1e623dc.png">
+### ERD 데이터 모델링
+<img src="https://private-user-images.githubusercontent.com/95003319/380210890-508b0d1b-bf88-48d7-bf30-aa2e82408684.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjk4Njc2ODYsIm5iZiI6MTcyOTg2NzM4NiwicGF0aCI6Ii85NTAwMzMxOS8zODAyMTA4OTAtNTA4YjBkMWItYmY4OC00OGQ3LWJmMzAtYWEyZTgyNDA4Njg0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMjUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDI1VDE0NDMwNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ2ZjYzYmI3OGM0YjAwMGYwNzEyNzkwYWNkYWQ5ZTlhZjJjMjQ2YTFkYjZiM2FiODIxMWI0Mzc1ZTdhYThiMjImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.4dMEmD3ZNWb0gF-Wa-KxIu5xl3scG4msXB1GV4oed0U" width="400"/>
 
 <br />
 
