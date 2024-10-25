@@ -7,9 +7,12 @@
 
 [<img src="https://img.shields.io/badge/-spring boot-important?style=flat&logo=spring-boot&logoColor=white" />]() 
 [<img src="https://img.shields.io/badge/-notion-blue?style=flat&logo=notion&logoColor=white" />]() 
-[<img src="https://img.shields.io/badge/-jpa-blue?style=flat&logo=jpa&logoColor=white" />]() 
-[<img src="https://img.shields.io/badge/release-v0.0.0-yellow?style=flat&logo=google-chrome&logoColor=white" />]() 
-<br/> [<img src="https://img.shields.io/badge/프로젝트 기간-2022.12.10~2022.12.19-green?style=flat&logo=&logoColor=white" />]()
+[<img src="https://img.shields.io/badge/-java-yellow?style=flat&logo=java&logoColor=white" />]() 
+[<img src="https://img.shields.io/badge/-spring boot jpa-blue?style=flat&logo=java&logoColor=white" />]() 
+[<img src="https://img.shields.io/badge/-Javascript-blue?style=flat&logo=JavaScript&logoColor=white" />]() 
+[<img src="https://img.shields.io/badge/-Vue.js-blue?style=flat&logo=Vue.js&logoColor=white" />]() 
+[<img src="https://img.shields.io/badge/MySQL-v8.0.37 -yellow?style=flat&logo=MySQL&logoColor=white" />]() 
+<br/> 
 
 </div> 
 
