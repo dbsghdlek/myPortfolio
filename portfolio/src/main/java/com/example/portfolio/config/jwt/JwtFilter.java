@@ -7,6 +7,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
@@ -18,10 +19,12 @@ public class JwtFilter extends GenericFilterBean {
 
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
-    private TokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
+    private final RedisTemplate redisTemplate;
 
-    public JwtFilter(TokenProvider tokenProvider){
+    public JwtFilter(TokenProvider tokenProvider, RedisTemplate redisTemplate){
         this.tokenProvider = tokenProvider;
+        this.redisTemplate = redisTemplate;
     }
 
     @Override

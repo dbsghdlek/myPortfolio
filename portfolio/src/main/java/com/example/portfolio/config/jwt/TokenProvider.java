@@ -1,5 +1,6 @@
 package com.example.portfolio.config.jwt;
 
+import com.example.portfolio.domain.user.dto.TokenDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -33,7 +34,7 @@ public class TokenProvider implements InitializingBean {
     public TokenProvider(@Value("${jwt.secret}") String secret,
                          @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds){
         this.secret = secret;
-        this.tokenValidityInMilliseconds = tokenValidityInSeconds * 1000;
+        this.tokenValidityInMilliseconds = tokenValidityInSeconds * 60;
     }
 
     @Override
@@ -42,21 +43,36 @@ public class TokenProvider implements InitializingBean {
         this.key = Keys.hmacShaKeyFor(ketBytes);
     }
 
-    public String createToken(Authentication authentication){
+    public TokenDto createToken(Authentication authentication){
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
         long now = (new Date()).getTime();
-        //토큰 만료시간
-        Date validity = new Date(now + this.tokenValidityInMilliseconds);
+        //access 토큰 만료시간
+        Date tokenExpiredTime = new Date(now + this.tokenValidityInMilliseconds);
+        Date refreshtokenExpiredTime = new Date(now + (2 * this.tokenValidityInMilliseconds));
 
-        return Jwts.builder()
+        // accessToken 생성
+        String accessToken = Jwts.builder()
                 .setSubject(authentication.getName())
                 .claim(AUTHORITIES_KEY, authorities)
                 .signWith(key, SignatureAlgorithm.HS512) // 암복호화 알고리즘 설정
-                .setExpiration(validity) //만료시간 설정
+                .setExpiration(tokenExpiredTime) //만료시간 설정
                 .compact();
+
+        //RefreshToken 생성
+        String refreshToken = Jwts.builder()
+                .setExpiration(refreshtokenExpiredTime)
+                .signWith(key, SignatureAlgorithm.HS512)
+                .compact();
+
+        return TokenDto.builder()
+                .grantType("Bearer")
+                .accessToken(accessToken)
+                .refreshTokenExiprationTime(refreshtokenExpiredTime)
+                .refreshToken(refreshToken)
+                .build();
     }
 
     public  Authentication getAuthentication(String token){
@@ -79,7 +95,8 @@ public class TokenProvider implements InitializingBean {
 
     public boolean validateToken(String token){
         try {
-            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            Jws<Claims> claimsJws = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            System.out.println("claimsJws = " + claimsJws);
             return true;
         }catch (SecurityException | MalformedJwtException e){
             log.info("잘못된 JWT 서명입니다.");
@@ -91,5 +108,13 @@ public class TokenProvider implements InitializingBean {
             log.info("잘못된 JWT 토큰입니다.");
         }
         return false;
+    }
+
+    public Claims parseClaims(String token){
+        try {
+            return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
+        }catch (ExpiredJwtException e){
+            return e.getClaims();
+        }
     }
 }

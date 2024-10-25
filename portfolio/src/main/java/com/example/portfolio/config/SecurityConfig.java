@@ -7,6 +7,7 @@ import com.example.portfolio.config.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,6 +27,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
     private final TokenProvider tokenProvider;
+    private final RedisTemplate<String, Object> redisTemplate;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
@@ -51,10 +53,10 @@ public class SecurityConfig {
                                 HeadersConfigurer.FrameOptionsConfig::sameOrigin
                         ))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeRequests(registry ->
-                        registry.requestMatchers("/admin/**").hasAnyRole("ADMIN")
+                .authorizeRequests(auth ->
+                        auth.requestMatchers("/admin/**").hasAnyRole("ADMIN")
                                 .anyRequest().permitAll())
-                .with(new JwtSecurityConfig(tokenProvider), jwtSecurityConfig -> jwtSecurityConfig.build());
+                .with(new JwtSecurityConfig(tokenProvider, redisTemplate), jwtSecurityConfig -> jwtSecurityConfig.build());
 
         return http.build();
     }

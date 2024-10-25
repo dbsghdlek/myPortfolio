@@ -9,8 +9,4 @@ import org.springframework.context.annotation.Bean;
 @TestConfiguration
 public class MusicTestConfig {
 
-    @Bean
-    public MusicService musicService(){
-        return Mockito.mock(MusicService.class);
-    }
 }

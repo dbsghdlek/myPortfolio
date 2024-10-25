@@ -30,8 +30,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
-    private final TokenProvider tokenProvider;
-    private final AuthenticationManagerBuilder authenticationManagerBuilder;
+
     private final UserService userService;
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -51,17 +50,10 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> autorize(@Valid @RequestBody LoginDto loginDto){
 
-        UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginDto.getLoginId(), loginDto.getPassword());
-
-        //여기서 CustomUserDetailService에서 Orverride한 메소드가 실행됨.
-        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = tokenProvider.createToken(authentication);
-
+        TokenDto token = userService.login(loginDto);
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt );
+        httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + token.getAccessToken());
 
-        return ResultResponse.wrapperResult(new TokenDto(jwt), httpHeaders);
+        return ResultResponse.wrapperResult(token, httpHeaders);
     }
 }

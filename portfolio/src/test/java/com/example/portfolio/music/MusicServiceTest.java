@@ -1,23 +1,21 @@
 package com.example.portfolio.music;
 
-import com.example.portfolio.domain.genre.GenreEntity;
 import com.example.portfolio.domain.music.dto.MusicAndGenre;
 import com.example.portfolio.domain.music.service.MusicRepository;
+import com.example.portfolio.domain.music.service.MusicService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import net.minidev.json.parser.JSONParser;
 import org.assertj.core.api.Assertions;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.*;
-import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -40,24 +38,32 @@ public class MusicServiceTest {
     @MockBean
     private MusicRepository musicRepository;
 
+    @Autowired
+    private MusicService musicService;
+
     @BeforeEach
     void dataSet(){
         ArrayList<MusicAndGenre> musicAndGenres = new ArrayList<>();
         musicAndGenres.add(MusicAndGenre.builder()
                         .musicID(1L)
-                        .musicImage("test").build());
+                        .musicImage("mockTest").build());
 
         given(musicRepository.genreByMusic("genreTest")).willReturn(musicAndGenres);
     }
 
     @Test
-    public void mockBeanTest(){
+    public void mockBeanRepositoryTest(){
         List<MusicAndGenre> genreTest = musicRepository.genreByMusic("genreTest");
         MusicAndGenre musicAndGenre = genreTest.get(0);
         System.out.println("musicAndGenre = " + musicAndGenre.toString());
-        Assertions.assertThat(genreTest.get(0).getMusicImage()).isEqualTo("test");
+        Assertions.assertThat(genreTest.get(0).getMusicImage()).isEqualTo("mockTest");
     }
 
+    @Test
+    public void serviceTest(){
+        List<MusicAndGenre> genreTest = musicService.getListByGenre("genreTest");
+        Assertions.assertThat(genreTest.get(0).getMusicImage()).isEqualTo("mockTest");
+    }
     @Test
     public void apiTestByRestTemplate(){
         StringBuilder stb = new StringBuilder("http://www.maniadb.com/api/search/bts/?sr=artist&display=10&key=example&v=0.5");
