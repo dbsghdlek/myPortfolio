@@ -6,9 +6,9 @@
 ### Back-end Git Reamd.me Template ✅
 
 [<img src="https://img.shields.io/badge/-spring boot-important?style=flat&logo=spring-boot&logoColor=white" />]() 
-[<img src="https://img.shields.io/badge/-notion-blue?style=flat&logo=notion&logoColor=white" />]() 
+[<img src="https://img.shields.io/badge/-spring boot jpa-important?style=flat&logo=java&logoColor=white" />]() 
+[<img src="https://img.shields.io/badge/-notion-black?style=flat&logo=notion&logoColor=white" />]() 
 [<img src="https://img.shields.io/badge/-java-yellow?style=flat&logo=java&logoColor=white" />]() 
-[<img src="https://img.shields.io/badge/-spring boot jpa-blue?style=flat&logo=java&logoColor=white" />]() 
 [<img src="https://img.shields.io/badge/-Javascript-blue?style=flat&logo=JavaScript&logoColor=white" />]() 
 [<img src="https://img.shields.io/badge/-Vue.js-blue?style=flat&logo=Vue.js&logoColor=white" />]() 
 [<img src="https://img.shields.io/badge/MySQL-v8.0.37 -yellow?style=flat&logo=MySQL&logoColor=white" />]() 
