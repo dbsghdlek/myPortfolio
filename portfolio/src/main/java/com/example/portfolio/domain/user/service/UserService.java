@@ -41,6 +41,7 @@ public class UserService {
             throw new DuplicateKeyException("이미 존재하는 ID입니다.");
         }
 
+        //신규 유저
         UserEntity userEntity = UserEntity.builder()
                 .loginid(userDto.getLoginId())
                 .password(passwordEncoder.encode(userDto.getPassword()))
@@ -52,12 +53,14 @@ public class UserService {
         // Role_USER 권한을 select하여 영속성 컨텍스트에 등록
         AuthorityEntity authority = authorityRepository.getUserAuthority();
 
+        //중간 테이블 Entity
         UserAutorityEntity userAuth = UserAutorityEntity.builder()
                 .user(userEntity)
                 .authority(authority)
                 .userAuthKey(new UserAuthKey(userEntity.getId(), authority.getAuthorityName()))
                 .build();
 
+        //저장
         UserAutorityEntity saveUser = userAuthRepository.save(userAuth);
 
         return UserDto.builder().loginId(saveUser.getUser().getLoginid()).userName(saveUser.getUser().getUsername()).build();
@@ -75,8 +78,7 @@ public class UserService {
         
         // redis RepreshToken 저장 및 TTL 지정
         redisTemplate.opsForValue().set(token.getRefreshToken(), token.getAccessToken());
-        String refreshTokenExipredDate = tokenProvider.parseClaims(token.getRefreshToken()).get("exp").toString();
-        redisTemplate.expireAt(token.getRefreshToken(), new Date(refreshTokenExipredDate));
+        redisTemplate.expireAt(token.getRefreshToken(), token.getRefreshTokenExiprationTime());
 
         return token;
     }

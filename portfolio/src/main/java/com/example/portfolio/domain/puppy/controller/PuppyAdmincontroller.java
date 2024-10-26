@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RestController
@@ -23,8 +24,9 @@ public class PuppyAdmincontroller extends BaseController{
 
     @Operation(summary = "강아지 사진 등록", description = "강아지 사진을 등록하는 API")
     @PostMapping("")
-    public ResponseEntity<?> insertPuppy(PuppyDto dto){
-        boolean result = service.addPicture(dto);
+    public ResponseEntity<?> insertPuppy(@RequestParam("file") MultipartFile file, PuppyDto dto){
+
+        boolean result = service.addPicture(file, dto);
 
         return ResultResponse.wrapperResult(result);
     }

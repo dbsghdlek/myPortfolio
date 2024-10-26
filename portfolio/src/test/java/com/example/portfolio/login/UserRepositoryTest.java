@@ -34,8 +34,11 @@ public class UserRepositoryTest {
 
     @BeforeEach
     void beforeSetting(){
+        // 신규 유저
         UserEntity user = UserEntity.builder().username("test1").loginid("test").password("test").build();
+        // 신규 권한
         AuthorityEntity authority = AuthorityEntity.builder().authorityName("ROLE_USER").build();
+        // 중간 테이블인 UserAhthority insert하여 등록
         UserAutorityEntity userAutority = UserAutorityEntity.builder()
                 .userAuthKey(new UserAuthKey(user.getId(), authority.getAuthorityName()))
                 .user(user)

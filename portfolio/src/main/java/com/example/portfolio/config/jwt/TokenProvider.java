@@ -34,7 +34,7 @@ public class TokenProvider implements InitializingBean {
     public TokenProvider(@Value("${jwt.secret}") String secret,
                          @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds){
         this.secret = secret;
-        this.tokenValidityInMilliseconds = tokenValidityInSeconds * 60;
+        this.tokenValidityInMilliseconds = tokenValidityInSeconds * 6000;
     }
 
     @Override
@@ -96,7 +96,6 @@ public class TokenProvider implements InitializingBean {
     public boolean validateToken(String token){
         try {
             Jws<Claims> claimsJws = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
-            System.out.println("claimsJws = " + claimsJws);
             return true;
         }catch (SecurityException | MalformedJwtException e){
             log.info("잘못된 JWT 서명입니다.");

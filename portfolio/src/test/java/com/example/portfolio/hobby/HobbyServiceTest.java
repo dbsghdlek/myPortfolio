@@ -1,14 +1,14 @@
 package com.example.portfolio.hobby;
 
 import com.example.portfolio.domain.hobby.service.HobbyService;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-@DataJpaTest
-public class HobbyServiceTest {
+import java.util.Date;
 
-    @Autowired
-    private HobbyService service;
+//@DataJpaTest
+public class HobbyServiceTest {
 
 
 }

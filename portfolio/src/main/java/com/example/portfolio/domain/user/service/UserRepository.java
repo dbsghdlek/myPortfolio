@@ -13,7 +13,6 @@ import java.util.Optional;
 @Transactional
 public interface UserRepository extends JpaRepository<UserEntity, Long>, UserRepositoryCustom {
 
-
     @EntityGraph(attributePaths = "authorities")
     public Optional<UserEntity> findOneWithAuthoritiesByloginid(String loginid);
 }
