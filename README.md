@@ -25,6 +25,7 @@
   + 음악
     + 음악 업로드
     + 장르 및 키워드 조회
+    + 음악 OpenAPi인 maniadb를 사용한 음악정보 조회
   + 강아지 사진 업로드
   + 음식 사진 업로드
   + 여행 사진 업로드
@@ -71,7 +72,7 @@
 <br />
 
 ## 🤔 기술적 이슈와 해결 과정
-- 유저와 권한 다대다 테이블 매핑 이슈
+- 유저와 권한 JPA 다대다 테이블 매핑 이슈
   + 유저와 권한 테이블을 1:N, N:1 로 구현
     1. User, UserAhthority, Authority 테이블로 구성하였으나 JPA를 통해 각 Repository로 저장 시 DuplcatedKey Exception이 발생
     2. 쿼리 확인 시 중간테이블에 등록을 하면서 User와 Authority도 등록을 시도하는 과정으로 인해 Exception 발생하는 것을 확인
@@ -83,4 +84,7 @@
 |:---:|:---:|
 |<img src="https://github.com/user-attachments/assets/cba5a685-4528-4c19-94aa-4ee7af16ade4" width="400"/>|<img src="https://github.com/user-attachments/assets/c6ede36d-64f9-48a7-ace2-ade62622bb5a" width="400"/>|
 - Jwt 탈취 취약점 보완
+  + Jwt에 대한 공부를 하던 중 JWT의 취약점에 대한 공부를 통해 Security 코딩의 중요성을 발견
+  + Access Token 외에 Refresh Token을 사용하는 RTR을 적용
+  + 
 <br />
