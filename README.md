@@ -16,14 +16,26 @@
 
 </div> 
 
-## 📝 소개
-기술 적용 및 연습을 위한 개인 프로젝트입니다.
+### 📝 프로젝트 소개
 
+- 기술 적용 및 연습을 위한 개인 프로젝트입니다.
+- 기능
+  + 회원가입
+  + 로그인 (JWT 적용)
+  + 음악
+    + 음악 업로드
+    + 장르 및 키워드 조회
+    + 음악 OpenApi인 maniadb를 사용한 음악정보 조회
+  + 강아지 사진 업로드
+  + 음식 사진 업로드
+  + 여행 사진 업로드
+  + 취미
+    + 키보드 정보 등록
 
 <br />
 
 ### ERD 데이터 모델링
-<img src="https://private-user-images.githubusercontent.com/95003319/380210890-508b0d1b-bf88-48d7-bf30-aa2e82408684.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjk4Njc2ODYsIm5iZiI6MTcyOTg2NzM4NiwicGF0aCI6Ii85NTAwMzMxOS8zODAyMTA4OTAtNTA4YjBkMWItYmY4OC00OGQ3LWJmMzAtYWEyZTgyNDA4Njg0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMjUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDI1VDE0NDMwNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ2ZjYzYmI3OGM0YjAwMGYwNzEyNzkwYWNkYWQ5ZTlhZjJjMjQ2YTFkYjZiM2FiODIxMWI0Mzc1ZTdhYThiMjImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.4dMEmD3ZNWb0gF-Wa-KxIu5xl3scG4msXB1GV4oed0U" width="400"/>
+<img src="https://private-user-images.githubusercontent.com/95003319/380210890-508b0d1b-bf88-48d7-bf30-aa2e82408684.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjk5MDg1MDMsIm5iZiI6MTcyOTkwODIwMywicGF0aCI6Ii85NTAwMzMxOS8zODAyMTA4OTAtNTA4YjBkMWItYmY4OC00OGQ3LWJmMzAtYWEyZTgyNDA4Njg0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMjYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDI2VDAyMDMyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ0MjgzNzNmNDgxNzMxNGU5ZTY0YzFmNTQzOTZmZjcxYzg3ZWIxZmE4ZWMyMWVlMDI5MDBiYTRmMThlZmQ3NDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.scXXxRhAbCITpewm1pcdnjP5INlK2822IhmdmMgWSeI" width="600"/>
 
 <br />
 
@@ -42,6 +54,7 @@
 <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/SpringSecurity.png?raw=true" width="80">
 <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/SpringDataJPA.png?raw=true" width="80">
 <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Mysql.png?raw=true" width="80">
+<img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Redis.png?raw=true" width="80">
 </div>
 
 ### Tools
@@ -52,21 +65,26 @@
 
 <br />
 
-## 🛠️ 프로젝트 아키텍쳐
-![no-image](https://user-images.githubusercontent.com/80824750/208294567-738dd273-e137-4bbf-8307-aff64258fe03.png)
-
+## 추가해보고 싶은 기능
+-  
 
 
 <br />
 
 ## 🤔 기술적 이슈와 해결 과정
-- Stream 써야할까?
-    - [Stream API에 대하여](https://velog.io/@yewo2nn16/Java-Stream-API)
-- Gmail STMP 이용하여 이메일 전송하기
-    - [gmail 보내기](https://velog.io/@yewo2nn16/Email-이메일-전송하기with-첨부파일)
-- AWS EC2에 배포하기
-    - [서버 배포하기-1](https://velog.io/@yewo2nn16/SpringBoot-서버-배포)
-    - [서버 배포하기-2](https://velog.io/@yewo2nn16/SpringBoot-서버-배포-인텔리제이에서-jar-파일-빌드해서-배포하기)
+- 유저와 권한 JPA 다대다 테이블 매핑 이슈
+  + 유저와 권한 테이블을 1:N, N:1 로 구현
+    1. User, UserAhthority, Authority 테이블로 구성하였으나 JPA를 통해 각 Repository로 저장 시 DuplcatedKey Exception이 발생
+    2. 쿼리 확인 시 중간테이블 Entity인 UserAuthority를 저장하는 과정에서 User와 Authority도 저장을 시도하는 쿼리로 인해 Exception이 발생하는 것을 확인
+    3. 중간 테이블인 UserAhthority에 ID를 EmbededId를 사용하여 UserID와 AhthorityName을 복합 키로 사용하였기에 등록해주지 않으면 저장불가
+    4. User와 Authority를 중간테이블 엔티티에 등록하여 중간 테이블 Insert과정으로 한 번에 등록하도록 변경하여 해결
+    5. 신규 유저에게 이미 있는 권한(Authority)를 등록할 시 권한을 조회하여 영속성 컨텍스트에 등록 후 5번 과정을 통해 해결
 
-
+|신규 유저 및 권한 등록|신규 유저 등록|
+|:---:|:---:|
+|<img src="https://github.com/user-attachments/assets/cba5a685-4528-4c19-94aa-4ee7af16ade4" width="400"/>|<img src="https://github.com/user-attachments/assets/c6ede36d-64f9-48a7-ace2-ade62622bb5a" width="400"/>|
+- Jwt 탈취 취약점 보완
+  + Jwt에 대한 공부를 하던 중 JWT의 취약점에 대한 공부를 통해 Security 코딩의 중요성을 발견
+  + Access Token 외에 Refresh Token을 사용하는 RTR 기법을 적용
+  + Refresh Token 저장을 위해 Redis를 도입하여 저장
 <br />
