@@ -21,6 +21,9 @@
 - 기술 적용 및 연습을 위한 개인 프로젝트입니다.
 - 회원가입
 - 로그인 (JWT 적용)
+- 음악
+  + 음악 업로드
+  + 장르 및 키워드 조회
 - 강아지 사진 업로드
 - 음식 사진 업로드
 - 여행 사진 업로드
@@ -68,5 +71,16 @@
 
 ## 🤔 기술적 이슈와 해결 과정
 - 유저와 권한 다대다 테이블 매핑 이슈
+  + 유저와 권한 테이블을 1:N, N:1 로 구현
+    1. User, UserAhthority, Authority 테이블로 구성하였으나 JPA를 통해 각 Repository로 저장 시 DuplcatedKey Exception이 발생
+    2. 쿼리 확인 시 중간테이블에 등록을 하면서 User와 Authority도 등록을 시도하는 과정으로 인해 Exception 발생하는 것을 확인
+    3. 중간 테이블인 UserAhthority에 ID를 EmbededId를 사용하여 UserID와 AhthorityName을 복합 키로 사용하였기에 등록해주지 않으면 저장불가
+    4. User와 Authority를 중간테이블 엔티티에 등록하여 중간 테이블 Insert과정으로 한 번에 등록하도록 변경하여 해결
+    5. 신규 유저에게 이미 있는 권한(Authority)를 등록할 시 권한을 조회하여 영속성 컨텍스트에 등록 후 5번 과정을 통해 해결
+
+|Screen #1|Screen #2|
+|:---:|:---:|
+|<img src="https://user-images.githubusercontent.com/80824750/208456048-acbf44a8-cd71-4132-b35a-500047adbe1c.gif" width="400"/>|<img src="https://user-images.githubusercontent.com/80824750/208456234-fb5fe434-aa65-4d7a-b955-89098d5bbe0b.gif" width="400"/>|
+
 - Jwt 탈취 취약점 보완
 <br />
