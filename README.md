@@ -75,7 +75,7 @@
 - 유저와 권한 JPA 다대다 테이블 매핑 이슈
   + 유저와 권한 테이블을 1:N, N:1 로 구현
     1. User, UserAhthority, Authority 테이블로 구성하였으나 JPA를 통해 각 Repository로 저장 시 DuplcatedKey Exception이 발생
-    2. 쿼리 확인 시 중간테이블에 등록을 하면서 User와 Authority도 등록을 시도하는 과정으로 인해 Exception 발생하는 것을 확인
+    2. 쿼리 확인 시 중간테이블 Entity인 UserAuthority를 저장하는 과정에서 User와 Authority도 저장을 시도하는 쿼리로 인해 Exception이 발생하는 것을 확인
     3. 중간 테이블인 UserAhthority에 ID를 EmbededId를 사용하여 UserID와 AhthorityName을 복합 키로 사용하였기에 등록해주지 않으면 저장불가
     4. User와 Authority를 중간테이블 엔티티에 등록하여 중간 테이블 Insert과정으로 한 번에 등록하도록 변경하여 해결
     5. 신규 유저에게 이미 있는 권한(Authority)를 등록할 시 권한을 조회하여 영속성 컨텍스트에 등록 후 5번 과정을 통해 해결
