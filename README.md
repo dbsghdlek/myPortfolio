@@ -86,5 +86,5 @@
 - Jwt 탈취 취약점 보완
   + Jwt에 대한 공부를 하던 중 JWT의 취약점에 대한 공부를 통해 Security 코딩의 중요성을 발견
   + Access Token 외에 Refresh Token을 사용하는 RTR 기법을 적용
-  + 
+  + Refresh Token 저장을 위해 Redis를 도입하여 저장
 <br />
