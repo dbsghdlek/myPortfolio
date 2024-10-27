@@ -66,8 +66,9 @@
 <br />
 
 ## 추가해보고 싶은 기능
--  
-
+-  JWT 보안 취약점을 위한 RTR 기법 적용
+-  개별 사진에 대한 좋아요 기능 및 최적
+- 
 
 <br />
 
@@ -83,8 +84,8 @@
 |신규 유저 및 권한 등록|신규 유저 등록|
 |:---:|:---:|
 |<img src="https://github.com/user-attachments/assets/cba5a685-4528-4c19-94aa-4ee7af16ade4" width="400"/>|<img src="https://github.com/user-attachments/assets/c6ede36d-64f9-48a7-ace2-ade62622bb5a" width="400"/>|
-- Jwt 탈취 취약점 보완
+<!--- Jwt 탈취 취약점 보완
   + Jwt에 대한 공부를 하던 중 JWT의 취약점에 대한 공부를 통해 Security 코딩의 중요성을 발견
   + Access Token 외에 Refresh Token을 사용하는 RTR 기법을 적용
-  + Refresh Token 저장을 위해 Redis를 도입하여 저장
+  + Refresh Token 저장을 위해 Redis를 도입하여 저장 -->
 <br />
