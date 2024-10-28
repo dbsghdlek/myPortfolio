@@ -98,4 +98,7 @@
   + Jwt에 대한 공부를 하던 중 JWT의 취약점에 대한 공부를 통해 Security 코딩의 중요성을 발견
   + Access Token 외에 Refresh Token을 사용하는 RTR 기법을 적용
   + Refresh Token 저장을 위해 Redis를 도입하여 저장 -->
+- Service 테스트 코드 오류
+  + Service 코드를 테스트하기 위해 Service 객체를 @Autowired하여 Bean을 주입하였으나 Repository가 null이 발생
+  + Test용 Repository를 Mock객체를 만들어 given, when, then을 작성하여 해결
 <br />
