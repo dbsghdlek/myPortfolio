@@ -48,7 +48,7 @@
 ## 프론트 화면
 |메인 화면|음악 페이지|
 |:---:|:---:|
-|<img src="https://github.com/user-attachments/assets/a3e13146-0a5f-43aa-b68c-d1229382edd8" width="400"/>|<img src="https://github.com/user-attachments/assets/e0042570-7675-4130-8c22-1ab68ee74df5" width="400"/>|
+|<img src="https://github.com/user-attachments/assets/a3e13146-0a5f-43aa-b68c-d1229382edd8" width="400"/>|<img src="https://github.com/user-attachments/assets/0c20390f-cfee-4472-9cf5-1068756de792" width="400"/>|
 
 
 ## ⚙ 기술 스택
