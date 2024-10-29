@@ -35,16 +35,21 @@
 <br />
 
 ### ERD 데이터 모델링
-<img src="https://private-user-images.githubusercontent.com/95003319/380210890-508b0d1b-bf88-48d7-bf30-aa2e82408684.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjk5MDg1MDMsIm5iZiI6MTcyOTkwODIwMywicGF0aCI6Ii85NTAwMzMxOS8zODAyMTA4OTAtNTA4YjBkMWItYmY4OC00OGQ3LWJmMzAtYWEyZTgyNDA4Njg0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMjYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDI2VDAyMDMyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ0MjgzNzNmNDgxNzMxNGU5ZTY0YzFmNTQzOTZmZjcxYzg3ZWIxZmE4ZWMyMWVlMDI5MDBiYTRmMThlZmQ3NDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.scXXxRhAbCITpewm1pcdnjP5INlK2822IhmdmMgWSeI" width="600"/>
+<img src="https://github.com/user-attachments/assets/59b0ca3d-89f3-4098-9087-f07223bc9c2e" width="600"/>
 
 <br />
 
 ## 🗂️ APIs
 
-
-
+<img src="https://github.com/user-attachments/assets/597f4bf5-9900-4352-927d-6085fc76d995" width="600"/>
 
 <br />
+
+## 프론트 화면
+|메인 화면|음악 페이지|
+|:---:|:---:|
+|<img src="https://github.com/user-attachments/assets/a3e13146-0a5f-43aa-b68c-d1229382edd8" width="400"/>|<img src="https://github.com/user-attachments/assets/0c20390f-cfee-4472-9cf5-1068756de792" width="400"/>|
+
 
 ## ⚙ 기술 스택
 ### Back-end
@@ -57,6 +62,12 @@
 <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Redis.png?raw=true" width="80">
 </div>
 
+### Front-end
+<div>
+<img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/JavaScript.png?raw=true" width="80">
+<img src="https://github.com/user-attachments/assets/37851a02-8773-4c05-be06-f3653fe918d1" width="80">
+</div>
+
 ### Tools
 <div>
 <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Github.png?raw=true" width="80">
@@ -66,8 +77,8 @@
 <br />
 
 ## 추가해보고 싶은 기능
--  
-
+- JWT 보안 취약점을 위한 RTR 기법 적용
+- 개별 사진에 대한 좋아요 기능
 
 <br />
 
@@ -83,8 +94,11 @@
 |신규 유저 및 권한 등록|신규 유저 등록|
 |:---:|:---:|
 |<img src="https://github.com/user-attachments/assets/cba5a685-4528-4c19-94aa-4ee7af16ade4" width="400"/>|<img src="https://github.com/user-attachments/assets/c6ede36d-64f9-48a7-ace2-ade62622bb5a" width="400"/>|
-- Jwt 탈취 취약점 보완
+<!--- Jwt 탈취 취약점 보완
   + Jwt에 대한 공부를 하던 중 JWT의 취약점에 대한 공부를 통해 Security 코딩의 중요성을 발견
   + Access Token 외에 Refresh Token을 사용하는 RTR 기법을 적용
-  + Refresh Token 저장을 위해 Redis를 도입하여 저장
+  + Refresh Token 저장을 위해 Redis를 도입하여 저장 -->
+- Service 테스트 코드 오류
+  + Service 코드를 테스트하기 위해 Service 객체를 @Autowired하여 Bean을 주입하였으나 Repository가 null이 발생
+  + Test용 Repository를 Mock객체를 만들어 given, when, then을 작성하여 해결
 <br />
