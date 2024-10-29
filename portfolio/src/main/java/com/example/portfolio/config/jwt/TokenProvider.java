@@ -1,12 +1,16 @@
 package com.example.portfolio.config.jwt;
 
 import com.example.portfolio.domain.user.dto.TokenDto;
+import com.example.portfolio.domain.user.entity.UserEntity;
+import com.example.portfolio.domain.user.service.UserRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,9 +19,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -28,13 +30,19 @@ public class TokenProvider implements InitializingBean {
 
     private final String secret;
     private final long tokenValidityInMilliseconds;
+    private final RedisTemplate<String, String> redisTemplate;
+    private final UserRepository userRepository;
 
     private Key key;
 
     public TokenProvider(@Value("${jwt.secret}") String secret,
-                         @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds){
+                         @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds,
+                         RedisTemplate redisTemplate,
+                         UserRepository userRepository){
         this.secret = secret;
-        this.tokenValidityInMilliseconds = tokenValidityInSeconds * 6000;
+        this.tokenValidityInMilliseconds = tokenValidityInSeconds;
+        this.redisTemplate = redisTemplate;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -51,7 +59,7 @@ public class TokenProvider implements InitializingBean {
         long now = (new Date()).getTime();
         //access 토큰 만료시간
         Date tokenExpiredTime = new Date(now + this.tokenValidityInMilliseconds);
-        Date refreshtokenExpiredTime = new Date(now + (2 * this.tokenValidityInMilliseconds));
+        Date refreshtokenExpiredTime = new Date(now + (6000 * this.tokenValidityInMilliseconds));
 
         // accessToken 생성
         String accessToken = Jwts.builder()
@@ -63,6 +71,8 @@ public class TokenProvider implements InitializingBean {
 
         //RefreshToken 생성
         String refreshToken = Jwts.builder()
+                .setSubject(authentication.getName())
+                .claim(AUTHORITIES_KEY, authorities)
                 .setExpiration(refreshtokenExpiredTime)
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
@@ -115,5 +125,18 @@ public class TokenProvider implements InitializingBean {
         }catch (ExpiredJwtException e){
             return e.getClaims();
         }
+    }
+
+    public boolean existRefreshToken(String refreshToken){
+        String token = redisTemplate.opsForValue().get(refreshToken);
+        return (token != null);
+    }
+
+    public void setHeaderAccessToken(HttpServletResponse response, String accessToken){
+        response.setHeader("Authorization", new StringBuilder("bearer ").append(accessToken).toString());
+    }
+
+    public void setHeaderRefreshToken(HttpServletResponse response, String refreshToken){
+        response.setHeader("Refresh", new StringBuilder("bearer ").append(refreshToken).toString());
     }
 }

@@ -38,13 +38,20 @@ public class UserRepositoryTest {
         UserEntity user = UserEntity.builder().username("test1").loginid("test").password("test").build();
         // 신규 권한
         AuthorityEntity authority = AuthorityEntity.builder().authorityName("ROLE_USER").build();
+        AuthorityEntity adminAuthority = AuthorityEntity.builder().authorityName("ROLE_ADMIN").build();
         // 중간 테이블인 UserAhthority insert하여 등록
         UserAutorityEntity userAutority = UserAutorityEntity.builder()
                 .userAuthKey(new UserAuthKey(user.getId(), authority.getAuthorityName()))
                 .user(user)
                 .authority(authority).build();
 
+        UserAutorityEntity userAdminAutority = UserAutorityEntity.builder()
+                .userAuthKey(new UserAuthKey(user.getId(), authority.getAuthorityName()))
+                .user(user)
+                .authority(adminAuthority).build();
+
         userAuthRepository.saveAndFlush(userAutority);
+        userAuthRepository.saveAndFlush(userAdminAutority);
 
         entityManager.clear();
     }
@@ -63,4 +70,17 @@ public class UserRepositoryTest {
         Assertions.assertThat(test1).isEqualTo(false);
     }
 
+    @Test
+    void searchByLoginIdTest(){
+        UserEntity test = userRepository.findByloginid("test").orElseThrow();
+        System.out.println("test = " + test.getUsername());
+    }
+
+    @Test
+    void getAuthoritiesTest(){
+        UserEntity test = userRepository.getAuthorities("test");
+        test.getAuthorities().stream().forEach(auth ->{
+            System.out.println("auth.getAuthority() = " + auth.getAuthority().getAuthorityName());
+        });
+    }
 }

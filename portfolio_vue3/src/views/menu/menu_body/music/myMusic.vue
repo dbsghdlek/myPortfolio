@@ -57,7 +57,7 @@ export default {
                     Accept: 'application/json'
                 }
             }).then(response =>{
-                this.musicList = response.data.map(music =>{
+                this.musicList = response.data.contents.map(music =>{
                     return {
                         ...music,
                         url : '../menu/' + music.musicName + '.mp3',

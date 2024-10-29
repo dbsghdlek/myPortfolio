@@ -22,7 +22,7 @@ public class MusicAdminController extends BaseController{
     private final MusicService service;
 
     @Operation(summary = "음악 추가 Api", description ="음악 데이터 추가하기" )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity insertMusic(@RequestBody MusicDto dto){
         boolean result = service.insert(dto);
         return ResultResponse.wrapperResult(result);

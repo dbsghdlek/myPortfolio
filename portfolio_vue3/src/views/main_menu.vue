@@ -45,9 +45,9 @@ export default {
                 }
             }).then(
                 response => {
-                    this.menuList = response.data.map(item => {
+                    this.menuList = response.data.contents.map(item => {
                         return {
-                            ...item,
+                            ...item,        
                             src: require('@/assets/img/portfolio/' + item.menuName + '.png')
                         }
                     });

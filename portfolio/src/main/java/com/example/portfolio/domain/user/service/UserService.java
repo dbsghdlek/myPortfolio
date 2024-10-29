@@ -9,6 +9,7 @@ import com.example.portfolio.domain.user.entity.AuthorityEntity;
 import com.example.portfolio.domain.user.entity.UserAuthKey;
 import com.example.portfolio.domain.user.entity.UserAutorityEntity;
 import com.example.portfolio.domain.user.entity.UserEntity;
+import io.jsonwebtoken.Claims;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
@@ -33,7 +34,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, String> redisTemplate;
 
     @Transactional
     public UserDto userSignIn(UserSignInDto userDto){
@@ -81,5 +82,19 @@ public class UserService {
         redisTemplate.expireAt(token.getRefreshToken(), token.getRefreshTokenExiprationTime());
 
         return token;
+    }
+
+    public TokenDto accessTokenRefresh(String refreshToken){
+        String oldAccessToken = redisTemplate.opsForValue().get(refreshToken);
+        if (oldAccessToken == null){
+            throw new RuntimeException("존재하지 않는 RefreshToken 입니다.");
+        }
+        Claims claims = tokenProvider.parseClaims(refreshToken);
+        String loginId = (String)claims.get("sub");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("authentication" + authentication.getAuthorities());
+
+        return new TokenDto();
     }
 }
