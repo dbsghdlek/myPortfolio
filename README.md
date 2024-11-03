@@ -41,7 +41,7 @@
 
 ## 🗂️ APIs
 
-<img src="https://github.com/user-attachments/assets/597f4bf5-9900-4352-927d-6085fc76d995" width="600"/>
+<img src="https://github.com/user-attachments/assets/7bc5dc16-28ed-4591-9945-7ee5e6a970d4" width="600"/>
 
 <br />
 
